@@ -6,7 +6,7 @@ Supplemental material: Understanding teachers’ perspectives on students with e
 
 - Teacher survey conducted in Germany, federal state of Lower Saxony
 
-- Data collection: January to June 2023.
+- Data collection: January to June 2023
 
 For more details, see the paper published in the journal Epilepsy & Behavior:
 
