@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Pawel R. Kulawiak">
-<meta name="dcterms.date" content="2024-10-19">
+<meta name="dcterms.date" content="2024-11-21">
 
 <title>Supplement TA: Teachers’ attitudes towards epilepsy</title>
 <style>
@@ -3120,7 +3120,7 @@ vertical-align: -.125em;
       <div>
       <div class="quarto-title-meta-heading">last modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 19, 2024</p>
+        <p class="date">November 21, 2024</p>
       </div>
     </div>
     
@@ -3169,7 +3169,7 @@ vertical-align: -.125em;
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>DATA <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;results-survey532267 (32).xlsx&quot;</span>)</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>DATA <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;SURVEY_DATA.xlsx&quot;</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>DATA <span class="ot">&lt;-</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  DATA <span class="sc">%&gt;%</span></span>
@@ -3180,7 +3180,7 @@ vertical-align: -.125em;
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  DATA[<span class="dv">9</span><span class="sc">:</span><span class="dv">81</span>] <span class="sc">%&gt;%</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NA_CHECK =</span> <span class="fu">rowSums</span>(<span class="sc">!</span><span class="fu">is.na</span>(.))) <span class="sc">%&gt;%</span></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NA_CHECK <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(AB7 <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(AB7 <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co"># exclude special education schools</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(as.factor) <span class="sc">%&gt;%</span></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="fu">names</span>(DATA[<span class="fu">paste0</span>(<span class="st">&quot;SE&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)])), <span class="sc">~</span> <span class="fu">factor</span>(., <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -3360,20 +3360,20 @@ vertical-align: -.125em;
 <span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_options</span>(<span class="at">table.width =</span> <span class="fu">pct</span>(<span class="dv">90</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="kztfhltwyu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#kztfhltwyu table {
+<div id="sharhkdjwx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#sharhkdjwx table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#kztfhltwyu thead, #kztfhltwyu tbody, #kztfhltwyu tfoot, #kztfhltwyu tr, #kztfhltwyu td, #kztfhltwyu th {
+#sharhkdjwx thead, #sharhkdjwx tbody, #sharhkdjwx tfoot, #sharhkdjwx tr, #sharhkdjwx td, #sharhkdjwx th {
 border-style: none;
 }
-#kztfhltwyu p {
+#sharhkdjwx p {
 margin: 0;
 padding: 0;
 }
-#kztfhltwyu .gt_table {
+#sharhkdjwx .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -3398,11 +3398,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#kztfhltwyu .gt_caption {
+#sharhkdjwx .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#kztfhltwyu .gt_title {
+#sharhkdjwx .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -3413,7 +3413,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#kztfhltwyu .gt_subtitle {
+#sharhkdjwx .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -3424,7 +3424,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#kztfhltwyu .gt_heading {
+#sharhkdjwx .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -3435,12 +3435,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#kztfhltwyu .gt_bottom_border {
+#sharhkdjwx .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#kztfhltwyu .gt_col_headings {
+#sharhkdjwx .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -3454,7 +3454,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#kztfhltwyu .gt_col_heading {
+#sharhkdjwx .gt_col_heading {
 color: #333333;
 background-color: #F2F2F2;
 font-size: 100%;
@@ -3473,7 +3473,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#kztfhltwyu .gt_column_spanner_outer {
+#sharhkdjwx .gt_column_spanner_outer {
 color: #333333;
 background-color: #F2F2F2;
 font-size: 100%;
@@ -3484,13 +3484,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#kztfhltwyu .gt_column_spanner_outer:first-child {
+#sharhkdjwx .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#kztfhltwyu .gt_column_spanner_outer:last-child {
+#sharhkdjwx .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#kztfhltwyu .gt_column_spanner {
+#sharhkdjwx .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -3501,10 +3501,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#kztfhltwyu .gt_spanner_row {
+#sharhkdjwx .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#kztfhltwyu .gt_group_heading {
+#sharhkdjwx .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3529,7 +3529,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#kztfhltwyu .gt_empty_group_heading {
+#sharhkdjwx .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -3543,13 +3543,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#kztfhltwyu .gt_from_md > :first-child {
+#sharhkdjwx .gt_from_md > :first-child {
 margin-top: 0;
 }
-#kztfhltwyu .gt_from_md > :last-child {
+#sharhkdjwx .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#kztfhltwyu .gt_row {
+#sharhkdjwx .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3567,7 +3567,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#kztfhltwyu .gt_stub {
+#sharhkdjwx .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3579,7 +3579,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kztfhltwyu .gt_stub_row_group {
+#sharhkdjwx .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3592,13 +3592,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#kztfhltwyu .gt_row_group_first td {
+#sharhkdjwx .gt_row_group_first td {
 border-top-width: 2px;
 }
-#kztfhltwyu .gt_row_group_first th {
+#sharhkdjwx .gt_row_group_first th {
 border-top-width: 2px;
 }
-#kztfhltwyu .gt_summary_row {
+#sharhkdjwx .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -3607,14 +3607,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kztfhltwyu .gt_first_summary_row {
+#sharhkdjwx .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#kztfhltwyu .gt_first_summary_row.thick {
+#sharhkdjwx .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#kztfhltwyu .gt_last_summary_row {
+#sharhkdjwx .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3623,7 +3623,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#kztfhltwyu .gt_grand_summary_row {
+#sharhkdjwx .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -3632,7 +3632,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kztfhltwyu .gt_first_grand_summary_row {
+#sharhkdjwx .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3641,7 +3641,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#kztfhltwyu .gt_last_grand_summary_row_top {
+#sharhkdjwx .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3650,10 +3650,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#kztfhltwyu .gt_striped {
+#sharhkdjwx .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#kztfhltwyu .gt_table_body {
+#sharhkdjwx .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -3661,7 +3661,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#kztfhltwyu .gt_footnotes {
+#sharhkdjwx .gt_footnotes {
 color: #333333;
 background-color: #F2F2F2;
 border-bottom-style: none;
@@ -3674,7 +3674,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#kztfhltwyu .gt_footnote {
+#sharhkdjwx .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -3682,7 +3682,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kztfhltwyu .gt_sourcenotes {
+#sharhkdjwx .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -3695,61 +3695,68 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#kztfhltwyu .gt_sourcenote {
+#sharhkdjwx .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kztfhltwyu .gt_left {
+#sharhkdjwx .gt_left {
 text-align: left;
 }
-#kztfhltwyu .gt_center {
+#sharhkdjwx .gt_center {
 text-align: center;
 }
-#kztfhltwyu .gt_right {
+#sharhkdjwx .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#kztfhltwyu .gt_font_normal {
+#sharhkdjwx .gt_font_normal {
 font-weight: normal;
 }
-#kztfhltwyu .gt_font_bold {
+#sharhkdjwx .gt_font_bold {
 font-weight: bold;
 }
-#kztfhltwyu .gt_font_italic {
+#sharhkdjwx .gt_font_italic {
 font-style: italic;
 }
-#kztfhltwyu .gt_super {
+#sharhkdjwx .gt_super {
 font-size: 65%;
 }
-#kztfhltwyu .gt_footnote_marks {
+#sharhkdjwx .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#kztfhltwyu .gt_asterisk {
+#sharhkdjwx .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#kztfhltwyu .gt_indent_1 {
+#sharhkdjwx .gt_indent_1 {
 text-indent: 5px;
 }
-#kztfhltwyu .gt_indent_2 {
+#sharhkdjwx .gt_indent_2 {
 text-indent: 10px;
 }
-#kztfhltwyu .gt_indent_3 {
+#sharhkdjwx .gt_indent_3 {
 text-indent: 15px;
 }
-#kztfhltwyu .gt_indent_4 {
+#sharhkdjwx .gt_indent_4 {
 text-indent: 20px;
 }
-#kztfhltwyu .gt_indent_5 {
+#sharhkdjwx .gt_indent_5 {
 text-indent: 25px;
 }
+#sharhkdjwx .katex-display {
+display: inline-flex !important;
+margin-bottom: 0.75em !important;
+}
+#sharhkdjwx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+height: 0px !important;
+}
 </style>
-<table class="gt_table" style="table-layout: fixed;; width: 90%" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table" style="table-layout:fixed;width:90%;" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
   <colgroup>
     <col style="width:3%;">
     <col style="width:31%;">
@@ -3766,315 +3773,180 @@ text-indent: 25px;
     <tr class="gt_col_headings gt_spanner_row">
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="no.">no.</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="item">item</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="total">total</th>
-      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="4" scope="colgroup" id="&lt;em&gt;answers&lt;/em&gt;">
-        <span class="gt_column_spanner"><em>answers</em></span>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="V1">total</th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="4" scope="colgroup" id="*answers*">
+        <div class="gt_column_spanner"><span data-qmd-base64="PGVtPmFuc3dlcnM8L2VtPg=="><span class="gt_from_md"><em>answers</em></span></span></div>
       </th>
-      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup" id="&lt;em&gt;aggregated&lt;/em&gt;">
-        <span class="gt_column_spanner"><em>aggregated</em></span>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup" id="*aggregated*">
+        <div class="gt_column_spanner"><span data-qmd-base64="PGVtPmFnZ3JlZ2F0ZWQ8L2VtPg=="><span class="gt_from_md"><em>aggregated</em></span></span></div>
       </th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="bar plot&lt;br&gt;sum agree">bar plot<br>sum agree</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="list_plot">bar plot<br>sum agree</th>
     </tr>
     <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="strongly&lt;br&gt;disagree">strongly<br>disagree</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="somewhat&lt;br&gt;disagree">somewhat<br>disagree</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="somewhat&lt;br&gt;agree">somewhat<br>agree</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="strongly&lt;br&gt;agree">strongly<br>agree</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="sum&lt;br&gt;disagree">sum<br>disagree</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="sum&lt;br&gt;agree">sum<br>agree</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="V2">strongly<br>disagree</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="V3">somewhat<br>disagree</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="V4">somewhat<br>agree</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="V5">strongly<br>agree</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="n">sum<br>disagree</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="y">sum<br>agree</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
     <tr class="gt_group_heading_row">
-      <th colspan="10" class="gt_group_heading" style="background-color: #F2F2F2;" scope="colgroup" id="&lt;em&gt;school trips&lt;/em&gt;"><em>school trips</em></th>
+      <th colspan="10" class="gt_group_heading" style="background-color: #F2F2F2;" scope="colgroup" id="&lt;span data-qmd-base64=&quot;PGVtPnNjaG9vbCB0cmlwczwvZW0+&quot;&gt;&lt;span class=&#39;gt_from_md&#39;&gt;&lt;em&gt;school trips&lt;/em&gt;&lt;/span&gt;&lt;/span&gt;"><span data-qmd-base64="PGVtPnNjaG9vbCB0cmlwczwvZW0+"><span class="gt_from_md"><em>school trips</em></span></span></th>
     </tr>
-    <tr class="gt_row_group_first"><td headers="*school trips*  no." class="gt_row gt_left"><div data-qmd="1"><div class="gt_from_md"><p>1</p>
-</div></div></td>
-<td headers="*school trips*  item" class="gt_row gt_left"><div data-qmd="I feel uneasy at the thought of having to supervise Student E on a trip to the museum"><div class="gt_from_md"><p>I feel uneasy at the thought of having to supervise Student E on a trip to the museum</p>
-</div></div></td>
-<td headers="*school trips*  V1" class="gt_row gt_left"><div data-qmd="208&lt;br&gt;(100%)"><div class="gt_from_md"><p>208<br>(100%)</p>
-</div></div></td>
-<td headers="*school trips*  V2" class="gt_row gt_left"><div data-qmd="37&lt;br&gt;(17.8%)"><div class="gt_from_md"><p>37<br>(17.8%)</p>
-</div></div></td>
-<td headers="*school trips*  V3" class="gt_row gt_left"><div data-qmd="61&lt;br&gt;(29.3%)"><div class="gt_from_md"><p>61<br>(29.3%)</p>
-</div></div></td>
-<td headers="*school trips*  V4" class="gt_row gt_left"><div data-qmd="94&lt;br&gt;(45.2%)"><div class="gt_from_md"><p>94<br>(45.2%)</p>
-</div></div></td>
-<td headers="*school trips*  V5" class="gt_row gt_left"><div data-qmd="16&lt;br&gt;(7.7%)"><div class="gt_from_md"><p>16<br>(7.7%)</p>
-</div></div></td>
-<td headers="*school trips*  n" class="gt_row gt_left"><div data-qmd="98&lt;br&gt;(47.1%)"><div class="gt_from_md"><p>98<br>(47.1%)</p>
-</div></div></td>
-<td headers="*school trips*  y" class="gt_row gt_left"><div data-qmd="110&lt;br&gt;(52.9%)"><div class="gt_from_md"><p>110<br>(52.9%)</p>
-</div></div></td>
+    <tr class="gt_row_group_first"><td headers="*school trips*  no." class="gt_row gt_left"><span data-qmd-base64="MQ=="><span class="gt_from_md">1</span></span></td>
+<td headers="*school trips*  item" class="gt_row gt_left"><span data-qmd-base64="SSBmZWVsIHVuZWFzeSBhdCB0aGUgdGhvdWdodCBvZiBoYXZpbmcgdG8gc3VwZXJ2aXNlIFN0dWRlbnQgRSBvbiBhIHRyaXAgdG8gdGhlIG11c2V1bQ=="><span class="gt_from_md">I feel uneasy at the thought of having to supervise Student E on a trip to the museum</span></span></td>
+<td headers="*school trips*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA4PGJyPigxMDAlKQ=="><span class="gt_from_md">208<br>(100%)</span></span></td>
+<td headers="*school trips*  V2" class="gt_row gt_left"><span data-qmd-base64="Mzc8YnI+KDE3LjglKQ=="><span class="gt_from_md">37<br>(17.8%)</span></span></td>
+<td headers="*school trips*  V3" class="gt_row gt_left"><span data-qmd-base64="NjE8YnI+KDI5LjMlKQ=="><span class="gt_from_md">61<br>(29.3%)</span></span></td>
+<td headers="*school trips*  V4" class="gt_row gt_left"><span data-qmd-base64="OTQ8YnI+KDQ1LjIlKQ=="><span class="gt_from_md">94<br>(45.2%)</span></span></td>
+<td headers="*school trips*  V5" class="gt_row gt_left"><span data-qmd-base64="MTY8YnI+KDcuNyUp"><span class="gt_from_md">16<br>(7.7%)</span></span></td>
+<td headers="*school trips*  n" class="gt_row gt_left"><span data-qmd-base64="OTg8YnI+KDQ3LjElKQ=="><span class="gt_from_md">98<br>(47.1%)</span></span></td>
+<td headers="*school trips*  y" class="gt_row gt_left"><span data-qmd-base64="MTEwPGJyPig1Mi45JSk="><span class="gt_from_md">110<br>(52.9%)</span></span></td>
 <td headers="*school trips*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:52.9%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">52.9%</span></div></div></td></tr>
-    <tr><td headers="*school trips*  no." class="gt_row gt_left"><div data-qmd="2"><div class="gt_from_md"><p>2</p>
-</div></div></td>
-<td headers="*school trips*  item" class="gt_row gt_left"><div data-qmd="I feel uneasy at the thought of having to supervise Student E on a school trip lasting several days"><div class="gt_from_md"><p>I feel uneasy at the thought of having to supervise Student E on a school trip lasting several days</p>
-</div></div></td>
-<td headers="*school trips*  V1" class="gt_row gt_left"><div data-qmd="207&lt;br&gt;(100%)"><div class="gt_from_md"><p>207<br>(100%)</p>
-</div></div></td>
-<td headers="*school trips*  V2" class="gt_row gt_left"><div data-qmd="21&lt;br&gt;(10.1%)"><div class="gt_from_md"><p>21<br>(10.1%)</p>
-</div></div></td>
-<td headers="*school trips*  V3" class="gt_row gt_left"><div data-qmd="48&lt;br&gt;(23.2%)"><div class="gt_from_md"><p>48<br>(23.2%)</p>
-</div></div></td>
-<td headers="*school trips*  V4" class="gt_row gt_left"><div data-qmd="74&lt;br&gt;(35.7%)"><div class="gt_from_md"><p>74<br>(35.7%)</p>
-</div></div></td>
-<td headers="*school trips*  V5" class="gt_row gt_left"><div data-qmd="64&lt;br&gt;(30.9%)"><div class="gt_from_md"><p>64<br>(30.9%)</p>
-</div></div></td>
-<td headers="*school trips*  n" class="gt_row gt_left"><div data-qmd="69&lt;br&gt;(33.3%)"><div class="gt_from_md"><p>69<br>(33.3%)</p>
-</div></div></td>
-<td headers="*school trips*  y" class="gt_row gt_left"><div data-qmd="138&lt;br&gt;(66.7%)"><div class="gt_from_md"><p>138<br>(66.7%)</p>
-</div></div></td>
+    <tr><td headers="*school trips*  no." class="gt_row gt_left"><span data-qmd-base64="Mg=="><span class="gt_from_md">2</span></span></td>
+<td headers="*school trips*  item" class="gt_row gt_left"><span data-qmd-base64="SSBmZWVsIHVuZWFzeSBhdCB0aGUgdGhvdWdodCBvZiBoYXZpbmcgdG8gc3VwZXJ2aXNlIFN0dWRlbnQgRSBvbiBhIHNjaG9vbCB0cmlwIGxhc3Rpbmcgc2V2ZXJhbCBkYXlz"><span class="gt_from_md">I feel uneasy at the thought of having to supervise Student E on a school trip lasting several days</span></span></td>
+<td headers="*school trips*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA3PGJyPigxMDAlKQ=="><span class="gt_from_md">207<br>(100%)</span></span></td>
+<td headers="*school trips*  V2" class="gt_row gt_left"><span data-qmd-base64="MjE8YnI+KDEwLjElKQ=="><span class="gt_from_md">21<br>(10.1%)</span></span></td>
+<td headers="*school trips*  V3" class="gt_row gt_left"><span data-qmd-base64="NDg8YnI+KDIzLjIlKQ=="><span class="gt_from_md">48<br>(23.2%)</span></span></td>
+<td headers="*school trips*  V4" class="gt_row gt_left"><span data-qmd-base64="NzQ8YnI+KDM1LjclKQ=="><span class="gt_from_md">74<br>(35.7%)</span></span></td>
+<td headers="*school trips*  V5" class="gt_row gt_left"><span data-qmd-base64="NjQ8YnI+KDMwLjklKQ=="><span class="gt_from_md">64<br>(30.9%)</span></span></td>
+<td headers="*school trips*  n" class="gt_row gt_left"><span data-qmd-base64="Njk8YnI+KDMzLjMlKQ=="><span class="gt_from_md">69<br>(33.3%)</span></span></td>
+<td headers="*school trips*  y" class="gt_row gt_left"><span data-qmd-base64="MTM4PGJyPig2Ni43JSk="><span class="gt_from_md">138<br>(66.7%)</span></span></td>
 <td headers="*school trips*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:66.7%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">66.7%</span></div></div></td></tr>
-    <tr><td headers="*school trips*  no." class="gt_row gt_left"><div data-qmd="3"><div class="gt_from_md"><p>3</p>
-</div></div></td>
-<td headers="*school trips*  item" class="gt_row gt_left"><div data-qmd="I am confident that I can adequately supervise Student E during a trip to the museum"><div class="gt_from_md"><p>I am confident that I can adequately supervise Student E during a trip to the museum</p>
-</div></div></td>
-<td headers="*school trips*  V1" class="gt_row gt_left"><div data-qmd="208&lt;br&gt;(100%)"><div class="gt_from_md"><p>208<br>(100%)</p>
-</div></div></td>
-<td headers="*school trips*  V2" class="gt_row gt_left"><div data-qmd="6&lt;br&gt;(2.9%)"><div class="gt_from_md"><p>6<br>(2.9%)</p>
-</div></div></td>
-<td headers="*school trips*  V3" class="gt_row gt_left"><div data-qmd="53&lt;br&gt;(25.5%)"><div class="gt_from_md"><p>53<br>(25.5%)</p>
-</div></div></td>
-<td headers="*school trips*  V4" class="gt_row gt_left"><div data-qmd="108&lt;br&gt;(51.9%)"><div class="gt_from_md"><p>108<br>(51.9%)</p>
-</div></div></td>
-<td headers="*school trips*  V5" class="gt_row gt_left"><div data-qmd="41&lt;br&gt;(19.7%)"><div class="gt_from_md"><p>41<br>(19.7%)</p>
-</div></div></td>
-<td headers="*school trips*  n" class="gt_row gt_left"><div data-qmd="59&lt;br&gt;(28.4%)"><div class="gt_from_md"><p>59<br>(28.4%)</p>
-</div></div></td>
-<td headers="*school trips*  y" class="gt_row gt_left"><div data-qmd="149&lt;br&gt;(71.6%)"><div class="gt_from_md"><p>149<br>(71.6%)</p>
-</div></div></td>
+    <tr><td headers="*school trips*  no." class="gt_row gt_left"><span data-qmd-base64="Mw=="><span class="gt_from_md">3</span></span></td>
+<td headers="*school trips*  item" class="gt_row gt_left"><span data-qmd-base64="SSBhbSBjb25maWRlbnQgdGhhdCBJIGNhbiBhZGVxdWF0ZWx5IHN1cGVydmlzZSBTdHVkZW50IEUgZHVyaW5nIGEgdHJpcCB0byB0aGUgbXVzZXVt"><span class="gt_from_md">I am confident that I can adequately supervise Student E during a trip to the museum</span></span></td>
+<td headers="*school trips*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA4PGJyPigxMDAlKQ=="><span class="gt_from_md">208<br>(100%)</span></span></td>
+<td headers="*school trips*  V2" class="gt_row gt_left"><span data-qmd-base64="Njxicj4oMi45JSk="><span class="gt_from_md">6<br>(2.9%)</span></span></td>
+<td headers="*school trips*  V3" class="gt_row gt_left"><span data-qmd-base64="NTM8YnI+KDI1LjUlKQ=="><span class="gt_from_md">53<br>(25.5%)</span></span></td>
+<td headers="*school trips*  V4" class="gt_row gt_left"><span data-qmd-base64="MTA4PGJyPig1MS45JSk="><span class="gt_from_md">108<br>(51.9%)</span></span></td>
+<td headers="*school trips*  V5" class="gt_row gt_left"><span data-qmd-base64="NDE8YnI+KDE5LjclKQ=="><span class="gt_from_md">41<br>(19.7%)</span></span></td>
+<td headers="*school trips*  n" class="gt_row gt_left"><span data-qmd-base64="NTk8YnI+KDI4LjQlKQ=="><span class="gt_from_md">59<br>(28.4%)</span></span></td>
+<td headers="*school trips*  y" class="gt_row gt_left"><span data-qmd-base64="MTQ5PGJyPig3MS42JSk="><span class="gt_from_md">149<br>(71.6%)</span></span></td>
 <td headers="*school trips*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:71.6%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">71.6%</span></div></div></td></tr>
-    <tr><td headers="*school trips*  no." class="gt_row gt_left"><div data-qmd="4"><div class="gt_from_md"><p>4</p>
-</div></div></td>
-<td headers="*school trips*  item" class="gt_row gt_left"><div data-qmd="I am confident that I can adequately supervise Student E during a school trip lasting several days"><div class="gt_from_md"><p>I am confident that I can adequately supervise Student E during a school trip lasting several days</p>
-</div></div></td>
-<td headers="*school trips*  V1" class="gt_row gt_left"><div data-qmd="208&lt;br&gt;(100%)"><div class="gt_from_md"><p>208<br>(100%)</p>
-</div></div></td>
-<td headers="*school trips*  V2" class="gt_row gt_left"><div data-qmd="25&lt;br&gt;(12%)"><div class="gt_from_md"><p>25<br>(12%)</p>
-</div></div></td>
-<td headers="*school trips*  V3" class="gt_row gt_left"><div data-qmd="80&lt;br&gt;(38.5%)"><div class="gt_from_md"><p>80<br>(38.5%)</p>
-</div></div></td>
-<td headers="*school trips*  V4" class="gt_row gt_left"><div data-qmd="82&lt;br&gt;(39.4%)"><div class="gt_from_md"><p>82<br>(39.4%)</p>
-</div></div></td>
-<td headers="*school trips*  V5" class="gt_row gt_left"><div data-qmd="21&lt;br&gt;(10.1%)"><div class="gt_from_md"><p>21<br>(10.1%)</p>
-</div></div></td>
-<td headers="*school trips*  n" class="gt_row gt_left"><div data-qmd="105&lt;br&gt;(50.5%)"><div class="gt_from_md"><p>105<br>(50.5%)</p>
-</div></div></td>
-<td headers="*school trips*  y" class="gt_row gt_left"><div data-qmd="103&lt;br&gt;(49.5%)"><div class="gt_from_md"><p>103<br>(49.5%)</p>
-</div></div></td>
+    <tr><td headers="*school trips*  no." class="gt_row gt_left"><span data-qmd-base64="NA=="><span class="gt_from_md">4</span></span></td>
+<td headers="*school trips*  item" class="gt_row gt_left"><span data-qmd-base64="SSBhbSBjb25maWRlbnQgdGhhdCBJIGNhbiBhZGVxdWF0ZWx5IHN1cGVydmlzZSBTdHVkZW50IEUgZHVyaW5nIGEgc2Nob29sIHRyaXAgbGFzdGluZyBzZXZlcmFsIGRheXM="><span class="gt_from_md">I am confident that I can adequately supervise Student E during a school trip lasting several days</span></span></td>
+<td headers="*school trips*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA4PGJyPigxMDAlKQ=="><span class="gt_from_md">208<br>(100%)</span></span></td>
+<td headers="*school trips*  V2" class="gt_row gt_left"><span data-qmd-base64="MjU8YnI+KDEyJSk="><span class="gt_from_md">25<br>(12%)</span></span></td>
+<td headers="*school trips*  V3" class="gt_row gt_left"><span data-qmd-base64="ODA8YnI+KDM4LjUlKQ=="><span class="gt_from_md">80<br>(38.5%)</span></span></td>
+<td headers="*school trips*  V4" class="gt_row gt_left"><span data-qmd-base64="ODI8YnI+KDM5LjQlKQ=="><span class="gt_from_md">82<br>(39.4%)</span></span></td>
+<td headers="*school trips*  V5" class="gt_row gt_left"><span data-qmd-base64="MjE8YnI+KDEwLjElKQ=="><span class="gt_from_md">21<br>(10.1%)</span></span></td>
+<td headers="*school trips*  n" class="gt_row gt_left"><span data-qmd-base64="MTA1PGJyPig1MC41JSk="><span class="gt_from_md">105<br>(50.5%)</span></span></td>
+<td headers="*school trips*  y" class="gt_row gt_left"><span data-qmd-base64="MTAzPGJyPig0OS41JSk="><span class="gt_from_md">103<br>(49.5%)</span></span></td>
 <td headers="*school trips*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:49.5%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">49.5%</span></div></div></td></tr>
-    <tr><td headers="*school trips*  no." class="gt_row gt_left"><div data-qmd="5"><div class="gt_from_md"><p>5</p>
-</div></div></td>
-<td headers="*school trips*  item" class="gt_row gt_left"><div data-qmd="For safety reasons, I would recommend that Student E does not take part in trips to the museum"><div class="gt_from_md"><p>For safety reasons, I would recommend that Student E does not take part in trips to the museum</p>
-</div></div></td>
-<td headers="*school trips*  V1" class="gt_row gt_left"><div data-qmd="209&lt;br&gt;(100%)"><div class="gt_from_md"><p>209<br>(100%)</p>
-</div></div></td>
-<td headers="*school trips*  V2" class="gt_row gt_left"><div data-qmd="124&lt;br&gt;(59.3%)"><div class="gt_from_md"><p>124<br>(59.3%)</p>
-</div></div></td>
-<td headers="*school trips*  V3" class="gt_row gt_left"><div data-qmd="69&lt;br&gt;(33%)"><div class="gt_from_md"><p>69<br>(33%)</p>
-</div></div></td>
-<td headers="*school trips*  V4" class="gt_row gt_left"><div data-qmd="15&lt;br&gt;(7.2%)"><div class="gt_from_md"><p>15<br>(7.2%)</p>
-</div></div></td>
-<td headers="*school trips*  V5" class="gt_row gt_left"><div data-qmd="1&lt;br&gt;(0.5%)"><div class="gt_from_md"><p>1<br>(0.5%)</p>
-</div></div></td>
-<td headers="*school trips*  n" class="gt_row gt_left"><div data-qmd="193&lt;br&gt;(92.3%)"><div class="gt_from_md"><p>193<br>(92.3%)</p>
-</div></div></td>
-<td headers="*school trips*  y" class="gt_row gt_left"><div data-qmd="16&lt;br&gt;(7.7%)"><div class="gt_from_md"><p>16<br>(7.7%)</p>
-</div></div></td>
+    <tr><td headers="*school trips*  no." class="gt_row gt_left"><span data-qmd-base64="NQ=="><span class="gt_from_md">5</span></span></td>
+<td headers="*school trips*  item" class="gt_row gt_left"><span data-qmd-base64="Rm9yIHNhZmV0eSByZWFzb25zLCBJIHdvdWxkIHJlY29tbWVuZCB0aGF0IFN0dWRlbnQgRSBkb2VzIG5vdCB0YWtlIHBhcnQgaW4gdHJpcHMgdG8gdGhlIG11c2V1bQ=="><span class="gt_from_md">For safety reasons, I would recommend that Student E does not take part in trips to the museum</span></span></td>
+<td headers="*school trips*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA5PGJyPigxMDAlKQ=="><span class="gt_from_md">209<br>(100%)</span></span></td>
+<td headers="*school trips*  V2" class="gt_row gt_left"><span data-qmd-base64="MTI0PGJyPig1OS4zJSk="><span class="gt_from_md">124<br>(59.3%)</span></span></td>
+<td headers="*school trips*  V3" class="gt_row gt_left"><span data-qmd-base64="Njk8YnI+KDMzJSk="><span class="gt_from_md">69<br>(33%)</span></span></td>
+<td headers="*school trips*  V4" class="gt_row gt_left"><span data-qmd-base64="MTU8YnI+KDcuMiUp"><span class="gt_from_md">15<br>(7.2%)</span></span></td>
+<td headers="*school trips*  V5" class="gt_row gt_left"><span data-qmd-base64="MTxicj4oMC41JSk="><span class="gt_from_md">1<br>(0.5%)</span></span></td>
+<td headers="*school trips*  n" class="gt_row gt_left"><span data-qmd-base64="MTkzPGJyPig5Mi4zJSk="><span class="gt_from_md">193<br>(92.3%)</span></span></td>
+<td headers="*school trips*  y" class="gt_row gt_left"><span data-qmd-base64="MTY8YnI+KDcuNyUp"><span class="gt_from_md">16<br>(7.7%)</span></span></td>
 <td headers="*school trips*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:7.7%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:12px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:7.7px;font-weight:bold;font-size:12px;">7.7%</span></div></div></td></tr>
-    <tr><td headers="*school trips*  no." class="gt_row gt_left"><div data-qmd="6"><div class="gt_from_md"><p>6</p>
-</div></div></td>
-<td headers="*school trips*  item" class="gt_row gt_left"><div data-qmd="For safety reasons, I would recommend that Student E does not take part in school trips lasting several days"><div class="gt_from_md"><p>For safety reasons, I would recommend that Student E does not take part in school trips lasting several days</p>
-</div></div></td>
-<td headers="*school trips*  V1" class="gt_row gt_left"><div data-qmd="206&lt;br&gt;(100%)"><div class="gt_from_md"><p>206<br>(100%)</p>
-</div></div></td>
-<td headers="*school trips*  V2" class="gt_row gt_left"><div data-qmd="104&lt;br&gt;(50.5%)"><div class="gt_from_md"><p>104<br>(50.5%)</p>
-</div></div></td>
-<td headers="*school trips*  V3" class="gt_row gt_left"><div data-qmd="60&lt;br&gt;(29.1%)"><div class="gt_from_md"><p>60<br>(29.1%)</p>
-</div></div></td>
-<td headers="*school trips*  V4" class="gt_row gt_left"><div data-qmd="34&lt;br&gt;(16.5%)"><div class="gt_from_md"><p>34<br>(16.5%)</p>
-</div></div></td>
-<td headers="*school trips*  V5" class="gt_row gt_left"><div data-qmd="8&lt;br&gt;(3.9%)"><div class="gt_from_md"><p>8<br>(3.9%)</p>
-</div></div></td>
-<td headers="*school trips*  n" class="gt_row gt_left"><div data-qmd="164&lt;br&gt;(79.6%)"><div class="gt_from_md"><p>164<br>(79.6%)</p>
-</div></div></td>
-<td headers="*school trips*  y" class="gt_row gt_left"><div data-qmd="42&lt;br&gt;(20.4%)"><div class="gt_from_md"><p>42<br>(20.4%)</p>
-</div></div></td>
+    <tr><td headers="*school trips*  no." class="gt_row gt_left"><span data-qmd-base64="Ng=="><span class="gt_from_md">6</span></span></td>
+<td headers="*school trips*  item" class="gt_row gt_left"><span data-qmd-base64="Rm9yIHNhZmV0eSByZWFzb25zLCBJIHdvdWxkIHJlY29tbWVuZCB0aGF0IFN0dWRlbnQgRSBkb2VzIG5vdCB0YWtlIHBhcnQgaW4gc2Nob29sIHRyaXBzIGxhc3Rpbmcgc2V2ZXJhbCBkYXlz"><span class="gt_from_md">For safety reasons, I would recommend that Student E does not take part in school trips lasting several days</span></span></td>
+<td headers="*school trips*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA2PGJyPigxMDAlKQ=="><span class="gt_from_md">206<br>(100%)</span></span></td>
+<td headers="*school trips*  V2" class="gt_row gt_left"><span data-qmd-base64="MTA0PGJyPig1MC41JSk="><span class="gt_from_md">104<br>(50.5%)</span></span></td>
+<td headers="*school trips*  V3" class="gt_row gt_left"><span data-qmd-base64="NjA8YnI+KDI5LjElKQ=="><span class="gt_from_md">60<br>(29.1%)</span></span></td>
+<td headers="*school trips*  V4" class="gt_row gt_left"><span data-qmd-base64="MzQ8YnI+KDE2LjUlKQ=="><span class="gt_from_md">34<br>(16.5%)</span></span></td>
+<td headers="*school trips*  V5" class="gt_row gt_left"><span data-qmd-base64="ODxicj4oMy45JSk="><span class="gt_from_md">8<br>(3.9%)</span></span></td>
+<td headers="*school trips*  n" class="gt_row gt_left"><span data-qmd-base64="MTY0PGJyPig3OS42JSk="><span class="gt_from_md">164<br>(79.6%)</span></span></td>
+<td headers="*school trips*  y" class="gt_row gt_left"><span data-qmd-base64="NDI8YnI+KDIwLjQlKQ=="><span class="gt_from_md">42<br>(20.4%)</span></span></td>
 <td headers="*school trips*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:20.4%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:12px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:20.4px;font-weight:bold;font-size:12px;">20.4%</span></div></div></td></tr>
     <tr class="gt_group_heading_row">
-      <th colspan="10" class="gt_group_heading" style="background-color: #F2F2F2;" scope="colgroup" id="&lt;em&gt;learning/instruction and social integration/behavior&lt;/em&gt;"><em>learning/instruction and social integration/behavior</em></th>
+      <th colspan="10" class="gt_group_heading" style="background-color: #F2F2F2;" scope="colgroup" id="&lt;span data-qmd-base64=&quot;PGVtPmxlYXJuaW5nL2luc3RydWN0aW9uIGFuZCBzb2NpYWwgaW50ZWdyYXRpb24vYmVoYXZpb3I8L2VtPg==&quot;&gt;&lt;span class=&#39;gt_from_md&#39;&gt;&lt;em&gt;learning/instruction and social integration/behavior&lt;/em&gt;&lt;/span&gt;&lt;/span&gt;"><span data-qmd-base64="PGVtPmxlYXJuaW5nL2luc3RydWN0aW9uIGFuZCBzb2NpYWwgaW50ZWdyYXRpb24vYmVoYXZpb3I8L2VtPg=="><span class="gt_from_md"><em>learning/instruction and social integration/behavior</em></span></span></th>
     </tr>
-    <tr class="gt_row_group_first"><td headers="*learning/instruction and social integration/behavior*  no." class="gt_row gt_left"><div data-qmd="7"><div class="gt_from_md"><p>7</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  item" class="gt_row gt_left"><div data-qmd="I am confident that I can create an appropriate learning environment for Student E"><div class="gt_from_md"><p>I am confident that I can create an appropriate learning environment for Student E</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V1" class="gt_row gt_left"><div data-qmd="206&lt;br&gt;(100%)"><div class="gt_from_md"><p>206<br>(100%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V2" class="gt_row gt_left"><div data-qmd="3&lt;br&gt;(1.5%)"><div class="gt_from_md"><p>3<br>(1.5%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V3" class="gt_row gt_left"><div data-qmd="7&lt;br&gt;(3.4%)"><div class="gt_from_md"><p>7<br>(3.4%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V4" class="gt_row gt_left"><div data-qmd="109&lt;br&gt;(52.9%)"><div class="gt_from_md"><p>109<br>(52.9%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V5" class="gt_row gt_left"><div data-qmd="87&lt;br&gt;(42.2%)"><div class="gt_from_md"><p>87<br>(42.2%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  n" class="gt_row gt_left"><div data-qmd="10&lt;br&gt;(4.9%)"><div class="gt_from_md"><p>10<br>(4.9%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  y" class="gt_row gt_left"><div data-qmd="196&lt;br&gt;(95.1%)"><div class="gt_from_md"><p>196<br>(95.1%)</p>
-</div></div></td>
+    <tr class="gt_row_group_first"><td headers="*learning/instruction and social integration/behavior*  no." class="gt_row gt_left"><span data-qmd-base64="Nw=="><span class="gt_from_md">7</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  item" class="gt_row gt_left"><span data-qmd-base64="SSBhbSBjb25maWRlbnQgdGhhdCBJIGNhbiBjcmVhdGUgYW4gYXBwcm9wcmlhdGUgbGVhcm5pbmcgZW52aXJvbm1lbnQgZm9yIFN0dWRlbnQgRQ=="><span class="gt_from_md">I am confident that I can create an appropriate learning environment for Student E</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA2PGJyPigxMDAlKQ=="><span class="gt_from_md">206<br>(100%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V2" class="gt_row gt_left"><span data-qmd-base64="Mzxicj4oMS41JSk="><span class="gt_from_md">3<br>(1.5%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V3" class="gt_row gt_left"><span data-qmd-base64="Nzxicj4oMy40JSk="><span class="gt_from_md">7<br>(3.4%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V4" class="gt_row gt_left"><span data-qmd-base64="MTA5PGJyPig1Mi45JSk="><span class="gt_from_md">109<br>(52.9%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V5" class="gt_row gt_left"><span data-qmd-base64="ODc8YnI+KDQyLjIlKQ=="><span class="gt_from_md">87<br>(42.2%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  n" class="gt_row gt_left"><span data-qmd-base64="MTA8YnI+KDQuOSUp"><span class="gt_from_md">10<br>(4.9%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  y" class="gt_row gt_left"><span data-qmd-base64="MTk2PGJyPig5NS4xJSk="><span class="gt_from_md">196<br>(95.1%)</span></span></td>
 <td headers="*learning/instruction and social integration/behavior*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:95.1%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">95.1%</span></div></div></td></tr>
-    <tr><td headers="*learning/instruction and social integration/behavior*  no." class="gt_row gt_left"><div data-qmd="8"><div class="gt_from_md"><p>8</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  item" class="gt_row gt_left"><div data-qmd="I am confident that I can successfully promote Student E&#39;s academic performance"><div class="gt_from_md"><p>I am confident that I can successfully promote Student E’s academic performance</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V1" class="gt_row gt_left"><div data-qmd="208&lt;br&gt;(100%)"><div class="gt_from_md"><p>208<br>(100%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V2" class="gt_row gt_left"><div data-qmd="1&lt;br&gt;(0.5%)"><div class="gt_from_md"><p>1<br>(0.5%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V3" class="gt_row gt_left"><div data-qmd="6&lt;br&gt;(2.9%)"><div class="gt_from_md"><p>6<br>(2.9%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V4" class="gt_row gt_left"><div data-qmd="66&lt;br&gt;(31.7%)"><div class="gt_from_md"><p>66<br>(31.7%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V5" class="gt_row gt_left"><div data-qmd="135&lt;br&gt;(64.9%)"><div class="gt_from_md"><p>135<br>(64.9%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  n" class="gt_row gt_left"><div data-qmd="7&lt;br&gt;(3.4%)"><div class="gt_from_md"><p>7<br>(3.4%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  y" class="gt_row gt_left"><div data-qmd="201&lt;br&gt;(96.6%)"><div class="gt_from_md"><p>201<br>(96.6%)</p>
-</div></div></td>
+    <tr><td headers="*learning/instruction and social integration/behavior*  no." class="gt_row gt_left"><span data-qmd-base64="OA=="><span class="gt_from_md">8</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  item" class="gt_row gt_left"><span data-qmd-base64="SSBhbSBjb25maWRlbnQgdGhhdCBJIGNhbiBzdWNjZXNzZnVsbHkgcHJvbW90ZSBTdHVkZW50IEXigJlzIGFjYWRlbWljIHBlcmZvcm1hbmNl"><span class="gt_from_md">I am confident that I can successfully promote Student E’s academic performance</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA4PGJyPigxMDAlKQ=="><span class="gt_from_md">208<br>(100%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V2" class="gt_row gt_left"><span data-qmd-base64="MTxicj4oMC41JSk="><span class="gt_from_md">1<br>(0.5%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V3" class="gt_row gt_left"><span data-qmd-base64="Njxicj4oMi45JSk="><span class="gt_from_md">6<br>(2.9%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V4" class="gt_row gt_left"><span data-qmd-base64="NjY8YnI+KDMxLjclKQ=="><span class="gt_from_md">66<br>(31.7%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V5" class="gt_row gt_left"><span data-qmd-base64="MTM1PGJyPig2NC45JSk="><span class="gt_from_md">135<br>(64.9%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  n" class="gt_row gt_left"><span data-qmd-base64="Nzxicj4oMy40JSk="><span class="gt_from_md">7<br>(3.4%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  y" class="gt_row gt_left"><span data-qmd-base64="MjAxPGJyPig5Ni42JSk="><span class="gt_from_md">201<br>(96.6%)</span></span></td>
 <td headers="*learning/instruction and social integration/behavior*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:96.6%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">96.6%</span></div></div></td></tr>
-    <tr><td headers="*learning/instruction and social integration/behavior*  no." class="gt_row gt_left"><div data-qmd="9"><div class="gt_from_md"><p>9</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  item" class="gt_row gt_left"><div data-qmd="I think Student E will perform less well in my lessons (compared to students without epilepsy)"><div class="gt_from_md"><p>I think Student E will perform less well in my lessons (compared to students without epilepsy)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V1" class="gt_row gt_left"><div data-qmd="207&lt;br&gt;(100%)"><div class="gt_from_md"><p>207<br>(100%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V2" class="gt_row gt_left"><div data-qmd="0&lt;br&gt;(0%)"><div class="gt_from_md"><p>0<br>(0%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V3" class="gt_row gt_left"><div data-qmd="7&lt;br&gt;(3.4%)"><div class="gt_from_md"><p>7<br>(3.4%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V4" class="gt_row gt_left"><div data-qmd="97&lt;br&gt;(46.9%)"><div class="gt_from_md"><p>97<br>(46.9%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V5" class="gt_row gt_left"><div data-qmd="103&lt;br&gt;(49.8%)"><div class="gt_from_md"><p>103<br>(49.8%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  n" class="gt_row gt_left"><div data-qmd="7&lt;br&gt;(3.4%)"><div class="gt_from_md"><p>7<br>(3.4%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  y" class="gt_row gt_left"><div data-qmd="200&lt;br&gt;(96.6%)"><div class="gt_from_md"><p>200<br>(96.6%)</p>
-</div></div></td>
+    <tr><td headers="*learning/instruction and social integration/behavior*  no." class="gt_row gt_left"><span data-qmd-base64="OQ=="><span class="gt_from_md">9</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  item" class="gt_row gt_left"><span data-qmd-base64="SSB0aGluayBTdHVkZW50IEUgd2lsbCBwZXJmb3JtIGxlc3Mgd2VsbCBpbiBteSBsZXNzb25zIChjb21wYXJlZCB0byBzdHVkZW50cyB3aXRob3V0IGVwaWxlcHN5KQ=="><span class="gt_from_md">I think Student E will perform less well in my lessons (compared to students without epilepsy)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA3PGJyPigxMDAlKQ=="><span class="gt_from_md">207<br>(100%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V2" class="gt_row gt_left"><span data-qmd-base64="MDxicj4oMCUp"><span class="gt_from_md">0<br>(0%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V3" class="gt_row gt_left"><span data-qmd-base64="Nzxicj4oMy40JSk="><span class="gt_from_md">7<br>(3.4%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V4" class="gt_row gt_left"><span data-qmd-base64="OTc8YnI+KDQ2LjklKQ=="><span class="gt_from_md">97<br>(46.9%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V5" class="gt_row gt_left"><span data-qmd-base64="MTAzPGJyPig0OS44JSk="><span class="gt_from_md">103<br>(49.8%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  n" class="gt_row gt_left"><span data-qmd-base64="Nzxicj4oMy40JSk="><span class="gt_from_md">7<br>(3.4%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  y" class="gt_row gt_left"><span data-qmd-base64="MjAwPGJyPig5Ni42JSk="><span class="gt_from_md">200<br>(96.6%)</span></span></td>
 <td headers="*learning/instruction and social integration/behavior*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:96.6%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">96.6%</span></div></div></td></tr>
-    <tr><td headers="*learning/instruction and social integration/behavior*  no." class="gt_row gt_left"><div data-qmd="10"><div class="gt_from_md"><p>10</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  item" class="gt_row gt_left"><div data-qmd="I think additional educational staff is necessary for lessons with Student E"><div class="gt_from_md"><p>I think additional educational staff is necessary for lessons with Student E</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V1" class="gt_row gt_left"><div data-qmd="208&lt;br&gt;(100%)"><div class="gt_from_md"><p>208<br>(100%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V2" class="gt_row gt_left"><div data-qmd="145&lt;br&gt;(69.7%)"><div class="gt_from_md"><p>145<br>(69.7%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V3" class="gt_row gt_left"><div data-qmd="60&lt;br&gt;(28.8%)"><div class="gt_from_md"><p>60<br>(28.8%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V4" class="gt_row gt_left"><div data-qmd="2&lt;br&gt;(1%)"><div class="gt_from_md"><p>2<br>(1%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V5" class="gt_row gt_left"><div data-qmd="1&lt;br&gt;(0.5%)"><div class="gt_from_md"><p>1<br>(0.5%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  n" class="gt_row gt_left"><div data-qmd="205&lt;br&gt;(98.6%)"><div class="gt_from_md"><p>205<br>(98.6%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  y" class="gt_row gt_left"><div data-qmd="3&lt;br&gt;(1.4%)"><div class="gt_from_md"><p>3<br>(1.4%)</p>
-</div></div></td>
+    <tr><td headers="*learning/instruction and social integration/behavior*  no." class="gt_row gt_left"><span data-qmd-base64="MTA="><span class="gt_from_md">10</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  item" class="gt_row gt_left"><span data-qmd-base64="SSB0aGluayBhZGRpdGlvbmFsIGVkdWNhdGlvbmFsIHN0YWZmIGlzIG5lY2Vzc2FyeSBmb3IgbGVzc29ucyB3aXRoIFN0dWRlbnQgRQ=="><span class="gt_from_md">I think additional educational staff is necessary for lessons with Student E</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA4PGJyPigxMDAlKQ=="><span class="gt_from_md">208<br>(100%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V2" class="gt_row gt_left"><span data-qmd-base64="MTQ1PGJyPig2OS43JSk="><span class="gt_from_md">145<br>(69.7%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V3" class="gt_row gt_left"><span data-qmd-base64="NjA8YnI+KDI4LjglKQ=="><span class="gt_from_md">60<br>(28.8%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V4" class="gt_row gt_left"><span data-qmd-base64="Mjxicj4oMSUp"><span class="gt_from_md">2<br>(1%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V5" class="gt_row gt_left"><span data-qmd-base64="MTxicj4oMC41JSk="><span class="gt_from_md">1<br>(0.5%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  n" class="gt_row gt_left"><span data-qmd-base64="MjA1PGJyPig5OC42JSk="><span class="gt_from_md">205<br>(98.6%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  y" class="gt_row gt_left"><span data-qmd-base64="Mzxicj4oMS40JSk="><span class="gt_from_md">3<br>(1.4%)</span></span></td>
 <td headers="*learning/instruction and social integration/behavior*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:1.4%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:12px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:1.4px;font-weight:bold;font-size:12px;">1.4%</span></div></div></td></tr>
-    <tr><td headers="*learning/instruction and social integration/behavior*  no." class="gt_row gt_left"><div data-qmd="11"><div class="gt_from_md"><p>11</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  item" class="gt_row gt_left"><div data-qmd="I would recommend additional educational staff for lessons with Student E"><div class="gt_from_md"><p>I would recommend additional educational staff for lessons with Student E</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V1" class="gt_row gt_left"><div data-qmd="208&lt;br&gt;(100%)"><div class="gt_from_md"><p>208<br>(100%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V2" class="gt_row gt_left"><div data-qmd="145&lt;br&gt;(69.7%)"><div class="gt_from_md"><p>145<br>(69.7%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V3" class="gt_row gt_left"><div data-qmd="59&lt;br&gt;(28.4%)"><div class="gt_from_md"><p>59<br>(28.4%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V4" class="gt_row gt_left"><div data-qmd="4&lt;br&gt;(1.9%)"><div class="gt_from_md"><p>4<br>(1.9%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V5" class="gt_row gt_left"><div data-qmd="0&lt;br&gt;(0%)"><div class="gt_from_md"><p>0<br>(0%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  n" class="gt_row gt_left"><div data-qmd="204&lt;br&gt;(98.1%)"><div class="gt_from_md"><p>204<br>(98.1%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  y" class="gt_row gt_left"><div data-qmd="4&lt;br&gt;(1.9%)"><div class="gt_from_md"><p>4<br>(1.9%)</p>
-</div></div></td>
+    <tr><td headers="*learning/instruction and social integration/behavior*  no." class="gt_row gt_left"><span data-qmd-base64="MTE="><span class="gt_from_md">11</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  item" class="gt_row gt_left"><span data-qmd-base64="SSB3b3VsZCByZWNvbW1lbmQgYWRkaXRpb25hbCBlZHVjYXRpb25hbCBzdGFmZiBmb3IgbGVzc29ucyB3aXRoIFN0dWRlbnQgRQ=="><span class="gt_from_md">I would recommend additional educational staff for lessons with Student E</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA4PGJyPigxMDAlKQ=="><span class="gt_from_md">208<br>(100%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V2" class="gt_row gt_left"><span data-qmd-base64="MTQ1PGJyPig2OS43JSk="><span class="gt_from_md">145<br>(69.7%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V3" class="gt_row gt_left"><span data-qmd-base64="NTk8YnI+KDI4LjQlKQ=="><span class="gt_from_md">59<br>(28.4%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V4" class="gt_row gt_left"><span data-qmd-base64="NDxicj4oMS45JSk="><span class="gt_from_md">4<br>(1.9%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V5" class="gt_row gt_left"><span data-qmd-base64="MDxicj4oMCUp"><span class="gt_from_md">0<br>(0%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  n" class="gt_row gt_left"><span data-qmd-base64="MjA0PGJyPig5OC4xJSk="><span class="gt_from_md">204<br>(98.1%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  y" class="gt_row gt_left"><span data-qmd-base64="NDxicj4oMS45JSk="><span class="gt_from_md">4<br>(1.9%)</span></span></td>
 <td headers="*learning/instruction and social integration/behavior*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:1.9%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:12px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:1.9px;font-weight:bold;font-size:12px;">1.9%</span></div></div></td></tr>
-    <tr><td headers="*learning/instruction and social integration/behavior*  no." class="gt_row gt_left"><div data-qmd="12"><div class="gt_from_md"><p>12</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  item" class="gt_row gt_left"><div data-qmd="I think a special education school is a better learning and development environment for Student E than a regular school"><div class="gt_from_md"><p>I think a special education school is a better learning and development environment for Student E than a regular school</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V1" class="gt_row gt_left"><div data-qmd="208&lt;br&gt;(100%)"><div class="gt_from_md"><p>208<br>(100%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V2" class="gt_row gt_left"><div data-qmd="147&lt;br&gt;(70.7%)"><div class="gt_from_md"><p>147<br>(70.7%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V3" class="gt_row gt_left"><div data-qmd="53&lt;br&gt;(25.5%)"><div class="gt_from_md"><p>53<br>(25.5%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V4" class="gt_row gt_left"><div data-qmd="5&lt;br&gt;(2.4%)"><div class="gt_from_md"><p>5<br>(2.4%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V5" class="gt_row gt_left"><div data-qmd="3&lt;br&gt;(1.4%)"><div class="gt_from_md"><p>3<br>(1.4%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  n" class="gt_row gt_left"><div data-qmd="200&lt;br&gt;(96.2%)"><div class="gt_from_md"><p>200<br>(96.2%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  y" class="gt_row gt_left"><div data-qmd="8&lt;br&gt;(3.8%)"><div class="gt_from_md"><p>8<br>(3.8%)</p>
-</div></div></td>
+    <tr><td headers="*learning/instruction and social integration/behavior*  no." class="gt_row gt_left"><span data-qmd-base64="MTI="><span class="gt_from_md">12</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  item" class="gt_row gt_left"><span data-qmd-base64="SSB0aGluayBhIHNwZWNpYWwgZWR1Y2F0aW9uIHNjaG9vbCBpcyBhIGJldHRlciBsZWFybmluZyBhbmQgZGV2ZWxvcG1lbnQgZW52aXJvbm1lbnQgZm9yIFN0dWRlbnQgRSB0aGFuIGEgcmVndWxhciBzY2hvb2w="><span class="gt_from_md">I think a special education school is a better learning and development environment for Student E than a regular school</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA4PGJyPigxMDAlKQ=="><span class="gt_from_md">208<br>(100%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V2" class="gt_row gt_left"><span data-qmd-base64="MTQ3PGJyPig3MC43JSk="><span class="gt_from_md">147<br>(70.7%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V3" class="gt_row gt_left"><span data-qmd-base64="NTM8YnI+KDI1LjUlKQ=="><span class="gt_from_md">53<br>(25.5%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V4" class="gt_row gt_left"><span data-qmd-base64="NTxicj4oMi40JSk="><span class="gt_from_md">5<br>(2.4%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V5" class="gt_row gt_left"><span data-qmd-base64="Mzxicj4oMS40JSk="><span class="gt_from_md">3<br>(1.4%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  n" class="gt_row gt_left"><span data-qmd-base64="MjAwPGJyPig5Ni4yJSk="><span class="gt_from_md">200<br>(96.2%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  y" class="gt_row gt_left"><span data-qmd-base64="ODxicj4oMy44JSk="><span class="gt_from_md">8<br>(3.8%)</span></span></td>
 <td headers="*learning/instruction and social integration/behavior*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:3.8%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:12px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:3.8px;font-weight:bold;font-size:12px;">3.8%</span></div></div></td></tr>
-    <tr><td headers="*learning/instruction and social integration/behavior*  no." class="gt_row gt_left"><div data-qmd="13"><div class="gt_from_md"><p>13</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  item" class="gt_row gt_left"><div data-qmd="I would recommend that Student E attend a special education school"><div class="gt_from_md"><p>I would recommend that Student E attend a special education school</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V1" class="gt_row gt_left"><div data-qmd="206&lt;br&gt;(100%)"><div class="gt_from_md"><p>206<br>(100%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V2" class="gt_row gt_left"><div data-qmd="149&lt;br&gt;(72.3%)"><div class="gt_from_md"><p>149<br>(72.3%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V3" class="gt_row gt_left"><div data-qmd="51&lt;br&gt;(24.8%)"><div class="gt_from_md"><p>51<br>(24.8%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V4" class="gt_row gt_left"><div data-qmd="3&lt;br&gt;(1.5%)"><div class="gt_from_md"><p>3<br>(1.5%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V5" class="gt_row gt_left"><div data-qmd="3&lt;br&gt;(1.5%)"><div class="gt_from_md"><p>3<br>(1.5%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  n" class="gt_row gt_left"><div data-qmd="200&lt;br&gt;(97.1%)"><div class="gt_from_md"><p>200<br>(97.1%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  y" class="gt_row gt_left"><div data-qmd="6&lt;br&gt;(2.9%)"><div class="gt_from_md"><p>6<br>(2.9%)</p>
-</div></div></td>
+    <tr><td headers="*learning/instruction and social integration/behavior*  no." class="gt_row gt_left"><span data-qmd-base64="MTM="><span class="gt_from_md">13</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  item" class="gt_row gt_left"><span data-qmd-base64="SSB3b3VsZCByZWNvbW1lbmQgdGhhdCBTdHVkZW50IEUgYXR0ZW5kIGEgc3BlY2lhbCBlZHVjYXRpb24gc2Nob29s"><span class="gt_from_md">I would recommend that Student E attend a special education school</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA2PGJyPigxMDAlKQ=="><span class="gt_from_md">206<br>(100%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V2" class="gt_row gt_left"><span data-qmd-base64="MTQ5PGJyPig3Mi4zJSk="><span class="gt_from_md">149<br>(72.3%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V3" class="gt_row gt_left"><span data-qmd-base64="NTE8YnI+KDI0LjglKQ=="><span class="gt_from_md">51<br>(24.8%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V4" class="gt_row gt_left"><span data-qmd-base64="Mzxicj4oMS41JSk="><span class="gt_from_md">3<br>(1.5%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V5" class="gt_row gt_left"><span data-qmd-base64="Mzxicj4oMS41JSk="><span class="gt_from_md">3<br>(1.5%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  n" class="gt_row gt_left"><span data-qmd-base64="MjAwPGJyPig5Ny4xJSk="><span class="gt_from_md">200<br>(97.1%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  y" class="gt_row gt_left"><span data-qmd-base64="Njxicj4oMi45JSk="><span class="gt_from_md">6<br>(2.9%)</span></span></td>
 <td headers="*learning/instruction and social integration/behavior*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:2.9%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:12px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:2.9px;font-weight:bold;font-size:12px;">2.9%</span></div></div></td></tr>
-    <tr><td headers="*learning/instruction and social integration/behavior*  no." class="gt_row gt_left"><div data-qmd="14"><div class="gt_from_md"><p>14</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  item" class="gt_row gt_left"><div data-qmd="I am confident that I can successfully promote the social integration of Student E"><div class="gt_from_md"><p>I am confident that I can successfully promote the social integration of Student E</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V1" class="gt_row gt_left"><div data-qmd="209&lt;br&gt;(100%)"><div class="gt_from_md"><p>209<br>(100%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V2" class="gt_row gt_left"><div data-qmd="42&lt;br&gt;(20.1%)"><div class="gt_from_md"><p>42<br>(20.1%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V3" class="gt_row gt_left"><div data-qmd="66&lt;br&gt;(31.6%)"><div class="gt_from_md"><p>66<br>(31.6%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V4" class="gt_row gt_left"><div data-qmd="60&lt;br&gt;(28.7%)"><div class="gt_from_md"><p>60<br>(28.7%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V5" class="gt_row gt_left"><div data-qmd="41&lt;br&gt;(19.6%)"><div class="gt_from_md"><p>41<br>(19.6%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  n" class="gt_row gt_left"><div data-qmd="108&lt;br&gt;(51.7%)"><div class="gt_from_md"><p>108<br>(51.7%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  y" class="gt_row gt_left"><div data-qmd="101&lt;br&gt;(48.3%)"><div class="gt_from_md"><p>101<br>(48.3%)</p>
-</div></div></td>
+    <tr><td headers="*learning/instruction and social integration/behavior*  no." class="gt_row gt_left"><span data-qmd-base64="MTQ="><span class="gt_from_md">14</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  item" class="gt_row gt_left"><span data-qmd-base64="SSBhbSBjb25maWRlbnQgdGhhdCBJIGNhbiBzdWNjZXNzZnVsbHkgcHJvbW90ZSB0aGUgc29jaWFsIGludGVncmF0aW9uIG9mIFN0dWRlbnQgRQ=="><span class="gt_from_md">I am confident that I can successfully promote the social integration of Student E</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA5PGJyPigxMDAlKQ=="><span class="gt_from_md">209<br>(100%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V2" class="gt_row gt_left"><span data-qmd-base64="NDI8YnI+KDIwLjElKQ=="><span class="gt_from_md">42<br>(20.1%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V3" class="gt_row gt_left"><span data-qmd-base64="NjY8YnI+KDMxLjYlKQ=="><span class="gt_from_md">66<br>(31.6%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V4" class="gt_row gt_left"><span data-qmd-base64="NjA8YnI+KDI4LjclKQ=="><span class="gt_from_md">60<br>(28.7%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V5" class="gt_row gt_left"><span data-qmd-base64="NDE8YnI+KDE5LjYlKQ=="><span class="gt_from_md">41<br>(19.6%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  n" class="gt_row gt_left"><span data-qmd-base64="MTA4PGJyPig1MS43JSk="><span class="gt_from_md">108<br>(51.7%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  y" class="gt_row gt_left"><span data-qmd-base64="MTAxPGJyPig0OC4zJSk="><span class="gt_from_md">101<br>(48.3%)</span></span></td>
 <td headers="*learning/instruction and social integration/behavior*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:48.3%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">48.3%</span></div></div></td></tr>
-    <tr><td headers="*learning/instruction and social integration/behavior*  no." class="gt_row gt_left"><div data-qmd="15"><div class="gt_from_md"><p>15</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  item" class="gt_row gt_left"><div data-qmd="I think Student E will show more problems in social behavior (compared to students without epilepsy)"><div class="gt_from_md"><p>I think Student E will show more problems in social behavior (compared to students without epilepsy)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V1" class="gt_row gt_left"><div data-qmd="208&lt;br&gt;(100%)"><div class="gt_from_md"><p>208<br>(100%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V2" class="gt_row gt_left"><div data-qmd="32&lt;br&gt;(15.4%)"><div class="gt_from_md"><p>32<br>(15.4%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V3" class="gt_row gt_left"><div data-qmd="44&lt;br&gt;(21.2%)"><div class="gt_from_md"><p>44<br>(21.2%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V4" class="gt_row gt_left"><div data-qmd="74&lt;br&gt;(35.6%)"><div class="gt_from_md"><p>74<br>(35.6%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  V5" class="gt_row gt_left"><div data-qmd="58&lt;br&gt;(27.9%)"><div class="gt_from_md"><p>58<br>(27.9%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  n" class="gt_row gt_left"><div data-qmd="76&lt;br&gt;(36.5%)"><div class="gt_from_md"><p>76<br>(36.5%)</p>
-</div></div></td>
-<td headers="*learning/instruction and social integration/behavior*  y" class="gt_row gt_left"><div data-qmd="132&lt;br&gt;(63.5%)"><div class="gt_from_md"><p>132<br>(63.5%)</p>
-</div></div></td>
+    <tr><td headers="*learning/instruction and social integration/behavior*  no." class="gt_row gt_left"><span data-qmd-base64="MTU="><span class="gt_from_md">15</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  item" class="gt_row gt_left"><span data-qmd-base64="SSB0aGluayBTdHVkZW50IEUgd2lsbCBzaG93IG1vcmUgcHJvYmxlbXMgaW4gc29jaWFsIGJlaGF2aW9yIChjb21wYXJlZCB0byBzdHVkZW50cyB3aXRob3V0IGVwaWxlcHN5KQ=="><span class="gt_from_md">I think Student E will show more problems in social behavior (compared to students without epilepsy)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA4PGJyPigxMDAlKQ=="><span class="gt_from_md">208<br>(100%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V2" class="gt_row gt_left"><span data-qmd-base64="MzI8YnI+KDE1LjQlKQ=="><span class="gt_from_md">32<br>(15.4%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V3" class="gt_row gt_left"><span data-qmd-base64="NDQ8YnI+KDIxLjIlKQ=="><span class="gt_from_md">44<br>(21.2%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V4" class="gt_row gt_left"><span data-qmd-base64="NzQ8YnI+KDM1LjYlKQ=="><span class="gt_from_md">74<br>(35.6%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  V5" class="gt_row gt_left"><span data-qmd-base64="NTg8YnI+KDI3LjklKQ=="><span class="gt_from_md">58<br>(27.9%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  n" class="gt_row gt_left"><span data-qmd-base64="NzY8YnI+KDM2LjUlKQ=="><span class="gt_from_md">76<br>(36.5%)</span></span></td>
+<td headers="*learning/instruction and social integration/behavior*  y" class="gt_row gt_left"><span data-qmd-base64="MTMyPGJyPig2My41JSk="><span class="gt_from_md">132<br>(63.5%)</span></span></td>
 <td headers="*learning/instruction and social integration/behavior*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:63.5%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">63.5%</span></div></div></td></tr>
   </tbody>
   
@@ -4163,20 +4035,20 @@ text-indent: 25px;
 <span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_options</span>(<span class="at">table.width =</span> <span class="fu">pct</span>(<span class="dv">90</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="xrsbdtifgw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xrsbdtifgw table {
+<div id="nohsskbbov" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nohsskbbov table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#xrsbdtifgw thead, #xrsbdtifgw tbody, #xrsbdtifgw tfoot, #xrsbdtifgw tr, #xrsbdtifgw td, #xrsbdtifgw th {
+#nohsskbbov thead, #nohsskbbov tbody, #nohsskbbov tfoot, #nohsskbbov tr, #nohsskbbov td, #nohsskbbov th {
 border-style: none;
 }
-#xrsbdtifgw p {
+#nohsskbbov p {
 margin: 0;
 padding: 0;
 }
-#xrsbdtifgw .gt_table {
+#nohsskbbov .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -4201,11 +4073,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#xrsbdtifgw .gt_caption {
+#nohsskbbov .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#xrsbdtifgw .gt_title {
+#nohsskbbov .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -4216,7 +4088,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#xrsbdtifgw .gt_subtitle {
+#nohsskbbov .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -4227,7 +4099,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#xrsbdtifgw .gt_heading {
+#nohsskbbov .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -4238,12 +4110,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#xrsbdtifgw .gt_bottom_border {
+#nohsskbbov .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#xrsbdtifgw .gt_col_headings {
+#nohsskbbov .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -4257,7 +4129,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#xrsbdtifgw .gt_col_heading {
+#nohsskbbov .gt_col_heading {
 color: #333333;
 background-color: #F2F2F2;
 font-size: 100%;
@@ -4276,7 +4148,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#xrsbdtifgw .gt_column_spanner_outer {
+#nohsskbbov .gt_column_spanner_outer {
 color: #333333;
 background-color: #F2F2F2;
 font-size: 100%;
@@ -4287,13 +4159,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#xrsbdtifgw .gt_column_spanner_outer:first-child {
+#nohsskbbov .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#xrsbdtifgw .gt_column_spanner_outer:last-child {
+#nohsskbbov .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#xrsbdtifgw .gt_column_spanner {
+#nohsskbbov .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -4304,10 +4176,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#xrsbdtifgw .gt_spanner_row {
+#nohsskbbov .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#xrsbdtifgw .gt_group_heading {
+#nohsskbbov .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4332,7 +4204,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#xrsbdtifgw .gt_empty_group_heading {
+#nohsskbbov .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -4346,13 +4218,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#xrsbdtifgw .gt_from_md > :first-child {
+#nohsskbbov .gt_from_md > :first-child {
 margin-top: 0;
 }
-#xrsbdtifgw .gt_from_md > :last-child {
+#nohsskbbov .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#xrsbdtifgw .gt_row {
+#nohsskbbov .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4370,7 +4242,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#xrsbdtifgw .gt_stub {
+#nohsskbbov .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -4382,7 +4254,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#xrsbdtifgw .gt_stub_row_group {
+#nohsskbbov .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -4395,13 +4267,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#xrsbdtifgw .gt_row_group_first td {
+#nohsskbbov .gt_row_group_first td {
 border-top-width: 2px;
 }
-#xrsbdtifgw .gt_row_group_first th {
+#nohsskbbov .gt_row_group_first th {
 border-top-width: 2px;
 }
-#xrsbdtifgw .gt_summary_row {
+#nohsskbbov .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -4410,14 +4282,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#xrsbdtifgw .gt_first_summary_row {
+#nohsskbbov .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#xrsbdtifgw .gt_first_summary_row.thick {
+#nohsskbbov .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#xrsbdtifgw .gt_last_summary_row {
+#nohsskbbov .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4426,7 +4298,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#xrsbdtifgw .gt_grand_summary_row {
+#nohsskbbov .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -4435,7 +4307,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#xrsbdtifgw .gt_first_grand_summary_row {
+#nohsskbbov .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4444,7 +4316,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#xrsbdtifgw .gt_last_grand_summary_row_top {
+#nohsskbbov .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4453,10 +4325,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#xrsbdtifgw .gt_striped {
+#nohsskbbov .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#xrsbdtifgw .gt_table_body {
+#nohsskbbov .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -4464,7 +4336,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#xrsbdtifgw .gt_footnotes {
+#nohsskbbov .gt_footnotes {
 color: #333333;
 background-color: #F2F2F2;
 border-bottom-style: none;
@@ -4477,7 +4349,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#xrsbdtifgw .gt_footnote {
+#nohsskbbov .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -4485,7 +4357,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#xrsbdtifgw .gt_sourcenotes {
+#nohsskbbov .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -4498,61 +4370,68 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#xrsbdtifgw .gt_sourcenote {
+#nohsskbbov .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#xrsbdtifgw .gt_left {
+#nohsskbbov .gt_left {
 text-align: left;
 }
-#xrsbdtifgw .gt_center {
+#nohsskbbov .gt_center {
 text-align: center;
 }
-#xrsbdtifgw .gt_right {
+#nohsskbbov .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#xrsbdtifgw .gt_font_normal {
+#nohsskbbov .gt_font_normal {
 font-weight: normal;
 }
-#xrsbdtifgw .gt_font_bold {
+#nohsskbbov .gt_font_bold {
 font-weight: bold;
 }
-#xrsbdtifgw .gt_font_italic {
+#nohsskbbov .gt_font_italic {
 font-style: italic;
 }
-#xrsbdtifgw .gt_super {
+#nohsskbbov .gt_super {
 font-size: 65%;
 }
-#xrsbdtifgw .gt_footnote_marks {
+#nohsskbbov .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#xrsbdtifgw .gt_asterisk {
+#nohsskbbov .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#xrsbdtifgw .gt_indent_1 {
+#nohsskbbov .gt_indent_1 {
 text-indent: 5px;
 }
-#xrsbdtifgw .gt_indent_2 {
+#nohsskbbov .gt_indent_2 {
 text-indent: 10px;
 }
-#xrsbdtifgw .gt_indent_3 {
+#nohsskbbov .gt_indent_3 {
 text-indent: 15px;
 }
-#xrsbdtifgw .gt_indent_4 {
+#nohsskbbov .gt_indent_4 {
 text-indent: 20px;
 }
-#xrsbdtifgw .gt_indent_5 {
+#nohsskbbov .gt_indent_5 {
 text-indent: 25px;
 }
+#nohsskbbov .katex-display {
+display: inline-flex !important;
+margin-bottom: 0.75em !important;
+}
+#nohsskbbov div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+height: 0px !important;
+}
 </style>
-<table class="gt_table" style="table-layout: fixed;; width: 90%" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table" style="table-layout:fixed;width:90%;" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
   <colgroup>
     <col style="width:3%;">
     <col style="width:31%;">
@@ -4569,318 +4448,183 @@ text-indent: 25px;
     <tr class="gt_col_headings gt_spanner_row">
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="no.">no.</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="item">item</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="total">total</th>
-      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="4" scope="colgroup" id="&lt;em&gt;answers&lt;/em&gt;">
-        <span class="gt_column_spanner"><em>answers</em></span>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="V1">total</th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="4" scope="colgroup" id="*answers*">
+        <div class="gt_column_spanner"><span data-qmd-base64="PGVtPmFuc3dlcnM8L2VtPg=="><span class="gt_from_md"><em>answers</em></span></span></div>
       </th>
-      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup" id="&lt;em&gt;aggregated&lt;/em&gt;">
-        <span class="gt_column_spanner"><em>aggregated</em></span>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup" id="*aggregated*">
+        <div class="gt_column_spanner"><span data-qmd-base64="PGVtPmFnZ3JlZ2F0ZWQ8L2VtPg=="><span class="gt_from_md"><em>aggregated</em></span></span></div>
       </th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="bar plot&lt;br&gt;sum agree">bar plot<br>sum agree</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="list_plot">bar plot<br>sum agree</th>
     </tr>
     <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="strongly&lt;br&gt;disagree">strongly<br>disagree</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="somewhat&lt;br&gt;disagree">somewhat<br>disagree</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="somewhat&lt;br&gt;agree">somewhat<br>agree</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="strongly&lt;br&gt;agree">strongly<br>agree</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="sum&lt;br&gt;disagree">sum<br>disagree</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="sum&lt;br&gt;agree">sum<br>agree</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="V2">strongly<br>disagree</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="V3">somewhat<br>disagree</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="V4">somewhat<br>agree</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="V5">strongly<br>agree</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="n">sum<br>disagree</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="y">sum<br>agree</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
     <tr class="gt_group_heading_row">
-      <th colspan="10" class="gt_group_heading" style="background-color: #F2F2F2;" scope="colgroup" id="&lt;em&gt;physical activity&lt;/em&gt;"><em>physical activity</em></th>
+      <th colspan="10" class="gt_group_heading" style="background-color: #F2F2F2;" scope="colgroup" id="&lt;span data-qmd-base64=&quot;PGVtPnBoeXNpY2FsIGFjdGl2aXR5PC9lbT4=&quot;&gt;&lt;span class=&#39;gt_from_md&#39;&gt;&lt;em&gt;physical activity&lt;/em&gt;&lt;/span&gt;&lt;/span&gt;"><span data-qmd-base64="PGVtPnBoeXNpY2FsIGFjdGl2aXR5PC9lbT4="><span class="gt_from_md"><em>physical activity</em></span></span></th>
     </tr>
-    <tr class="gt_row_group_first"><td headers="*physical activity*  no." class="gt_row gt_left"><div data-qmd="16"><div class="gt_from_md"><p>16</p>
-</div></div></td>
-<td headers="*physical activity*  item" class="gt_row gt_left"><div data-qmd="I am uncomfortable with the idea of supervising Student E during physical activities (e.g., play, exercise, and sport)"><div class="gt_from_md"><p>I am uncomfortable with the idea of supervising Student E during physical activities (e.g., play, exercise, and sport)</p>
-</div></div></td>
-<td headers="*physical activity*  V1" class="gt_row gt_left"><div data-qmd="209&lt;br&gt;(100%)"><div class="gt_from_md"><p>209<br>(100%)</p>
-</div></div></td>
-<td headers="*physical activity*  V2" class="gt_row gt_left"><div data-qmd="40&lt;br&gt;(19.1%)"><div class="gt_from_md"><p>40<br>(19.1%)</p>
-</div></div></td>
-<td headers="*physical activity*  V3" class="gt_row gt_left"><div data-qmd="74&lt;br&gt;(35.4%)"><div class="gt_from_md"><p>74<br>(35.4%)</p>
-</div></div></td>
-<td headers="*physical activity*  V4" class="gt_row gt_left"><div data-qmd="90&lt;br&gt;(43.1%)"><div class="gt_from_md"><p>90<br>(43.1%)</p>
-</div></div></td>
-<td headers="*physical activity*  V5" class="gt_row gt_left"><div data-qmd="5&lt;br&gt;(2.4%)"><div class="gt_from_md"><p>5<br>(2.4%)</p>
-</div></div></td>
-<td headers="*physical activity*  n" class="gt_row gt_left"><div data-qmd="114&lt;br&gt;(54.5%)"><div class="gt_from_md"><p>114<br>(54.5%)</p>
-</div></div></td>
-<td headers="*physical activity*  y" class="gt_row gt_left"><div data-qmd="95&lt;br&gt;(45.5%)"><div class="gt_from_md"><p>95<br>(45.5%)</p>
-</div></div></td>
+    <tr class="gt_row_group_first"><td headers="*physical activity*  no." class="gt_row gt_left"><span data-qmd-base64="MTY="><span class="gt_from_md">16</span></span></td>
+<td headers="*physical activity*  item" class="gt_row gt_left"><span data-qmd-base64="SSBhbSB1bmNvbWZvcnRhYmxlIHdpdGggdGhlIGlkZWEgb2Ygc3VwZXJ2aXNpbmcgU3R1ZGVudCBFIGR1cmluZyBwaHlzaWNhbCBhY3Rpdml0aWVzIChlLmcuLCBwbGF5LCBleGVyY2lzZSwgYW5kIHNwb3J0KQ=="><span class="gt_from_md">I am uncomfortable with the idea of supervising Student E during physical activities (e.g., play, exercise, and sport)</span></span></td>
+<td headers="*physical activity*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA5PGJyPigxMDAlKQ=="><span class="gt_from_md">209<br>(100%)</span></span></td>
+<td headers="*physical activity*  V2" class="gt_row gt_left"><span data-qmd-base64="NDA8YnI+KDE5LjElKQ=="><span class="gt_from_md">40<br>(19.1%)</span></span></td>
+<td headers="*physical activity*  V3" class="gt_row gt_left"><span data-qmd-base64="NzQ8YnI+KDM1LjQlKQ=="><span class="gt_from_md">74<br>(35.4%)</span></span></td>
+<td headers="*physical activity*  V4" class="gt_row gt_left"><span data-qmd-base64="OTA8YnI+KDQzLjElKQ=="><span class="gt_from_md">90<br>(43.1%)</span></span></td>
+<td headers="*physical activity*  V5" class="gt_row gt_left"><span data-qmd-base64="NTxicj4oMi40JSk="><span class="gt_from_md">5<br>(2.4%)</span></span></td>
+<td headers="*physical activity*  n" class="gt_row gt_left"><span data-qmd-base64="MTE0PGJyPig1NC41JSk="><span class="gt_from_md">114<br>(54.5%)</span></span></td>
+<td headers="*physical activity*  y" class="gt_row gt_left"><span data-qmd-base64="OTU8YnI+KDQ1LjUlKQ=="><span class="gt_from_md">95<br>(45.5%)</span></span></td>
 <td headers="*physical activity*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:45.5%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">45.5%</span></div></div></td></tr>
-    <tr><td headers="*physical activity*  no." class="gt_row gt_left"><div data-qmd="17"><div class="gt_from_md"><p>17</p>
-</div></div></td>
-<td headers="*physical activity*  item" class="gt_row gt_left"><div data-qmd="I am confident that I can adequately supervise Student E during physical activities (e.g., play, exercise, and sport)"><div class="gt_from_md"><p>I am confident that I can adequately supervise Student E during physical activities (e.g., play, exercise, and sport)</p>
-</div></div></td>
-<td headers="*physical activity*  V1" class="gt_row gt_left"><div data-qmd="208&lt;br&gt;(100%)"><div class="gt_from_md"><p>208<br>(100%)</p>
-</div></div></td>
-<td headers="*physical activity*  V2" class="gt_row gt_left"><div data-qmd="5&lt;br&gt;(2.4%)"><div class="gt_from_md"><p>5<br>(2.4%)</p>
-</div></div></td>
-<td headers="*physical activity*  V3" class="gt_row gt_left"><div data-qmd="58&lt;br&gt;(27.9%)"><div class="gt_from_md"><p>58<br>(27.9%)</p>
-</div></div></td>
-<td headers="*physical activity*  V4" class="gt_row gt_left"><div data-qmd="102&lt;br&gt;(49%)"><div class="gt_from_md"><p>102<br>(49%)</p>
-</div></div></td>
-<td headers="*physical activity*  V5" class="gt_row gt_left"><div data-qmd="43&lt;br&gt;(20.7%)"><div class="gt_from_md"><p>43<br>(20.7%)</p>
-</div></div></td>
-<td headers="*physical activity*  n" class="gt_row gt_left"><div data-qmd="63&lt;br&gt;(30.3%)"><div class="gt_from_md"><p>63<br>(30.3%)</p>
-</div></div></td>
-<td headers="*physical activity*  y" class="gt_row gt_left"><div data-qmd="145&lt;br&gt;(69.7%)"><div class="gt_from_md"><p>145<br>(69.7%)</p>
-</div></div></td>
+    <tr><td headers="*physical activity*  no." class="gt_row gt_left"><span data-qmd-base64="MTc="><span class="gt_from_md">17</span></span></td>
+<td headers="*physical activity*  item" class="gt_row gt_left"><span data-qmd-base64="SSBhbSBjb25maWRlbnQgdGhhdCBJIGNhbiBhZGVxdWF0ZWx5IHN1cGVydmlzZSBTdHVkZW50IEUgZHVyaW5nIHBoeXNpY2FsIGFjdGl2aXRpZXMgKGUuZy4sIHBsYXksIGV4ZXJjaXNlLCBhbmQgc3BvcnQp"><span class="gt_from_md">I am confident that I can adequately supervise Student E during physical activities (e.g., play, exercise, and sport)</span></span></td>
+<td headers="*physical activity*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA4PGJyPigxMDAlKQ=="><span class="gt_from_md">208<br>(100%)</span></span></td>
+<td headers="*physical activity*  V2" class="gt_row gt_left"><span data-qmd-base64="NTxicj4oMi40JSk="><span class="gt_from_md">5<br>(2.4%)</span></span></td>
+<td headers="*physical activity*  V3" class="gt_row gt_left"><span data-qmd-base64="NTg8YnI+KDI3LjklKQ=="><span class="gt_from_md">58<br>(27.9%)</span></span></td>
+<td headers="*physical activity*  V4" class="gt_row gt_left"><span data-qmd-base64="MTAyPGJyPig0OSUp"><span class="gt_from_md">102<br>(49%)</span></span></td>
+<td headers="*physical activity*  V5" class="gt_row gt_left"><span data-qmd-base64="NDM8YnI+KDIwLjclKQ=="><span class="gt_from_md">43<br>(20.7%)</span></span></td>
+<td headers="*physical activity*  n" class="gt_row gt_left"><span data-qmd-base64="NjM8YnI+KDMwLjMlKQ=="><span class="gt_from_md">63<br>(30.3%)</span></span></td>
+<td headers="*physical activity*  y" class="gt_row gt_left"><span data-qmd-base64="MTQ1PGJyPig2OS43JSk="><span class="gt_from_md">145<br>(69.7%)</span></span></td>
 <td headers="*physical activity*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:69.7%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">69.7%</span></div></div></td></tr>
-    <tr><td headers="*physical activity*  no." class="gt_row gt_left"><div data-qmd="18"><div class="gt_from_md"><p>18</p>
-</div></div></td>
-<td headers="*physical activity*  item" class="gt_row gt_left"><div data-qmd="I am confident that I can create a safe play and exercise environment for Student E"><div class="gt_from_md"><p>I am confident that I can create a safe play and exercise environment for Student E</p>
-</div></div></td>
-<td headers="*physical activity*  V1" class="gt_row gt_left"><div data-qmd="207&lt;br&gt;(100%)"><div class="gt_from_md"><p>207<br>(100%)</p>
-</div></div></td>
-<td headers="*physical activity*  V2" class="gt_row gt_left"><div data-qmd="4&lt;br&gt;(1.9%)"><div class="gt_from_md"><p>4<br>(1.9%)</p>
-</div></div></td>
-<td headers="*physical activity*  V3" class="gt_row gt_left"><div data-qmd="48&lt;br&gt;(23.2%)"><div class="gt_from_md"><p>48<br>(23.2%)</p>
-</div></div></td>
-<td headers="*physical activity*  V4" class="gt_row gt_left"><div data-qmd="121&lt;br&gt;(58.5%)"><div class="gt_from_md"><p>121<br>(58.5%)</p>
-</div></div></td>
-<td headers="*physical activity*  V5" class="gt_row gt_left"><div data-qmd="34&lt;br&gt;(16.4%)"><div class="gt_from_md"><p>34<br>(16.4%)</p>
-</div></div></td>
-<td headers="*physical activity*  n" class="gt_row gt_left"><div data-qmd="52&lt;br&gt;(25.1%)"><div class="gt_from_md"><p>52<br>(25.1%)</p>
-</div></div></td>
-<td headers="*physical activity*  y" class="gt_row gt_left"><div data-qmd="155&lt;br&gt;(74.9%)"><div class="gt_from_md"><p>155<br>(74.9%)</p>
-</div></div></td>
+    <tr><td headers="*physical activity*  no." class="gt_row gt_left"><span data-qmd-base64="MTg="><span class="gt_from_md">18</span></span></td>
+<td headers="*physical activity*  item" class="gt_row gt_left"><span data-qmd-base64="SSBhbSBjb25maWRlbnQgdGhhdCBJIGNhbiBjcmVhdGUgYSBzYWZlIHBsYXkgYW5kIGV4ZXJjaXNlIGVudmlyb25tZW50IGZvciBTdHVkZW50IEU="><span class="gt_from_md">I am confident that I can create a safe play and exercise environment for Student E</span></span></td>
+<td headers="*physical activity*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA3PGJyPigxMDAlKQ=="><span class="gt_from_md">207<br>(100%)</span></span></td>
+<td headers="*physical activity*  V2" class="gt_row gt_left"><span data-qmd-base64="NDxicj4oMS45JSk="><span class="gt_from_md">4<br>(1.9%)</span></span></td>
+<td headers="*physical activity*  V3" class="gt_row gt_left"><span data-qmd-base64="NDg8YnI+KDIzLjIlKQ=="><span class="gt_from_md">48<br>(23.2%)</span></span></td>
+<td headers="*physical activity*  V4" class="gt_row gt_left"><span data-qmd-base64="MTIxPGJyPig1OC41JSk="><span class="gt_from_md">121<br>(58.5%)</span></span></td>
+<td headers="*physical activity*  V5" class="gt_row gt_left"><span data-qmd-base64="MzQ8YnI+KDE2LjQlKQ=="><span class="gt_from_md">34<br>(16.4%)</span></span></td>
+<td headers="*physical activity*  n" class="gt_row gt_left"><span data-qmd-base64="NTI8YnI+KDI1LjElKQ=="><span class="gt_from_md">52<br>(25.1%)</span></span></td>
+<td headers="*physical activity*  y" class="gt_row gt_left"><span data-qmd-base64="MTU1PGJyPig3NC45JSk="><span class="gt_from_md">155<br>(74.9%)</span></span></td>
 <td headers="*physical activity*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:74.9%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">74.9%</span></div></div></td></tr>
-    <tr><td headers="*physical activity*  no." class="gt_row gt_left"><div data-qmd="19"><div class="gt_from_md"><p>19</p>
-</div></div></td>
-<td headers="*physical activity*  item" class="gt_row gt_left"><div data-qmd="For safety reasons, I would make sure that student E reduces physical activities and physical exertion (e.g., sports and exercise)"><div class="gt_from_md"><p>For safety reasons, I would make sure that student E reduces physical activities and physical exertion (e.g., sports and exercise)</p>
-</div></div></td>
-<td headers="*physical activity*  V1" class="gt_row gt_left"><div data-qmd="208&lt;br&gt;(100%)"><div class="gt_from_md"><p>208<br>(100%)</p>
-</div></div></td>
-<td headers="*physical activity*  V2" class="gt_row gt_left"><div data-qmd="63&lt;br&gt;(30.3%)"><div class="gt_from_md"><p>63<br>(30.3%)</p>
-</div></div></td>
-<td headers="*physical activity*  V3" class="gt_row gt_left"><div data-qmd="92&lt;br&gt;(44.2%)"><div class="gt_from_md"><p>92<br>(44.2%)</p>
-</div></div></td>
-<td headers="*physical activity*  V4" class="gt_row gt_left"><div data-qmd="48&lt;br&gt;(23.1%)"><div class="gt_from_md"><p>48<br>(23.1%)</p>
-</div></div></td>
-<td headers="*physical activity*  V5" class="gt_row gt_left"><div data-qmd="5&lt;br&gt;(2.4%)"><div class="gt_from_md"><p>5<br>(2.4%)</p>
-</div></div></td>
-<td headers="*physical activity*  n" class="gt_row gt_left"><div data-qmd="155&lt;br&gt;(74.5%)"><div class="gt_from_md"><p>155<br>(74.5%)</p>
-</div></div></td>
-<td headers="*physical activity*  y" class="gt_row gt_left"><div data-qmd="53&lt;br&gt;(25.5%)"><div class="gt_from_md"><p>53<br>(25.5%)</p>
-</div></div></td>
+    <tr><td headers="*physical activity*  no." class="gt_row gt_left"><span data-qmd-base64="MTk="><span class="gt_from_md">19</span></span></td>
+<td headers="*physical activity*  item" class="gt_row gt_left"><span data-qmd-base64="Rm9yIHNhZmV0eSByZWFzb25zLCBJIHdvdWxkIG1ha2Ugc3VyZSB0aGF0IHN0dWRlbnQgRSByZWR1Y2VzIHBoeXNpY2FsIGFjdGl2aXRpZXMgYW5kIHBoeXNpY2FsIGV4ZXJ0aW9uIChlLmcuLCBzcG9ydHMgYW5kIGV4ZXJjaXNlKQ=="><span class="gt_from_md">For safety reasons, I would make sure that student E reduces physical activities and physical exertion (e.g., sports and exercise)</span></span></td>
+<td headers="*physical activity*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA4PGJyPigxMDAlKQ=="><span class="gt_from_md">208<br>(100%)</span></span></td>
+<td headers="*physical activity*  V2" class="gt_row gt_left"><span data-qmd-base64="NjM8YnI+KDMwLjMlKQ=="><span class="gt_from_md">63<br>(30.3%)</span></span></td>
+<td headers="*physical activity*  V3" class="gt_row gt_left"><span data-qmd-base64="OTI8YnI+KDQ0LjIlKQ=="><span class="gt_from_md">92<br>(44.2%)</span></span></td>
+<td headers="*physical activity*  V4" class="gt_row gt_left"><span data-qmd-base64="NDg8YnI+KDIzLjElKQ=="><span class="gt_from_md">48<br>(23.1%)</span></span></td>
+<td headers="*physical activity*  V5" class="gt_row gt_left"><span data-qmd-base64="NTxicj4oMi40JSk="><span class="gt_from_md">5<br>(2.4%)</span></span></td>
+<td headers="*physical activity*  n" class="gt_row gt_left"><span data-qmd-base64="MTU1PGJyPig3NC41JSk="><span class="gt_from_md">155<br>(74.5%)</span></span></td>
+<td headers="*physical activity*  y" class="gt_row gt_left"><span data-qmd-base64="NTM8YnI+KDI1LjUlKQ=="><span class="gt_from_md">53<br>(25.5%)</span></span></td>
 <td headers="*physical activity*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:25.5%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:12px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:25.5px;font-weight:bold;font-size:12px;">25.5%</span></div></div></td></tr>
-    <tr><td headers="*physical activity*  no." class="gt_row gt_left"><div data-qmd="20"><div class="gt_from_md"><p>20</p>
-</div></div></td>
-<td headers="*physical activity*  item" class="gt_row gt_left"><div data-qmd="For safety reasons, I would recommend that Student E does not participate in ball sports (e.g., soccer, basketball, or volleyball)"><div class="gt_from_md"><p>For safety reasons, I would recommend that Student E does not participate in ball sports (e.g., soccer, basketball, or volleyball)</p>
-</div></div></td>
-<td headers="*physical activity*  V1" class="gt_row gt_left"><div data-qmd="207&lt;br&gt;(100%)"><div class="gt_from_md"><p>207<br>(100%)</p>
-</div></div></td>
-<td headers="*physical activity*  V2" class="gt_row gt_left"><div data-qmd="90&lt;br&gt;(43.5%)"><div class="gt_from_md"><p>90<br>(43.5%)</p>
-</div></div></td>
-<td headers="*physical activity*  V3" class="gt_row gt_left"><div data-qmd="96&lt;br&gt;(46.4%)"><div class="gt_from_md"><p>96<br>(46.4%)</p>
-</div></div></td>
-<td headers="*physical activity*  V4" class="gt_row gt_left"><div data-qmd="19&lt;br&gt;(9.2%)"><div class="gt_from_md"><p>19<br>(9.2%)</p>
-</div></div></td>
-<td headers="*physical activity*  V5" class="gt_row gt_left"><div data-qmd="2&lt;br&gt;(1%)"><div class="gt_from_md"><p>2<br>(1%)</p>
-</div></div></td>
-<td headers="*physical activity*  n" class="gt_row gt_left"><div data-qmd="186&lt;br&gt;(89.9%)"><div class="gt_from_md"><p>186<br>(89.9%)</p>
-</div></div></td>
-<td headers="*physical activity*  y" class="gt_row gt_left"><div data-qmd="21&lt;br&gt;(10.1%)"><div class="gt_from_md"><p>21<br>(10.1%)</p>
-</div></div></td>
+    <tr><td headers="*physical activity*  no." class="gt_row gt_left"><span data-qmd-base64="MjA="><span class="gt_from_md">20</span></span></td>
+<td headers="*physical activity*  item" class="gt_row gt_left"><span data-qmd-base64="Rm9yIHNhZmV0eSByZWFzb25zLCBJIHdvdWxkIHJlY29tbWVuZCB0aGF0IFN0dWRlbnQgRSBkb2VzIG5vdCBwYXJ0aWNpcGF0ZSBpbiBiYWxsIHNwb3J0cyAoZS5nLiwgc29jY2VyLCBiYXNrZXRiYWxsLCBvciB2b2xsZXliYWxsKQ=="><span class="gt_from_md">For safety reasons, I would recommend that Student E does not participate in ball sports (e.g., soccer, basketball, or volleyball)</span></span></td>
+<td headers="*physical activity*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA3PGJyPigxMDAlKQ=="><span class="gt_from_md">207<br>(100%)</span></span></td>
+<td headers="*physical activity*  V2" class="gt_row gt_left"><span data-qmd-base64="OTA8YnI+KDQzLjUlKQ=="><span class="gt_from_md">90<br>(43.5%)</span></span></td>
+<td headers="*physical activity*  V3" class="gt_row gt_left"><span data-qmd-base64="OTY8YnI+KDQ2LjQlKQ=="><span class="gt_from_md">96<br>(46.4%)</span></span></td>
+<td headers="*physical activity*  V4" class="gt_row gt_left"><span data-qmd-base64="MTk8YnI+KDkuMiUp"><span class="gt_from_md">19<br>(9.2%)</span></span></td>
+<td headers="*physical activity*  V5" class="gt_row gt_left"><span data-qmd-base64="Mjxicj4oMSUp"><span class="gt_from_md">2<br>(1%)</span></span></td>
+<td headers="*physical activity*  n" class="gt_row gt_left"><span data-qmd-base64="MTg2PGJyPig4OS45JSk="><span class="gt_from_md">186<br>(89.9%)</span></span></td>
+<td headers="*physical activity*  y" class="gt_row gt_left"><span data-qmd-base64="MjE8YnI+KDEwLjElKQ=="><span class="gt_from_md">21<br>(10.1%)</span></span></td>
 <td headers="*physical activity*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:10.1%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:12px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:10.1px;font-weight:bold;font-size:12px;">10.1%</span></div></div></td></tr>
     <tr class="gt_group_heading_row">
-      <th colspan="10" class="gt_group_heading" style="background-color: #F2F2F2;" scope="colgroup" id="&lt;em&gt;seizure first aid (specifically addressing tonic-clonic seizures)&lt;/em&gt;"><em>seizure first aid (specifically addressing tonic-clonic seizures)</em></th>
+      <th colspan="10" class="gt_group_heading" style="background-color: #F2F2F2;" scope="colgroup" id="&lt;span data-qmd-base64=&quot;PGVtPnNlaXp1cmUgZmlyc3QgYWlkIChzcGVjaWZpY2FsbHkgYWRkcmVzc2luZyB0b25pYy1jbG9uaWMgc2VpenVyZXMpPC9lbT4=&quot;&gt;&lt;span class=&#39;gt_from_md&#39;&gt;&lt;em&gt;seizure first aid (specifically addressing tonic-clonic seizures)&lt;/em&gt;&lt;/span&gt;&lt;/span&gt;"><span data-qmd-base64="PGVtPnNlaXp1cmUgZmlyc3QgYWlkIChzcGVjaWZpY2FsbHkgYWRkcmVzc2luZyB0b25pYy1jbG9uaWMgc2VpenVyZXMpPC9lbT4="><span class="gt_from_md"><em>seizure first aid (specifically addressing tonic-clonic seizures)</em></span></span></th>
     </tr>
-    <tr class="gt_row_group_first"><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><div data-qmd="21"><div class="gt_from_md"><p>21</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><div data-qmd="I am confident that I can identify an epileptic seizure in student E"><div class="gt_from_md"><p>I am confident that I can identify an epileptic seizure in student E</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><div data-qmd="210&lt;br&gt;(100%)"><div class="gt_from_md"><p>210<br>(100%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><div data-qmd="4&lt;br&gt;(1.9%)"><div class="gt_from_md"><p>4<br>(1.9%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><div data-qmd="18&lt;br&gt;(8.6%)"><div class="gt_from_md"><p>18<br>(8.6%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><div data-qmd="127&lt;br&gt;(60.5%)"><div class="gt_from_md"><p>127<br>(60.5%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><div data-qmd="61&lt;br&gt;(29%)"><div class="gt_from_md"><p>61<br>(29%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><div data-qmd="22&lt;br&gt;(10.5%)"><div class="gt_from_md"><p>22<br>(10.5%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><div data-qmd="188&lt;br&gt;(89.5%)"><div class="gt_from_md"><p>188<br>(89.5%)</p>
-</div></div></td>
+    <tr class="gt_row_group_first"><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><span data-qmd-base64="MjE="><span class="gt_from_md">21</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><span data-qmd-base64="SSBhbSBjb25maWRlbnQgdGhhdCBJIGNhbiBpZGVudGlmeSBhbiBlcGlsZXB0aWMgc2VpenVyZSBpbiBzdHVkZW50IEU="><span class="gt_from_md">I am confident that I can identify an epileptic seizure in student E</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><span data-qmd-base64="MjEwPGJyPigxMDAlKQ=="><span class="gt_from_md">210<br>(100%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><span data-qmd-base64="NDxicj4oMS45JSk="><span class="gt_from_md">4<br>(1.9%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><span data-qmd-base64="MTg8YnI+KDguNiUp"><span class="gt_from_md">18<br>(8.6%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><span data-qmd-base64="MTI3PGJyPig2MC41JSk="><span class="gt_from_md">127<br>(60.5%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><span data-qmd-base64="NjE8YnI+KDI5JSk="><span class="gt_from_md">61<br>(29%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><span data-qmd-base64="MjI8YnI+KDEwLjUlKQ=="><span class="gt_from_md">22<br>(10.5%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><span data-qmd-base64="MTg4PGJyPig4OS41JSk="><span class="gt_from_md">188<br>(89.5%)</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:89.5%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">89.5%</span></div></div></td></tr>
-    <tr><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><div data-qmd="22"><div class="gt_from_md"><p>22</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><div data-qmd="I am confident that I can administer adequate first aid in the event of an epileptic seizure in Student E"><div class="gt_from_md"><p>I am confident that I can administer adequate first aid in the event of an epileptic seizure in Student E</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><div data-qmd="210&lt;br&gt;(100%)"><div class="gt_from_md"><p>210<br>(100%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><div data-qmd="9&lt;br&gt;(4.3%)"><div class="gt_from_md"><p>9<br>(4.3%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><div data-qmd="57&lt;br&gt;(27.1%)"><div class="gt_from_md"><p>57<br>(27.1%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><div data-qmd="113&lt;br&gt;(53.8%)"><div class="gt_from_md"><p>113<br>(53.8%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><div data-qmd="31&lt;br&gt;(14.8%)"><div class="gt_from_md"><p>31<br>(14.8%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><div data-qmd="66&lt;br&gt;(31.4%)"><div class="gt_from_md"><p>66<br>(31.4%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><div data-qmd="144&lt;br&gt;(68.6%)"><div class="gt_from_md"><p>144<br>(68.6%)</p>
-</div></div></td>
+    <tr><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><span data-qmd-base64="MjI="><span class="gt_from_md">22</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><span data-qmd-base64="SSBhbSBjb25maWRlbnQgdGhhdCBJIGNhbiBhZG1pbmlzdGVyIGFkZXF1YXRlIGZpcnN0IGFpZCBpbiB0aGUgZXZlbnQgb2YgYW4gZXBpbGVwdGljIHNlaXp1cmUgaW4gU3R1ZGVudCBF"><span class="gt_from_md">I am confident that I can administer adequate first aid in the event of an epileptic seizure in Student E</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><span data-qmd-base64="MjEwPGJyPigxMDAlKQ=="><span class="gt_from_md">210<br>(100%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><span data-qmd-base64="OTxicj4oNC4zJSk="><span class="gt_from_md">9<br>(4.3%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><span data-qmd-base64="NTc8YnI+KDI3LjElKQ=="><span class="gt_from_md">57<br>(27.1%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><span data-qmd-base64="MTEzPGJyPig1My44JSk="><span class="gt_from_md">113<br>(53.8%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><span data-qmd-base64="MzE8YnI+KDE0LjglKQ=="><span class="gt_from_md">31<br>(14.8%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><span data-qmd-base64="NjY8YnI+KDMxLjQlKQ=="><span class="gt_from_md">66<br>(31.4%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><span data-qmd-base64="MTQ0PGJyPig2OC42JSk="><span class="gt_from_md">144<br>(68.6%)</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:68.6%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">68.6%</span></div></div></td></tr>
-    <tr><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><div data-qmd="23"><div class="gt_from_md"><p>23</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><div data-qmd="I am confident that I can maintain the necessary calm and composure in the event of an epileptic seizure in Student E"><div class="gt_from_md"><p>I am confident that I can maintain the necessary calm and composure in the event of an epileptic seizure in Student E</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><div data-qmd="210&lt;br&gt;(100%)"><div class="gt_from_md"><p>210<br>(100%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><div data-qmd="4&lt;br&gt;(1.9%)"><div class="gt_from_md"><p>4<br>(1.9%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><div data-qmd="43&lt;br&gt;(20.5%)"><div class="gt_from_md"><p>43<br>(20.5%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><div data-qmd="126&lt;br&gt;(60%)"><div class="gt_from_md"><p>126<br>(60%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><div data-qmd="37&lt;br&gt;(17.6%)"><div class="gt_from_md"><p>37<br>(17.6%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><div data-qmd="47&lt;br&gt;(22.4%)"><div class="gt_from_md"><p>47<br>(22.4%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><div data-qmd="163&lt;br&gt;(77.6%)"><div class="gt_from_md"><p>163<br>(77.6%)</p>
-</div></div></td>
+    <tr><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><span data-qmd-base64="MjM="><span class="gt_from_md">23</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><span data-qmd-base64="SSBhbSBjb25maWRlbnQgdGhhdCBJIGNhbiBtYWludGFpbiB0aGUgbmVjZXNzYXJ5IGNhbG0gYW5kIGNvbXBvc3VyZSBpbiB0aGUgZXZlbnQgb2YgYW4gZXBpbGVwdGljIHNlaXp1cmUgaW4gU3R1ZGVudCBF"><span class="gt_from_md">I am confident that I can maintain the necessary calm and composure in the event of an epileptic seizure in Student E</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><span data-qmd-base64="MjEwPGJyPigxMDAlKQ=="><span class="gt_from_md">210<br>(100%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><span data-qmd-base64="NDxicj4oMS45JSk="><span class="gt_from_md">4<br>(1.9%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><span data-qmd-base64="NDM8YnI+KDIwLjUlKQ=="><span class="gt_from_md">43<br>(20.5%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><span data-qmd-base64="MTI2PGJyPig2MCUp"><span class="gt_from_md">126<br>(60%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><span data-qmd-base64="Mzc8YnI+KDE3LjYlKQ=="><span class="gt_from_md">37<br>(17.6%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><span data-qmd-base64="NDc8YnI+KDIyLjQlKQ=="><span class="gt_from_md">47<br>(22.4%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><span data-qmd-base64="MTYzPGJyPig3Ny42JSk="><span class="gt_from_md">163<br>(77.6%)</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:77.6%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">77.6%</span></div></div></td></tr>
-    <tr><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><div data-qmd="24"><div class="gt_from_md"><p>24</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><div data-qmd="I am confident that I can administer the emergency medication (liquid to drip into the mouth) according to the emergency plan in the event of an epileptic seizure in Student E"><div class="gt_from_md"><p>I am confident that I can administer the emergency medication (liquid to drip into the mouth) according to the emergency plan in the event of an epileptic seizure in Student E</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><div data-qmd="209&lt;br&gt;(100%)"><div class="gt_from_md"><p>209<br>(100%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><div data-qmd="8&lt;br&gt;(3.8%)"><div class="gt_from_md"><p>8<br>(3.8%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><div data-qmd="36&lt;br&gt;(17.2%)"><div class="gt_from_md"><p>36<br>(17.2%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><div data-qmd="116&lt;br&gt;(55.5%)"><div class="gt_from_md"><p>116<br>(55.5%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><div data-qmd="49&lt;br&gt;(23.4%)"><div class="gt_from_md"><p>49<br>(23.4%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><div data-qmd="44&lt;br&gt;(21.1%)"><div class="gt_from_md"><p>44<br>(21.1%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><div data-qmd="165&lt;br&gt;(78.9%)"><div class="gt_from_md"><p>165<br>(78.9%)</p>
-</div></div></td>
+    <tr><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><span data-qmd-base64="MjQ="><span class="gt_from_md">24</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><span data-qmd-base64="SSBhbSBjb25maWRlbnQgdGhhdCBJIGNhbiBhZG1pbmlzdGVyIHRoZSBlbWVyZ2VuY3kgbWVkaWNhdGlvbiAobGlxdWlkIHRvIGRyaXAgaW50byB0aGUgbW91dGgpIGFjY29yZGluZyB0byB0aGUgZW1lcmdlbmN5IHBsYW4gaW4gdGhlIGV2ZW50IG9mIGFuIGVwaWxlcHRpYyBzZWl6dXJlIGluIFN0dWRlbnQgRQ=="><span class="gt_from_md">I am confident that I can administer the emergency medication (liquid to drip into the mouth) according to the emergency plan in the event of an epileptic seizure in Student E</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA5PGJyPigxMDAlKQ=="><span class="gt_from_md">209<br>(100%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><span data-qmd-base64="ODxicj4oMy44JSk="><span class="gt_from_md">8<br>(3.8%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><span data-qmd-base64="MzY8YnI+KDE3LjIlKQ=="><span class="gt_from_md">36<br>(17.2%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><span data-qmd-base64="MTE2PGJyPig1NS41JSk="><span class="gt_from_md">116<br>(55.5%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><span data-qmd-base64="NDk8YnI+KDIzLjQlKQ=="><span class="gt_from_md">49<br>(23.4%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><span data-qmd-base64="NDQ8YnI+KDIxLjElKQ=="><span class="gt_from_md">44<br>(21.1%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><span data-qmd-base64="MTY1PGJyPig3OC45JSk="><span class="gt_from_md">165<br>(78.9%)</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:78.9%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">78.9%</span></div></div></td></tr>
     <tr class="gt_group_heading_row">
-      <th colspan="10" class="gt_group_heading" style="background-color: #F2F2F2;" scope="colgroup" id="&lt;em&gt;classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)&lt;/em&gt;"><em>classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)</em></th>
+      <th colspan="10" class="gt_group_heading" style="background-color: #F2F2F2;" scope="colgroup" id="&lt;span data-qmd-base64=&quot;PGVtPmNsYXNzcm9vbSBtYW5hZ2VtZW50IGFuZCBlbW90aW9uYWwgc3VwcG9ydCBkdXJpbmcgYW5kIGFmdGVyIGEgc2VpenVyZSAoc3BlY2lmaWNhbGx5IGFkZHJlc3NpbmcgdG9uaWMtY2xvbmljIHNlaXp1cmVzKTwvZW0+&quot;&gt;&lt;span class=&#39;gt_from_md&#39;&gt;&lt;em&gt;classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)&lt;/em&gt;&lt;/span&gt;&lt;/span&gt;"><span data-qmd-base64="PGVtPmNsYXNzcm9vbSBtYW5hZ2VtZW50IGFuZCBlbW90aW9uYWwgc3VwcG9ydCBkdXJpbmcgYW5kIGFmdGVyIGEgc2VpenVyZSAoc3BlY2lmaWNhbGx5IGFkZHJlc3NpbmcgdG9uaWMtY2xvbmljIHNlaXp1cmVzKTwvZW0+"><span class="gt_from_md"><em>classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)</em></span></span></th>
     </tr>
-    <tr class="gt_row_group_first"><td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><div data-qmd="25"><div class="gt_from_md"><p>25</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><div data-qmd="I am confident that I can adequately supervise the other classmates in the event of an epileptic seizure in Student E"><div class="gt_from_md"><p>I am confident that I can adequately supervise the other classmates in the event of an epileptic seizure in Student E</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><div data-qmd="209&lt;br&gt;(100%)"><div class="gt_from_md"><p>209<br>(100%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><div data-qmd="28&lt;br&gt;(13.4%)"><div class="gt_from_md"><p>28<br>(13.4%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><div data-qmd="72&lt;br&gt;(34.4%)"><div class="gt_from_md"><p>72<br>(34.4%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><div data-qmd="79&lt;br&gt;(37.8%)"><div class="gt_from_md"><p>79<br>(37.8%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><div data-qmd="30&lt;br&gt;(14.4%)"><div class="gt_from_md"><p>30<br>(14.4%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><div data-qmd="100&lt;br&gt;(47.8%)"><div class="gt_from_md"><p>100<br>(47.8%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><div data-qmd="109&lt;br&gt;(52.2%)"><div class="gt_from_md"><p>109<br>(52.2%)</p>
-</div></div></td>
+    <tr class="gt_row_group_first"><td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><span data-qmd-base64="MjU="><span class="gt_from_md">25</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><span data-qmd-base64="SSBhbSBjb25maWRlbnQgdGhhdCBJIGNhbiBhZGVxdWF0ZWx5IHN1cGVydmlzZSB0aGUgb3RoZXIgY2xhc3NtYXRlcyBpbiB0aGUgZXZlbnQgb2YgYW4gZXBpbGVwdGljIHNlaXp1cmUgaW4gU3R1ZGVudCBF"><span class="gt_from_md">I am confident that I can adequately supervise the other classmates in the event of an epileptic seizure in Student E</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA5PGJyPigxMDAlKQ=="><span class="gt_from_md">209<br>(100%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><span data-qmd-base64="Mjg8YnI+KDEzLjQlKQ=="><span class="gt_from_md">28<br>(13.4%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><span data-qmd-base64="NzI8YnI+KDM0LjQlKQ=="><span class="gt_from_md">72<br>(34.4%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><span data-qmd-base64="Nzk8YnI+KDM3LjglKQ=="><span class="gt_from_md">79<br>(37.8%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><span data-qmd-base64="MzA8YnI+KDE0LjQlKQ=="><span class="gt_from_md">30<br>(14.4%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><span data-qmd-base64="MTAwPGJyPig0Ny44JSk="><span class="gt_from_md">100<br>(47.8%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><span data-qmd-base64="MTA5PGJyPig1Mi4yJSk="><span class="gt_from_md">109<br>(52.2%)</span></span></td>
 <td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:52.2%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">52.2%</span></div></div></td></tr>
-    <tr><td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><div data-qmd="26"><div class="gt_from_md"><p>26</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><div data-qmd="During an epileptic seizure in Student E, I would send the other classmates out of the classroom"><div class="gt_from_md"><p>During an epileptic seizure in Student E, I would send the other classmates out of the classroom</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><div data-qmd="210&lt;br&gt;(100%)"><div class="gt_from_md"><p>210<br>(100%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><div data-qmd="19&lt;br&gt;(9%)"><div class="gt_from_md"><p>19<br>(9%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><div data-qmd="65&lt;br&gt;(31%)"><div class="gt_from_md"><p>65<br>(31%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><div data-qmd="76&lt;br&gt;(36.2%)"><div class="gt_from_md"><p>76<br>(36.2%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><div data-qmd="50&lt;br&gt;(23.8%)"><div class="gt_from_md"><p>50<br>(23.8%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><div data-qmd="84&lt;br&gt;(40%)"><div class="gt_from_md"><p>84<br>(40%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><div data-qmd="126&lt;br&gt;(60%)"><div class="gt_from_md"><p>126<br>(60%)</p>
-</div></div></td>
+    <tr><td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><span data-qmd-base64="MjY="><span class="gt_from_md">26</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><span data-qmd-base64="RHVyaW5nIGFuIGVwaWxlcHRpYyBzZWl6dXJlIGluIFN0dWRlbnQgRSwgSSB3b3VsZCBzZW5kIHRoZSBvdGhlciBjbGFzc21hdGVzIG91dCBvZiB0aGUgY2xhc3Nyb29t"><span class="gt_from_md">During an epileptic seizure in Student E, I would send the other classmates out of the classroom</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><span data-qmd-base64="MjEwPGJyPigxMDAlKQ=="><span class="gt_from_md">210<br>(100%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><span data-qmd-base64="MTk8YnI+KDklKQ=="><span class="gt_from_md">19<br>(9%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><span data-qmd-base64="NjU8YnI+KDMxJSk="><span class="gt_from_md">65<br>(31%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><span data-qmd-base64="NzY8YnI+KDM2LjIlKQ=="><span class="gt_from_md">76<br>(36.2%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><span data-qmd-base64="NTA8YnI+KDIzLjglKQ=="><span class="gt_from_md">50<br>(23.8%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><span data-qmd-base64="ODQ8YnI+KDQwJSk="><span class="gt_from_md">84<br>(40%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><span data-qmd-base64="MTI2PGJyPig2MCUp"><span class="gt_from_md">126<br>(60%)</span></span></td>
 <td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:60%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">60%</span></div></div></td></tr>
-    <tr><td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><div data-qmd="27"><div class="gt_from_md"><p>27</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><div data-qmd="I am confident that I can adequately continue the school day and lessons with the class after an epileptic seizure in Student E"><div class="gt_from_md"><p>I am confident that I can adequately continue the school day and lessons with the class after an epileptic seizure in Student E</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><div data-qmd="209&lt;br&gt;(100%)"><div class="gt_from_md"><p>209<br>(100%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><div data-qmd="10&lt;br&gt;(4.8%)"><div class="gt_from_md"><p>10<br>(4.8%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><div data-qmd="47&lt;br&gt;(22.5%)"><div class="gt_from_md"><p>47<br>(22.5%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><div data-qmd="102&lt;br&gt;(48.8%)"><div class="gt_from_md"><p>102<br>(48.8%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><div data-qmd="50&lt;br&gt;(23.9%)"><div class="gt_from_md"><p>50<br>(23.9%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><div data-qmd="57&lt;br&gt;(27.3%)"><div class="gt_from_md"><p>57<br>(27.3%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><div data-qmd="152&lt;br&gt;(72.7%)"><div class="gt_from_md"><p>152<br>(72.7%)</p>
-</div></div></td>
+    <tr><td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><span data-qmd-base64="Mjc="><span class="gt_from_md">27</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><span data-qmd-base64="SSBhbSBjb25maWRlbnQgdGhhdCBJIGNhbiBhZGVxdWF0ZWx5IGNvbnRpbnVlIHRoZSBzY2hvb2wgZGF5IGFuZCBsZXNzb25zIHdpdGggdGhlIGNsYXNzIGFmdGVyIGFuIGVwaWxlcHRpYyBzZWl6dXJlIGluIFN0dWRlbnQgRQ=="><span class="gt_from_md">I am confident that I can adequately continue the school day and lessons with the class after an epileptic seizure in Student E</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA5PGJyPigxMDAlKQ=="><span class="gt_from_md">209<br>(100%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><span data-qmd-base64="MTA8YnI+KDQuOCUp"><span class="gt_from_md">10<br>(4.8%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><span data-qmd-base64="NDc8YnI+KDIyLjUlKQ=="><span class="gt_from_md">47<br>(22.5%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><span data-qmd-base64="MTAyPGJyPig0OC44JSk="><span class="gt_from_md">102<br>(48.8%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><span data-qmd-base64="NTA8YnI+KDIzLjklKQ=="><span class="gt_from_md">50<br>(23.9%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><span data-qmd-base64="NTc8YnI+KDI3LjMlKQ=="><span class="gt_from_md">57<br>(27.3%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><span data-qmd-base64="MTUyPGJyPig3Mi43JSk="><span class="gt_from_md">152<br>(72.7%)</span></span></td>
 <td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:72.7%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">72.7%</span></div></div></td></tr>
-    <tr><td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><div data-qmd="28"><div class="gt_from_md"><p>28</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><div data-qmd="I am confident that I can adequately respond to the questions, fears and concerns of the other classmates after an epileptic seizure in Student E"><div class="gt_from_md"><p>I am confident that I can adequately respond to the questions, fears and concerns of the other classmates after an epileptic seizure in Student E</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><div data-qmd="209&lt;br&gt;(100%)"><div class="gt_from_md"><p>209<br>(100%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><div data-qmd="3&lt;br&gt;(1.4%)"><div class="gt_from_md"><p>3<br>(1.4%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><div data-qmd="18&lt;br&gt;(8.6%)"><div class="gt_from_md"><p>18<br>(8.6%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><div data-qmd="98&lt;br&gt;(46.9%)"><div class="gt_from_md"><p>98<br>(46.9%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><div data-qmd="90&lt;br&gt;(43.1%)"><div class="gt_from_md"><p>90<br>(43.1%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><div data-qmd="21&lt;br&gt;(10%)"><div class="gt_from_md"><p>21<br>(10%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><div data-qmd="188&lt;br&gt;(90%)"><div class="gt_from_md"><p>188<br>(90%)</p>
-</div></div></td>
+    <tr><td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><span data-qmd-base64="Mjg="><span class="gt_from_md">28</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><span data-qmd-base64="SSBhbSBjb25maWRlbnQgdGhhdCBJIGNhbiBhZGVxdWF0ZWx5IHJlc3BvbmQgdG8gdGhlIHF1ZXN0aW9ucywgZmVhcnMgYW5kIGNvbmNlcm5zIG9mIHRoZSBvdGhlciBjbGFzc21hdGVzIGFmdGVyIGFuIGVwaWxlcHRpYyBzZWl6dXJlIGluIFN0dWRlbnQgRQ=="><span class="gt_from_md">I am confident that I can adequately respond to the questions, fears and concerns of the other classmates after an epileptic seizure in Student E</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA5PGJyPigxMDAlKQ=="><span class="gt_from_md">209<br>(100%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><span data-qmd-base64="Mzxicj4oMS40JSk="><span class="gt_from_md">3<br>(1.4%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><span data-qmd-base64="MTg8YnI+KDguNiUp"><span class="gt_from_md">18<br>(8.6%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><span data-qmd-base64="OTg8YnI+KDQ2LjklKQ=="><span class="gt_from_md">98<br>(46.9%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><span data-qmd-base64="OTA8YnI+KDQzLjElKQ=="><span class="gt_from_md">90<br>(43.1%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><span data-qmd-base64="MjE8YnI+KDEwJSk="><span class="gt_from_md">21<br>(10%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><span data-qmd-base64="MTg4PGJyPig5MCUp"><span class="gt_from_md">188<br>(90%)</span></span></td>
 <td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:90%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">90%</span></div></div></td></tr>
-    <tr><td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><div data-qmd="29"><div class="gt_from_md"><p>29</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><div data-qmd="I am confident that I can respond adequately to the emotional needs of Student E after an epileptic seizure"><div class="gt_from_md"><p>I am confident that I can respond adequately to the emotional needs of Student E after an epileptic seizure</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><div data-qmd="210&lt;br&gt;(100%)"><div class="gt_from_md"><p>210<br>(100%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><div data-qmd="2&lt;br&gt;(1%)"><div class="gt_from_md"><p>2<br>(1%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><div data-qmd="29&lt;br&gt;(13.8%)"><div class="gt_from_md"><p>29<br>(13.8%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><div data-qmd="124&lt;br&gt;(59%)"><div class="gt_from_md"><p>124<br>(59%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><div data-qmd="55&lt;br&gt;(26.2%)"><div class="gt_from_md"><p>55<br>(26.2%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><div data-qmd="31&lt;br&gt;(14.8%)"><div class="gt_from_md"><p>31<br>(14.8%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><div data-qmd="179&lt;br&gt;(85.2%)"><div class="gt_from_md"><p>179<br>(85.2%)</p>
-</div></div></td>
+    <tr><td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><span data-qmd-base64="Mjk="><span class="gt_from_md">29</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><span data-qmd-base64="SSBhbSBjb25maWRlbnQgdGhhdCBJIGNhbiByZXNwb25kIGFkZXF1YXRlbHkgdG8gdGhlIGVtb3Rpb25hbCBuZWVkcyBvZiBTdHVkZW50IEUgYWZ0ZXIgYW4gZXBpbGVwdGljIHNlaXp1cmU="><span class="gt_from_md">I am confident that I can respond adequately to the emotional needs of Student E after an epileptic seizure</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><span data-qmd-base64="MjEwPGJyPigxMDAlKQ=="><span class="gt_from_md">210<br>(100%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><span data-qmd-base64="Mjxicj4oMSUp"><span class="gt_from_md">2<br>(1%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><span data-qmd-base64="Mjk8YnI+KDEzLjglKQ=="><span class="gt_from_md">29<br>(13.8%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><span data-qmd-base64="MTI0PGJyPig1OSUp"><span class="gt_from_md">124<br>(59%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><span data-qmd-base64="NTU8YnI+KDI2LjIlKQ=="><span class="gt_from_md">55<br>(26.2%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><span data-qmd-base64="MzE8YnI+KDE0LjglKQ=="><span class="gt_from_md">31<br>(14.8%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><span data-qmd-base64="MTc5PGJyPig4NS4yJSk="><span class="gt_from_md">179<br>(85.2%)</span></span></td>
 <td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:85.2%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">85.2%</span></div></div></td></tr>
-    <tr><td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><div data-qmd="30"><div class="gt_from_md"><p>30</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><div data-qmd="I am confident that I can provide adequate care for Student E after the end of an epileptic seizure"><div class="gt_from_md"><p>I am confident that I can provide adequate care for Student E after the end of an epileptic seizure</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><div data-qmd="207&lt;br&gt;(100%)"><div class="gt_from_md"><p>207<br>(100%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><div data-qmd="5&lt;br&gt;(2.4%)"><div class="gt_from_md"><p>5<br>(2.4%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><div data-qmd="53&lt;br&gt;(25.6%)"><div class="gt_from_md"><p>53<br>(25.6%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><div data-qmd="103&lt;br&gt;(49.8%)"><div class="gt_from_md"><p>103<br>(49.8%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><div data-qmd="46&lt;br&gt;(22.2%)"><div class="gt_from_md"><p>46<br>(22.2%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><div data-qmd="58&lt;br&gt;(28%)"><div class="gt_from_md"><p>58<br>(28%)</p>
-</div></div></td>
-<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><div data-qmd="149&lt;br&gt;(72%)"><div class="gt_from_md"><p>149<br>(72%)</p>
-</div></div></td>
+    <tr><td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  no." class="gt_row gt_left"><span data-qmd-base64="MzA="><span class="gt_from_md">30</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><span data-qmd-base64="SSBhbSBjb25maWRlbnQgdGhhdCBJIGNhbiBwcm92aWRlIGFkZXF1YXRlIGNhcmUgZm9yIFN0dWRlbnQgRSBhZnRlciB0aGUgZW5kIG9mIGFuIGVwaWxlcHRpYyBzZWl6dXJl"><span class="gt_from_md">I am confident that I can provide adequate care for Student E after the end of an epileptic seizure</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V1" class="gt_row gt_left"><span data-qmd-base64="MjA3PGJyPigxMDAlKQ=="><span class="gt_from_md">207<br>(100%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V2" class="gt_row gt_left"><span data-qmd-base64="NTxicj4oMi40JSk="><span class="gt_from_md">5<br>(2.4%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V3" class="gt_row gt_left"><span data-qmd-base64="NTM8YnI+KDI1LjYlKQ=="><span class="gt_from_md">53<br>(25.6%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V4" class="gt_row gt_left"><span data-qmd-base64="MTAzPGJyPig0OS44JSk="><span class="gt_from_md">103<br>(49.8%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  V5" class="gt_row gt_left"><span data-qmd-base64="NDY8YnI+KDIyLjIlKQ=="><span class="gt_from_md">46<br>(22.2%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  n" class="gt_row gt_left"><span data-qmd-base64="NTg8YnI+KDI4JSk="><span class="gt_from_md">58<br>(28%)</span></span></td>
+<td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  y" class="gt_row gt_left"><span data-qmd-base64="MTQ5PGJyPig3MiUp"><span class="gt_from_md">149<br>(72%)</span></span></td>
 <td headers="*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*  list_plot" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:72%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">72%</span></div></div></td></tr>
   </tbody>
   
@@ -4904,7 +4648,7 @@ text-indent: 25px;
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">session_info</span>()</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="do">## ─ Session info ───────────────────────────────────────────────────────────────</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  setting  value</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  version  R version 4.4.1 (2024-06-14 ucrt)</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  version  R version 4.4.2 (2024-10-31 ucrt)</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  os       Windows 11 x64 (build 22631)</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  system   x86_64, mingw32</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  ui       RTerm</span></span>
@@ -4912,89 +4656,90 @@ text-indent: 25px;
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  collate  German_Germany.utf8</span></span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  ctype    German_Germany.utf8</span></span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  tz       Europe/Berlin</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  date     2024-10-19</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  date     2024-11-21</span></span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  pandoc   3.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)</span></span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="do">## ─ Packages ───────────────────────────────────────────────────────────────────</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  package     * version date (UTC) lib source</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  cachem        1.1.0   2024-05-16 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  cellranger    1.1.0   2016-07-27 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  cli           3.6.3   2024-06-21 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  colorspace    2.1-0   2023-01-23 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  commonmark    1.9.1   2024-01-30 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  devtools    * 2.4.5   2022-10-11 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  digest        0.6.36  2024-06-23 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="do">##  dplyr       * 1.1.4   2023-11-17 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="do">##  ellipsis      0.3.2   2021-04-29 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="do">##  evaluate      0.24.0  2024-06-10 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="do">##  fansi         1.0.6   2023-12-08 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="do">##  fastmap       1.2.0   2024-05-15 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="do">##  fontawesome   0.5.2   2023-08-19 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="do">##  forcats     * 1.0.0   2023-01-29 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="do">##  fs            1.6.4   2024-04-25 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="do">##  generics      0.1.3   2022-07-05 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="do">##  ggplot2     * 3.5.1   2024-04-23 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="do">##  glue          1.7.0   2024-01-09 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="do">##  gt          * 0.10.1  2024-01-17 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="do">##  gtable        0.3.5   2024-04-22 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="do">##  gtExtras    * 0.5.0   2023-09-15 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="do">##  hms           1.1.3   2023-03-21 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="do">##  htmltools     0.5.8.1 2024-04-04 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="do">##  htmlwidgets   1.6.4   2023-12-06 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="do">##  httpuv        1.6.15  2024-03-26 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="do">##  jsonlite      1.8.8   2023-12-04 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="do">##  knitr       * 1.47    2024-05-29 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="do">##  later         1.3.2   2023-12-06 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="do">##  lifecycle     1.0.4   2023-11-07 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="do">##  lubridate   * 1.9.3   2023-09-27 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="do">##  magrittr      2.0.3   2022-03-30 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="do">##  markdown      1.13    2024-06-04 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a><span class="do">##  memoise       2.0.1   2021-11-26 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="do">##  mime          0.12    2021-09-28 [1] CRAN (R 4.4.0)</span></span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="do">##  miniUI        0.1.1.1 2018-05-18 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a><span class="do">##  munsell       0.5.1   2024-04-01 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a><span class="do">##  paletteer     1.6.0   2024-01-21 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a><span class="do">##  pillar        1.9.0   2023-03-22 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a><span class="do">##  pkgbuild      1.4.4   2024-03-17 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a><span class="do">##  pkgconfig     2.0.3   2019-09-22 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a><span class="do">##  pkgload       1.4.0   2024-06-28 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a><span class="do">##  profvis       0.3.8   2023-05-02 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a><span class="do">##  promises      1.3.0   2024-04-05 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a><span class="do">##  purrr       * 1.0.2   2023-08-10 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a><span class="do">##  R6            2.5.1   2021-08-19 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a><span class="do">##  Rcpp          1.0.12  2024-01-09 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a><span class="do">##  readr       * 2.1.5   2024-01-10 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a><span class="do">##  readxl      * 1.4.3   2023-07-06 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a><span class="do">##  rematch2      2.1.2   2020-05-01 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a><span class="do">##  remotes       2.5.0   2024-03-17 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a><span class="do">##  rlang         1.1.4   2024-06-04 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a><span class="do">##  rmarkdown     2.27    2024-05-17 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a><span class="do">##  rstudioapi    0.16.0  2024-03-24 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a><span class="do">##  sass          0.4.9   2024-03-15 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a><span class="do">##  scales        1.3.0   2023-11-28 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a><span class="do">##  sessioninfo   1.2.2   2021-12-06 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a><span class="do">##  shiny         1.8.1.1 2024-04-02 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a><span class="do">##  stringi       1.8.4   2024-05-06 [1] CRAN (R 4.4.0)</span></span>
-<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a><span class="do">##  stringr     * 1.5.1   2023-11-14 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a><span class="do">##  tibble      * 3.2.1   2023-03-20 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a><span class="do">##  tidyr       * 1.3.1   2024-01-24 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a><span class="do">##  tidyselect    1.2.1   2024-03-11 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a><span class="do">##  tidyverse   * 2.0.0   2023-02-22 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a><span class="do">##  timechange    0.3.0   2024-01-18 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a><span class="do">##  tzdb          0.4.0   2023-05-12 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a><span class="do">##  urlchecker    1.0.1   2021-11-30 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a><span class="do">##  usethis     * 2.2.3   2024-02-19 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a><span class="do">##  utf8          1.2.4   2023-10-22 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a><span class="do">##  vctrs         0.6.5   2023-12-01 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a><span class="do">##  withr         3.0.0   2024-01-16 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a><span class="do">##  xfun          0.45    2024-06-16 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a><span class="do">##  xml2          1.3.6   2023-12-04 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a><span class="do">##  xtable        1.8-4   2019-04-21 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a><span class="do">##  yaml          2.3.9   2024-07-05 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] C:/Users/Pawel Kulawiak/AppData/Local/Programs/R/R-4.4.1/library</span></span>
-<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a><span class="do">## ──────────────────────────────────────────────────────────────────────────────</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  package     * version  date (UTC) lib source</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  base64enc     0.1-3    2015-07-28 [1] CRAN (R 4.4.0)</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  cachem        1.1.0    2024-05-16 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  cellranger    1.1.0    2016-07-27 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  cli           3.6.3    2024-06-21 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  colorspace    2.1-1    2024-07-26 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  commonmark    1.9.2    2024-10-04 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  devtools    * 2.4.5    2022-10-11 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="do">##  digest        0.6.37   2024-08-19 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="do">##  dplyr       * 1.1.4    2023-11-17 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="do">##  ellipsis      0.3.2    2021-04-29 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="do">##  evaluate      1.0.1    2024-10-10 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="do">##  fansi         1.0.6    2023-12-08 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="do">##  fastmap       1.2.0    2024-05-15 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="do">##  fontawesome   0.5.3    2024-11-16 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="do">##  forcats     * 1.0.0    2023-01-29 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="do">##  fs            1.6.5    2024-10-30 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="do">##  generics      0.1.3    2022-07-05 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="do">##  ggplot2     * 3.5.1    2024-04-23 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="do">##  glue          1.8.0    2024-09-30 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="do">##  gt          * 0.11.1   2024-10-04 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="do">##  gtable        0.3.6    2024-10-25 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="do">##  gtExtras    * 0.5.0    2023-09-15 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="do">##  hms           1.1.3    2023-03-21 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="do">##  htmltools     0.5.8.1  2024-04-04 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="do">##  htmlwidgets   1.6.4    2023-12-06 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="do">##  httpuv        1.6.15   2024-03-26 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="do">##  jsonlite      1.8.9    2024-09-20 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="do">##  knitr       * 1.49     2024-11-08 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="do">##  later         1.3.2    2023-12-06 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="do">##  lifecycle     1.0.4    2023-11-07 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="do">##  lubridate   * 1.9.3    2023-09-27 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="do">##  magrittr      2.0.3    2022-03-30 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a><span class="do">##  markdown      1.13     2024-06-04 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="do">##  memoise       2.0.1    2021-11-26 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="do">##  mime          0.12     2021-09-28 [1] CRAN (R 4.4.0)</span></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a><span class="do">##  miniUI        0.1.1.1  2018-05-18 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a><span class="do">##  munsell       0.5.1    2024-04-01 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a><span class="do">##  paletteer     1.6.0    2024-01-21 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a><span class="do">##  pillar        1.9.0    2023-03-22 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a><span class="do">##  pkgbuild      1.4.5    2024-10-28 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a><span class="do">##  pkgconfig     2.0.3    2019-09-22 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a><span class="do">##  pkgload       1.4.0    2024-06-28 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a><span class="do">##  profvis       0.4.0    2024-09-20 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a><span class="do">##  promises      1.3.0    2024-04-05 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a><span class="do">##  purrr       * 1.0.2    2023-08-10 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a><span class="do">##  R6            2.5.1    2021-08-19 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a><span class="do">##  Rcpp          1.0.13-1 2024-11-02 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a><span class="do">##  readr       * 2.1.5    2024-01-10 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a><span class="do">##  readxl      * 1.4.3    2023-07-06 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a><span class="do">##  rematch2      2.1.2    2020-05-01 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a><span class="do">##  remotes       2.5.0    2024-03-17 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a><span class="do">##  rlang         1.1.4    2024-06-04 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a><span class="do">##  rmarkdown     2.29     2024-11-04 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a><span class="do">##  rstudioapi    0.17.1   2024-10-22 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a><span class="do">##  sass          0.4.9    2024-03-15 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a><span class="do">##  scales        1.3.0    2023-11-28 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a><span class="do">##  sessioninfo   1.2.2    2021-12-06 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a><span class="do">##  shiny         1.9.1    2024-08-01 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a><span class="do">##  stringi       1.8.4    2024-05-06 [1] CRAN (R 4.4.0)</span></span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a><span class="do">##  stringr     * 1.5.1    2023-11-14 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a><span class="do">##  tibble      * 3.2.1    2023-03-20 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a><span class="do">##  tidyr       * 1.3.1    2024-01-24 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a><span class="do">##  tidyselect    1.2.1    2024-03-11 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a><span class="do">##  tidyverse   * 2.0.0    2023-02-22 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a><span class="do">##  timechange    0.3.0    2024-01-18 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a><span class="do">##  tzdb          0.4.0    2023-05-12 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a><span class="do">##  urlchecker    1.0.1    2021-11-30 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a><span class="do">##  usethis     * 3.0.0    2024-07-29 [1] CRAN (R 4.4.1)</span></span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a><span class="do">##  utf8          1.2.4    2023-10-22 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a><span class="do">##  vctrs         0.6.5    2023-12-01 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a><span class="do">##  withr         3.0.2    2024-10-28 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a><span class="do">##  xfun          0.49     2024-10-31 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a><span class="do">##  xml2          1.3.6    2023-12-04 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a><span class="do">##  xtable        1.8-4    2019-04-21 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a><span class="do">##  yaml          2.3.10   2024-07-26 [1] CRAN (R 4.4.1)</span></span>
+<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] C:/Users/Pawel Kulawiak/AppData/Local/Programs/R/R-4.4.2/library</span></span>
+<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a><span class="do">## ──────────────────────────────────────────────────────────────────────────────</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -5002,7 +4747,7 @@ text-indent: 25px;
 <h1 class="unnumbered" data-number="7"><span class="header-section-number">7</span> References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-R-gt" class="csl-entry" role="listitem">
-Iannone, Richard, Joe Cheng, Barret Schloerke, Ellis Hughes, Alexandra Lauer, and JooYoung Seo. 2024. <em>Gt: Easily Create Presentation-Ready Display Tables</em>. <a href="https://gt.rstudio.com">https://gt.rstudio.com</a>.
+Iannone, Richard, Joe Cheng, Barret Schloerke, Ellis Hughes, Alexandra Lauer, JooYoung Seo, Ken Brevoort, and Olivier Roy. 2024. <em>Gt: Easily Create Presentation-Ready Display Tables</em>. <a href="https://gt.rstudio.com">https://gt.rstudio.com</a>.
 </div>
 <div id="ref-R-gtExtras" class="csl-entry" role="listitem">
 Mock, Thomas. 2023. <em>gtExtras: Extending Gt for Beautiful HTML Tables</em>. <a href="https://github.com/jthomasmock/gtExtras">https://github.com/jthomasmock/gtExtras</a>.

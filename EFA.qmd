@@ -1,0 +1,440 @@
+---
+title: "Supplement EFA: Exploratory factor analysis"
+author:
+    name: Pawel R. Kulawiak
+    orcid: 0000-0001-5939-4380
+    email: kulawiak@uni-potsdam.de
+date: today
+published-title: "last modified"
+format:
+  html:
+    title-block-banner: true
+    number-sections: true
+    embed-resources: true
+    page-layout: full
+    toc: true
+    toc-location: body
+    code-fold: true
+    html-table-processing: none
+execute: 
+  warning: false
+  message: false
+bibliography: packages.bib
+appendix-style: none
+notice: |
+  @R-base, @R-tidyverse, @R-gt, @R-readxl, @R-devtools, @R-knitr, @R-psych, @R-ggcorrplot, @R-ggpubr
+---
+
+# R packages
+
+```{r}
+library(tidyverse)
+library(ggcorrplot)
+library(ggpubr)
+library(psych)
+library(gt)
+library(readxl)
+library(devtools)
+library(knitr)
+write_bib(file = "packages.bib")
+```
+
+# Adjusting function from ggcorrplot package
+
+```{r}
+mycorrr <-
+  function (corr, method = c("square", "circle"), type = c("full", 
+    "lower", "upper"), ggtheme = ggplot2::theme_minimal, title = "", 
+    show.legend = TRUE, legend.title = "Corr", show.diag = NULL, 
+    colors = c("blue", "white", "red"), outline.color = "gray", 
+    hc.order = FALSE, hc.method = "complete", lab = FALSE, lab_col = "black", 
+    lab_size = 4, p.mat = NULL, sig.level = 0.05, insig = c("pch", 
+        "blank"), pch = 4, pch.col = "black", pch.cex = 5, tl.cex = 12, 
+    tl.col = "black", tl.srt = 45, digits = 2, as.is = FALSE)
+  {
+    type <- match.arg(type)
+    method <- match.arg(method)
+    insig <- match.arg(insig)
+    if (is.null(show.diag)) {
+        if (type == "full") {
+            show.diag <- TRUE
+        }
+        else {
+            show.diag <- FALSE
+        }
+    }
+    if (inherits(corr, "cor_mat")) {
+        cor.mat <- corr
+        corr <- .tibble_to_matrix(cor.mat)
+        p.mat <- .tibble_to_matrix(attr(cor.mat, "pvalue"))
+    }
+    if (!is.matrix(corr) & !is.data.frame(corr)) {
+        stop("Need a matrix or data frame!")
+    }
+    corr <- as.matrix(corr)
+    corr <- base::round(x = corr, digits = digits)
+    if (hc.order) {
+        ord <- .hc_cormat_order(corr, hc.method = hc.method)
+        corr <- corr[ord, ord]
+        if (!is.null(p.mat)) {
+            p.mat <- p.mat[ord, ord]
+            p.mat <- base::round(x = p.mat, digits = digits)
+        }
+    }
+    if (!show.diag) {
+        corr <- .remove_diag(corr)
+        p.mat <- .remove_diag(p.mat)
+    }
+    if (type == "lower") {
+        corr <- .get_lower_tri(corr, show.diag)
+        p.mat <- .get_lower_tri(p.mat, show.diag)
+    }
+    else if (type == "upper") {
+        corr <- .get_upper_tri(corr, show.diag)
+        p.mat <- .get_upper_tri(p.mat, show.diag)
+    }
+    corr <- reshape2::melt(corr, na.rm = TRUE, as.is = as.is)
+    colnames(corr) <- c("Var1", "Var2", "value")
+    corr$pvalue <- rep(NA, nrow(corr))
+    corr$signif <- rep(NA, nrow(corr))
+    if (!is.null(p.mat)) {
+        p.mat <- reshape2::melt(p.mat, na.rm = TRUE)
+        corr$coef <- corr$value
+        corr$pvalue <- p.mat$value
+        corr$signif <- as.numeric(p.mat$value <= sig.level)
+        p.mat <- subset(p.mat, p.mat$value > sig.level)
+        if (insig == "blank") {
+            corr$value <- corr$value * corr$signif
+        }
+    }
+    corr$abs_corr <- abs(corr$value) * 10
+    p <- ggplot2::ggplot(data = corr, mapping = ggplot2::aes_string(x = "Var1", 
+        y = "Var2", fill = "value"))
+    if (method == "square") {
+        p <- p + ggplot2::geom_tile(color = outline.color)
+    }
+    else if (method == "circle") {
+        p <- p + ggplot2::geom_point(color = outline.color, shape = 21, 
+            ggplot2::aes_string(size = "abs_corr")) + ggplot2::scale_size(range = c(4, 
+            10)) + ggplot2::guides(size = "none")
+    }
+    p <- p + ggplot2::scale_fill_gradient2(low = colors[1], high = colors[3], 
+        mid = colors[2], midpoint = 0, limit = c(-1, 1), space = "Lab", 
+        name = legend.title)
+    if (class(ggtheme)[[1]] == "function") {
+        p <- p + ggtheme()
+    }
+    else if (class(ggtheme)[[1]] == "theme") {
+        p <- p + ggtheme
+    }
+    p <- p + ggplot2::theme(axis.text.x = ggplot2::element_text(angle = tl.srt, 
+        vjust = 1, size = tl.cex, hjust = 1), axis.text.y = ggplot2::element_text(size = tl.cex)) + 
+        ggplot2::coord_fixed()
+    label <- round(x = corr[, "value"], digits = digits) %>%
+      str_replace_all("\\b0(\\.\\d+)", "\\1") %>%
+      str_replace_all("(\\.\\d)\\b", "\\10")
+    if (!is.null(p.mat) & insig == "blank") {
+        ns <- corr$pvalue > sig.level
+        if (sum(ns) > 0) 
+            label[ns] <- " "
+    }
+    if (lab) {
+        p <- p + ggplot2::geom_text(mapping = ggplot2::aes_string(x = "Var1", 
+            y = "Var2"), label = label, color = lab_col, size = lab_size)
+    }
+    if (!is.null(p.mat) & insig == "pch") {
+        p <- p + ggplot2::geom_point(data = p.mat, mapping = ggplot2::aes_string(x = "Var1", 
+            y = "Var2"), shape = pch, size = pch.cex, color = pch.col)
+    }
+    if (title != "") {
+        p <- p + ggplot2::ggtitle(title)
+    }
+    if (!show.legend) {
+        p <- p + ggplot2::theme(legend.position = "none")
+    }
+    p <- p + .no_panel()
+    p
+  }
+
+.no_panel <- function() {
+  ggplot2::theme(
+    axis.title.x = ggplot2::element_blank(),
+    axis.title.y = ggplot2::element_blank()
+  )
+}
+```
+
+# Data import and manipulation
+
+```{r}
+DATA <- read_xlsx("SURVEY_DATA.xlsx")
+
+DATA <-
+  DATA %>%
+  select(-where( ~ all(is.na(.)))) %>%
+  filter(`teilnahme[teilnahme]` == "Y")
+
+DATA <-
+  DATA[9:81] %>%
+  mutate(Nitem_CHECK = rowSums(!is.na(.))) %>%
+  filter(Nitem_CHECK > 0) %>%
+  filter(AB7 == 0) # exclude special education schools
+```
+
+```{r}
+item_wording <- c(
+  "I feel uneasy at the thought of having to supervise Student E on a trip to the museum",
+  "I feel uneasy at the thought of having to supervise Student E on a school trip lasting several days",
+  "I am confident that I can adequately supervise Student E during a trip to the museum",
+  "I am confident that I can adequately supervise Student E during a school trip lasting several days",
+  "For safety reasons, I would recommend that Student E does not take part in trips to the museum",
+  "For safety reasons, I would recommend that Student E does not take part in school trips lasting several days",
+  "I am uncomfortable with the idea of supervising Student E during physical activities (e.g., play, exercise, and sport)",
+  "I am confident that I can adequately supervise Student E during physical activities (e.g., play, exercise, and sport)",
+  "I am confident that I can create a safe play and exercise environment for Student E",
+  "For safety reasons, I would make sure that student E reduces physical activities and physical exertion (e.g., sports and exercise)",
+  "For safety reasons, I would recommend that Student E does not participate in ball sports (e.g., soccer, basketball, or volleyball)",
+  "I am confident that I can recognize an epileptic seizure in pupil E as such",
+  "I am confident that I can administer adequate first aid in the event of an epileptic seizure in Student E",
+  "I am confident that I can maintain the necessary calm and composure in the event of an epileptic seizure in Student E",
+  "I am confident that I can administer the emergency medication (liquid to drip into the mouth) according to the emergency plan in the event of an epileptic seizure in Student E",
+  "I am confident that I can adequately supervise the other classmates in the event of an epileptic seizure in Student E",
+  "I am confident that I can adequately continue the school day and lessons with the class after an epileptic seizure in Student E",
+  "I am confident that I can adequately respond to the questions, fears and concerns of the other classmates after an epileptic seizure in Student E",
+  "I am confident that I can respond adequately to the emotional needs of Student E after an epileptic seizure",
+  "I am confident that I can provide adequate care for Student E after the end of an epileptic seizure"
+)
+```
+
+```{r}
+item_ID <-
+  c(
+    "item_1", "item_2", "item_3", "item_4", "item_5", "item_6", "item_7", "item_8",
+    "item_9", "item_10", "item_11", "item_12", "item_13", "item_14", "item_15",   
+    "item_16", "item_17", "item_18", "item_19", "item_20", "item_21", "item_22",
+    "item_23", "item_24", "item_25", "item_26", "item_27", "item_28", "item_29",
+    "item_30"
+  )
+```
+
+# Correlation matrix
+
+```{r fig.width = 12, fig.height = 12}
+DAT <-
+  DATA[
+    c(paste0("SE",
+             c(1:8,14,9,15,12,13,10:11,16:20)),
+      paste0("VA",
+             c(1:5,10,6:9)))] %>% 
+  rename_with(~ item_ID)
+
+DAT %>%
+  rev() %>% 
+  cor(use = "pair") %>% 
+  mycorrr(lab = T, outline.color = "white") + 
+  theme(legend.title= element_blank())
+```
+
+# Scree plot & parallel analysis
+
+```{r}
+DAT <-
+  DAT %>%
+  select(!c("item_26", "item_7", "item_8", "item_9", "item_10", "item_11",
+         "item_12", "item_13", "item_14", "item_15"))
+
+DAT %>%
+  fa.parallel(fm = "ols", fa = "fa")
+```
+
+# 5 Factors
+
+```{r}
+desired_order <-
+  c(
+  "item_1", "item_2", "item_3", "item_4", "item_16",
+  "item_17", "item_18", "item_5", "item_6", "item_19",
+  "item_20", "item_21", "item_22", "item_23", "item_24",
+  "item_25", "item_27", "item_28", "item_29", "item_30"
+  )
+
+rot <- "oblimin"
+fam <- "ols"
+COR <- "cor"
+
+XXX <- "X"
+
+FA <-
+  fa(DAT, nfactors = 5, fm = fam, rotate = rot, cor = COR)$loadings
+
+cbind(FA[1:ncol(DAT),],
+      fa(DAT, nfactors = 5, fm = fam, rotate = rot, cor = COR)$complexity,
+      fa(DAT, nfactors = 5, fm = fam, rotate = rot, cor = COR)$communality) %>%  
+  data.frame() %>%
+  round(2) %>% 
+  mutate(item = names(DAT)) %>%
+  mutate(item_wording = item_wording) %>% 
+  rename_with(~str_replace_all(.x, XXX, "F")) %>%
+  arrange(match(item, desired_order)) %>%
+  select(F1, F5, F4, F3, F2, everything()) %>%
+  rename(F1 = 1, F2 = 2, F3 = 3, F4 = 4, F5 = 5, complexity = 6, communality = 7) %>%
+  gt() %>%
+  tab_options(table.align = "left") %>%
+  tab_footnote("highlighted in gray = factor loadings ≥ |0.30|") %>% 
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F1, rows = (F1 >= 0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F2, rows = (F2 >= 0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F3, rows = (F3 >= 0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F4, rows = (F4 >= 0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F5, rows = (F5 >= 0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F1, rows = (F1 <= -0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F2, rows = (F2 <= -0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F3, rows = (F3 <= -0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F4, rows = (F4 <= -0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F5, rows = (F5 <= -0.30)))
+
+PROP <-
+  fa(DAT, nfactors = 5, fm = fam, rotate = rot, cor = COR)$Vaccounted %>% round(2)
+
+PROP[, c(1, 5, 4, 3, 2)]
+```
+
+
+# 6 Factors
+
+```{r}
+FA <-
+  fa(DAT, nfactors = 6, fm = fam, rotate = rot, cor = COR)$loadings
+
+cbind(FA[1:ncol(DAT),],
+      fa(DAT, nfactors = 6, fm = fam, rotate = rot, cor = COR)$complexity,
+      fa(DAT, nfactors = 6, fm = fam, rotate = rot, cor = COR)$communality) %>% 
+  data.frame() %>%
+  round(2) %>% 
+  mutate(item = names(DAT)) %>%
+  mutate(item_wording = item_wording) %>% 
+  rename_with(~str_replace_all(.x, XXX, "F")) %>%
+  arrange(match(item, desired_order)) %>%
+  select(F1, F3, F5, F6, F4, F2, everything()) %>%
+  rename(F1 = 1, F2 = 2, F3 = 3, F4 = 4, F5 = 5, F6 = 6, complexity = 7, communality = 8) %>%
+  gt() %>%
+  tab_options(table.align = "left") %>%
+  tab_footnote("highlighted in gray = factor loadings ≥ |0.30|") %>% 
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F1, rows = (F1 >= 0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F2, rows = (F2 >= 0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F3, rows = (F3 >= 0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F4, rows = (F4 >= 0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F5, rows = (F5 >= 0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F6, rows = (F6 >= 0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F1, rows = (F1 <= -0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F2, rows = (F2 <= -0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F3, rows = (F3 <= -0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F4, rows = (F4 <= -0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F5, rows = (F5 <= -0.30))) %>%
+  tab_style(style = cell_fill(color = "gray"),
+            locations = cells_body(columns = F6, rows = (F6 <= -0.30)))
+
+PROP <-
+  fa(DAT, nfactors = 6, fm = fam, rotate = rot, cor = COR)$Vaccounted %>% round(2)
+
+PROP[, c(1, 3, 5, 6, 4, 2)]
+```
+
+# BIC for factor solutions
+
+```{r}
+data.frame(
+  c(fa(DAT, nfactors = 5, fm = fam, rotate = rot)$BIC,
+    fa(DAT, nfactors = 6, fm = fam, rotate = rot)$BIC)
+  ) %>%
+  rename("BIC" = 1) %>% 
+  round(2) %>%
+  add_column(Factors = 5:6, .before = "BIC") %>%
+  gt() %>%
+  tab_options(table.align = "left")
+```
+
+
+
+# Mean scale scores (6 Factors): correlation matrix
+
+```{r}
+DAT_COR <-
+  DAT %>%
+  rowwise() %>%
+  mutate(
+    `NAI-ST` = mean(c(item_1, item_2, abs(item_3 - 5), abs(item_4 - 5)), na.rm = TRUE),
+    `IRP-ST` = mean(c(item_5, item_6), na.rm = TRUE),
+    `NAI-PA` = mean(c(item_16, abs(item_17 - 5), abs(item_18 - 5)), na.rm = TRUE),
+    `IRP-PA` = mean(c(item_19, item_20), na.rm = TRUE),
+    CSFAS = mean(c(item_21, item_22, item_23, item_24), na.rm = TRUE),
+    CCMESS = mean(c(item_25, item_27, item_28, item_29, item_30), na.rm = TRUE)
+  ) %>%
+  ungroup()
+```
+
+```{r fig.width=5}
+FIG <- DAT_COR[c("NAI-ST", "IRP-ST", "NAI-PA", "IRP-PA", "CSFAS", "CCMESS")] %>%
+  rev() %>% 
+  cor(use = "pair") %>% 
+  mycorrr(lab = T, outline.color = "white") + 
+  theme(legend.title= element_blank()) 
+
+annotate_figure(FIG, bottom = text_grob("
+NAI-ST: Negative affect and insecurity (school trips)
+NAI-PA: Negative affect and insecurity (physical activities)
+IRP-ST: Intention to restrict participation (school trips)
+IRP-PA: Intention to restrict participation (physical activities)
+CSFAS: Confidence in seizure first aid skills
+CCMESS: Confidence in classroom management and emotional\nsupport skills", size = 10, x = 0.08, hjust = 0)
+)
+```
+
+
+# Mean scale scores (6 Factors): reliability (Cronbach's alpha)
+
+```{r}
+rbind(
+  alpha(DAT_COR[c("item_1", "item_2", "item_3", "item_4")], check.keys = TRUE)$total,
+  alpha(DAT_COR[c("item_5", "item_6")], check.keys = TRUE)$total,
+  alpha(DAT_COR[c("item_16", "item_17", "item_18")], check.keys = TRUE)$total,
+  alpha(DAT_COR[c("item_19", "item_20")], check.keys = TRUE)$total,
+  alpha(DAT_COR[c("item_21", "item_22", "item_23", "item_24")], check.keys = TRUE)$total,
+  alpha(DAT_COR[c("item_25", "item_27", "item_28", "item_29", "item_30")], check.keys = TRUE)$total
+) %>%
+  round(2) %>% 
+  cbind(c("NAI-ST", "IRP-ST", "NAI-PA", "IRP-PA", "CSFAS", "CCMESS"), .) %>%
+  rename("Scale" = 1) %>%
+  remove_rownames() %>%
+  select(c("Scale", "raw_alpha", "mean", "sd")) %>%
+  gt() %>%
+  tab_options(table.align = "left") 
+```
+
+# R session info
+
+```{r collapse=TRUE}
+session_info()
+```
+
+# References

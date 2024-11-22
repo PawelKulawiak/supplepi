@@ -1,0 +1,495 @@
+---
+title: "Supplement COR: Correlations (attitude scales, knowledge, experience, sociodemographic characteristics, and professional background)"
+date: today
+published-title: "last modified"
+author:
+    name: Pawel R. Kulawiak
+    orcid: 0000-0001-5939-4380
+    email: kulawiak@uni-potsdam.de
+format:
+  html:
+    title-block-banner: true
+    number-sections: true
+    embed-resources: true
+    page-layout: full
+    toc: true
+    toc-location: body
+    code-fold: true
+    html-table-processing: none
+execute: 
+  warning: false
+  message: false
+bibliography: packages.bib
+appendix-style: none
+notice: |
+  @R-base, @R-grid, @R-tidyverse, @R-gt, @R-readxl, @R-devtools, @R-knitr, @R-corrr, @R-ggcorrplot, @R-ggpubr
+---
+
+# R packages
+
+```{r}
+library(grid)
+library(tidyverse)
+library(ggcorrplot)
+library(ggpubr)
+library(gt)
+library(readxl)
+library(devtools)
+library(knitr)
+library(corrr)
+write_bib(file = "packages.bib")
+```
+
+# Adjusting function from ggcorrplot package
+
+```{r}
+mycorrr <-
+  function (corr, method = c("square", "circle"), type = c("full", 
+    "lower", "upper"), ggtheme = ggplot2::theme_minimal, title = "", 
+    show.legend = TRUE, legend.title = "Corr", show.diag = NULL, 
+    colors = c("blue", "white", "red"), outline.color = "gray", 
+    hc.order = FALSE, hc.method = "complete", lab = FALSE, lab_col = "black", 
+    lab_size = 4, p.mat = NULL, sig.level = 0.05, insig = c("pch", 
+        "blank"), pch = 4, pch.col = "black", pch.cex = 5, tl.cex = 12, 
+    tl.col = "black", tl.srt = 45, digits = 2, as.is = FALSE)
+  {
+    type <- match.arg(type)
+    method <- match.arg(method)
+    insig <- match.arg(insig)
+    if (is.null(show.diag)) {
+        if (type == "full") {
+            show.diag <- TRUE
+        }
+        else {
+            show.diag <- FALSE
+        }
+    }
+    if (inherits(corr, "cor_mat")) {
+        cor.mat <- corr
+        corr <- .tibble_to_matrix(cor.mat)
+        p.mat <- .tibble_to_matrix(attr(cor.mat, "pvalue"))
+    }
+    if (!is.matrix(corr) & !is.data.frame(corr)) {
+        stop("Need a matrix or data frame!")
+    }
+    corr <- as.matrix(corr)
+    corr <- base::round(x = corr, digits = digits)
+    if (hc.order) {
+        ord <- .hc_cormat_order(corr, hc.method = hc.method)
+        corr <- corr[ord, ord]
+        if (!is.null(p.mat)) {
+            p.mat <- p.mat[ord, ord]
+            p.mat <- base::round(x = p.mat, digits = digits)
+        }
+    }
+    if (!show.diag) {
+        corr <- .remove_diag(corr)
+        p.mat <- .remove_diag(p.mat)
+    }
+    if (type == "lower") {
+        corr <- .get_lower_tri(corr, show.diag)
+        p.mat <- .get_lower_tri(p.mat, show.diag)
+    }
+    else if (type == "upper") {
+        corr <- .get_upper_tri(corr, show.diag)
+        p.mat <- .get_upper_tri(p.mat, show.diag)
+    }
+    corr <- reshape2::melt(corr, na.rm = TRUE, as.is = as.is)
+    colnames(corr) <- c("Var1", "Var2", "value")
+    corr$pvalue <- rep(NA, nrow(corr))
+    corr$signif <- rep(NA, nrow(corr))
+    if (!is.null(p.mat)) {
+        p.mat <- reshape2::melt(p.mat, na.rm = TRUE)
+        corr$coef <- corr$value
+        corr$pvalue <- p.mat$value
+        corr$signif <- as.numeric(p.mat$value <= sig.level)
+        p.mat <- subset(p.mat, p.mat$value > sig.level)
+        if (insig == "blank") {
+            corr$value <- corr$value * corr$signif
+        }
+    }
+    corr$abs_corr <- abs(corr$value) * 10
+    p <- ggplot2::ggplot(data = corr, mapping = ggplot2::aes_string(x = "Var1", 
+        y = "Var2", fill = "value"))
+    if (method == "square") {
+        p <- p + ggplot2::geom_tile(color = outline.color)
+    }
+    else if (method == "circle") {
+        p <- p + ggplot2::geom_point(color = outline.color, shape = 21, 
+            ggplot2::aes_string(size = "abs_corr")) + ggplot2::scale_size(range = c(4, 
+            10)) + ggplot2::guides(size = "none")
+    }
+    p <- p + ggplot2::scale_fill_gradient2(low = colors[1], high = colors[3], 
+        mid = colors[2], midpoint = 0, limit = c(-1, 1), space = "Lab", 
+        name = legend.title)
+    if (class(ggtheme)[[1]] == "function") {
+        p <- p + ggtheme()
+    }
+    else if (class(ggtheme)[[1]] == "theme") {
+        p <- p + ggtheme
+    }
+    p <- p + ggplot2::theme(axis.text.x = ggplot2::element_text(angle = tl.srt, 
+        vjust = 1, size = tl.cex, hjust = 1), axis.text.y = ggplot2::element_text(size = tl.cex)) + 
+        ggplot2::coord_fixed()
+    label <- round(x = corr[, "value"], digits = digits) %>%
+      str_replace_all("\\b0(\\.\\d+)", "\\1") %>%
+      str_replace_all("(\\.\\d)\\b", "\\10")
+    if (!is.null(p.mat) & insig == "blank") {
+        ns <- corr$pvalue > sig.level
+        if (sum(ns) > 0) 
+            label[ns] <- " "
+    }
+    if (lab) {
+        p <- p + ggplot2::geom_text(mapping = ggplot2::aes_string(x = "Var1", 
+            y = "Var2"), label = label, color = lab_col, size = lab_size)
+    }
+    if (!is.null(p.mat) & insig == "pch") {
+        p <- p + ggplot2::geom_point(data = p.mat, mapping = ggplot2::aes_string(x = "Var1", 
+            y = "Var2"), shape = pch, size = pch.cex, color = pch.col)
+    }
+    if (title != "") {
+        p <- p + ggplot2::ggtitle(title)
+    }
+    if (!show.legend) {
+        p <- p + ggplot2::theme(legend.position = "none")
+    }
+    p <- p + .no_panel()
+    p
+  }
+
+.no_panel <- function() {
+  ggplot2::theme(
+    axis.title.x = ggplot2::element_blank(),
+    axis.title.y = ggplot2::element_blank()
+  )
+}
+```
+
+# Data import and manipulation
+
+```{r}
+DATA <- read_xlsx("SURVEY_DATA.xlsx")
+
+DATA <-
+  DATA %>%
+  select(-where( ~ all(is.na(.)))) %>%
+  filter(`teilnahme[teilnahme]` == "Y")
+
+DATA <-
+  DATA[9:81] %>%
+  mutate(Nitem_CHECK = rowSums(!is.na(.))) %>%
+  filter(Nitem_CHECK > 0) %>%
+  filter(AB7 == 0) %>% # exclude special education schools
+  mutate(AB12 = (AB12 - 6) %>% abs()) %>%
+  rename_with(~ stringr::str_replace_all(., "\\[", "_") %>%
+                 stringr::str_replace_all(., "\\]", "")) %>%
+  mutate(across(
+    c("AB6_1", "AB6_2", "AB6_3", "AB7", "AB8_1",
+      "AB8_3", "AB8_4", "AB8_5", "AB8_6", "AB8_7",
+      "AB8_8", "AB8_9", "AB9_1", "AB9_2", "AB9_3",
+      "AB9_4", "AB9_5"),
+    ~ ifelse(. == "Y", 1, 0))) %>%
+  mutate(across(
+    c("AB6_1", "AB6_2", "AB6_3", "AB7", "AB8_1",
+      "AB8_3", "AB8_4", "AB8_5", "AB8_6", "AB8_7",
+      "AB8_8", "AB8_9", "AB9_1", "AB9_2", "AB9_3",
+      "AB9_4", "AB9_5"),
+    ~ ifelse(is.na(.), 0, .)))
+```
+
+```{r}
+item_ID <-
+  c(
+    "item_1", "item_2", "item_3", "item_4", "item_5", "item_6", "item_7", "item_8",
+    "item_9", "item_10", "item_11", "item_12", "item_13", "item_14", "item_15",   
+    "item_16", "item_17", "item_18", "item_19", "item_20", "item_21", "item_22",
+    "item_23", "item_24", "item_25", "item_26", "item_27", "item_28", "item_29",
+    "item_30"
+  )
+```
+
+```{r}
+DAT <-
+  DATA[
+    c(paste0("SE",
+             c(1:8,14,9,15,12,13,10:11,16:20)),
+      paste0("VA",
+             c(1:5,10,6:9)))] %>% 
+  rename_with(~ item_ID)
+
+DAT_COR <- cbind(DAT, DATA[31:73])
+```
+
+```{r}
+DAT_COR <-
+  DAT_COR %>%
+  rowwise() %>%
+  mutate(
+    `NAI-ST` = mean(c(item_1, item_2, abs(item_3 - 5), abs(item_4 - 5)), na.rm = TRUE),
+    `IRP-ST` = mean(c(item_5, item_6), na.rm = TRUE),
+    `NAI-PA` = mean(c(item_16, abs(item_17 - 5), abs(item_18 - 5)), na.rm = TRUE),
+    `IRP-PA` = mean(c(item_19, item_20), na.rm = TRUE),
+    CSFAS = mean(c(item_21, item_22, item_23, item_24), na.rm = TRUE),
+    CCMESS = mean(c(item_25, item_27, item_28, item_29, item_30), na.rm = TRUE),
+    WA1 = (WA1 == 2) %>% as.numeric(), # "Notarzt nicht immer notwendig",
+    WA2 = (WA2 == 2) %>% as.numeric(), # "keinen Gegenstand in den Mund",
+    WA3 = (WA3 == 2) %>% as.numeric(), # "Mund nicht mit physischer Kraft öffnen",
+    WA4 = (WA4 == 2) %>% as.numeric(), # "nicht festhalten",
+    #WA5 = (WA5 == 2) %>% as.numeric(), # "nicht wachrütteln",
+    WA6 = (WA6 == 2) %>% as.numeric(), # "nicht mit Wasser bespritzen",
+    WA7 = (WA7 == 2) %>% as.numeric(), # "Notfallmedikament geben",
+    #WA8 = (WA8 == 2) %>% as.numeric(), # "keine Form von geistiger Beeinträchtigung",
+    #WA9 = (WA9 == 3) %>% as.numeric(), # "Hochbegabung",
+    #WA10 = (WA10 == 3) %>% as.numeric(), # "Lernschwächen",
+    #WA11 = (WA11 == 3) %>% as.numeric(), # "Aggression",
+    #WA12 = (WA12 == 3) %>% as.numeric(), # "Sozialekompetenzen",
+    WA13 = (WA13 == 2) %>% as.numeric(), # "Sport kein Auslöser",
+    WA14 = (WA14 == 2) %>% as.numeric(), # "Ballsport kein Verletzungsrisiko"
+  ) %>%
+  mutate(SED_INC = case_when(AB10 == 0 & AB11 == 0 ~ 0,
+                             AB10 == 1 & AB11 == 0 ~ 1,
+                             AB10 == 0 & AB11 == 1 ~ 1,
+                             AB10 == 1 & is.na(AB11) ~ 1,
+                             is.na(AB10) & AB11 == 1 ~ 1,
+                             AB10 == 1 & AB11 == 1 ~ 1,
+                             is.na(AB10) & is.na(AB11) ~ NA,
+                             AB10 == 0 & is.na(AB11) ~ NA,
+                             is.na(AB10) & AB11 == 0 ~ NA)) %>% 
+  select(c("WA1", "WA2", "WA3", "WA4", "WA6", "WA7",
+           "WA13", "WA14",
+           "AB0", "AB1", "AB2", "AB3", "AB4", "AB5", "AB6_1",
+           "AB9_1", "AB9_2", "AB9_3",
+           "AB9_4", "SED_INC", "AB12", "AB13", "AB14",
+           "AB15", "CCMESS", "CSFAS", "IRP-PA", "NAI-PA", "IRP-ST", "NAI-ST"))
+```
+
+# Correlation matrix (1)
+
+```{r, fig.width=10, fig.height=10}
+COR <-
+  DAT_COR %>%
+  correlate() %>% 
+  focus(!c(CCMESS, CSFAS, `IRP-PA`, `NAI-PA`, `IRP-ST`, `NAI-ST`)) %>%
+  as.data.frame()
+
+rownames(COR) <- c("CCMESS", "CSFAS", "IRP-PA", "NAI-PA", "IRP-ST", "NAI-ST")
+
+colnames(COR) <- 
+  c("term",
+    "seizure: emergency medical treatment not always necessary",
+    "during seizure: do not put anything in the mouth",
+    "during seizure: mouth should not be opened with physical force",
+    "during seizure: student should not be held down",
+    "seizure can not be stopped by splashing with cool water",
+    "teachers are allowed to administer emergency medication on their own", 
+    "physical activity and exertion are not considered to be major triggers for seizures",
+    "ball sports: risk of injury is not significantly higher (compared to non-sport activities)", 
+  "prior knowledge about epilepsy (self-rating)",
+  "currently teaching students with epilepsy",
+  "previously taught students with epilepsy",
+  "witnessed a student having an epileptic seizure",
+  "witnessed a person having an epileptic seizure",
+  "have or have had regular contact with people with epilepsy",
+  "elementary education teacher",
+  "school subject: German", 
+  "school subject: math",
+  "school subject: natural science",
+  "school subject: physical education",
+  "teacher training in special and/or inclusive education",
+  "attitude towards inclusive education",
+  "work experience as a teacher in years",
+  "age in years",
+  "sex: female")
+
+FIG <-
+  COR %>%
+  rev() %>%
+  arrange(-row_number()) %>%
+  mutate(term = NULL) %>%
+  mycorrr(lab = T, outline.color = "white") +
+  theme(legend.title = element_blank()) +
+  theme(legend.position = "top")
+
+annotate_figure(FIG,
+bottom = text_grob(
+"NAI-ST: Negative affect and insecurity (school trips)
+NAI-PA: Negative affect and insecurity (physical activities)
+IRP-ST: Intention to restrict participation (school trips)
+IRP-PA: Intention to restrict participation (physical activities)
+CSFAS: Confidence in seizure first aid skills
+CCMESS: Confidence in classroom management and emotional support skills",
+  size = 10, x = 0.41, hjust = 0),
+right = textGrob(label =
+              c("knowledge:\nseizure first aid & physical activity",
+                "|\n|",
+              "prior\nknowledge & experience",
+              "|\n|",
+              "professional background &\nsociodemographic characteristics"),
+    x = c(-1.2, -1.2, -1.2, -1.2, -1.2),  # Adjust these values as needed
+    y = c(0.8, 0.676,  0.588, 0.498, 0.35),  # Adjust these values as needed
+    rot = 270,
+    gp = gpar(fontsize = 10),
+    just = "center"))
+```
+
+# Correlation matrix (2)
+
+```{r, fig.width=10, fig.height=10}
+
+COR <-
+  DAT_COR %>%
+  select(!c(CCMESS, CSFAS, `IRP-PA`, `NAI-PA`, `IRP-ST`, `NAI-ST`)) %>%
+  correlate() %>% 
+  focus(c("AB0", "AB1", "AB2", "AB3", "AB4", "AB5", "AB6_1", 
+         "AB9_1", "AB9_2", "AB9_3", "AB9_4", "SED_INC", "AB12", 
+         "AB13", "AB14", "AB15")) %>%
+  as.data.frame()
+
+rownames(COR) <- c("seizure: emergency medical treatment not always necessary",
+    "during seizure: do not put anything in the mouth",
+    "during seizure: mouth should not be opened with physical force",
+    "during seizure: student should not be held down",
+    "seizure can not be stopped by splashing with cool water",
+    "teachers are allowed to administer emergency medication on their own", 
+    "physical activity and exertion are not considered to be major triggers for seizures",
+    "ball sports: risk of injury is not significantly higher (compared to non-sport activities)")
+
+colnames(COR) <- 
+  c("term",
+  "prior knowledge about epilepsy (self-rating)",
+  "currently teaching students with epilepsy",
+  "previously taught students with epilepsy",
+  "witnessed a student having an epileptic seizure",
+  "witnessed a person having an epileptic seizure",
+  "have or have had regular contact with people with epilepsy",
+  "elementary education teacher",
+  "school subject: German", 
+  "school subject: math",
+  "school subject: natural science",
+  "school subject: physical education",
+  "teacher training in special and/or inclusive education",
+  "attitude towards inclusive education",
+  "work experience as a teacher in years",
+  "age in years",
+  "sex: female")
+
+FIG <-
+  COR %>%
+  rev() %>%
+  #arrange(-row_number()) %>%
+  mutate(term = NULL) %>%
+  mycorrr(lab = T, outline.color = "white") +
+  theme(legend.title = element_blank()) +
+  theme(legend.position = "top")
+
+annotate_figure(FIG,
+    right = textGrob(label =
+              c("prior\nknowledge & experience",
+              "|\n|",
+              "professional background &\nsociodemographic characteristics"),
+    x = c(-2.9, -2.9, -2.9), # Adjust these values as needed
+    y = c(0.833, 0.747,  0.605), #0.498, 0.35),  # Adjust these values as needed
+    rot = 270,
+    gp = gpar(fontsize = 10),
+    just = "center"))
+```
+
+# Correlation matrix (3)
+
+```{r, fig.width=10, fig.height=10}
+
+COR <-
+  DAT_COR %>%
+  select(!c(CCMESS, CSFAS, `IRP-PA`, `NAI-PA`, `IRP-ST`, `NAI-ST`) &
+           c("AB0", "AB1", "AB2", "AB3", "AB4", "AB5", "AB6_1", 
+         "AB9_1", "AB9_2", "AB9_3", "AB9_4", "SED_INC", "AB12", 
+         "AB13", "AB14", "AB15")) %>%
+  correlate() %>% 
+  #focus(c("AB0", "AB1", "AB2", "AB3", "AB4", "AB5", "AB6_1", 
+  #       "AB9_1", "AB9_2", "AB9_3", "AB9_4", "SED_INC", "AB12", 
+  #       "AB13", "AB14", "AB15")) %>%
+  as.data.frame()
+
+rownames(COR) <-
+  c("prior knowledge about epilepsy (self-rating)",
+  "currently teaching students with epilepsy",
+  "previously taught students with epilepsy",
+  "witnessed a student having an epileptic seizure",
+  "witnessed a person having an epileptic seizure",
+  "have or have had regular contact with people with epilepsy",
+  "elementary education teacher",
+  "school subject: German", 
+  "school subject: math",
+  "school subject: natural science",
+  "school subject: physical education",
+  "teacher training in special and/or inclusive education",
+  "attitude towards inclusive education",
+  "work experience as a teacher in years",
+  "age in years",
+  "sex: female")
+
+colnames(COR) <- 
+  c("term",
+  "prior knowledge about epilepsy (self-rating)",
+  "currently teaching students with epilepsy",
+  "previously taught students with epilepsy",
+  "witnessed a student having an epileptic seizure",
+  "witnessed a person having an epileptic seizure",
+  "have or have had regular contact with people with epilepsy",
+  "elementary education teacher",
+  "school subject: German", 
+  "school subject: math",
+  "school subject: natural science",
+  "school subject: physical education",
+  "teacher training in special and/or inclusive education",
+  "attitude towards inclusive education",
+  "work experience as a teacher in years",
+  "age in years",
+  "sex: female")
+
+COR %>%
+  rev() %>%
+  #arrange(-row_number()) %>%
+  mutate(term = NULL) %>%
+  mycorrr(lab = T, outline.color = "white") +
+  theme(legend.title = element_blank()) +
+  theme(legend.position = "top")
+```
+
+# Elementary education vs. secondary education: contact with individuals with epilepsy 
+
+```{r}
+table(DATA$AB6_1, DATA$AB1,
+      dnn = c("elementary",
+              "currently teaching students with epilepsy")) %>%
+  prop.table(1) %>% round(2)
+
+table(DATA$AB6_1, DATA$AB2,
+      dnn = c("elementary",
+              "previously taught students with epilepsy")) %>%
+  prop.table(1) %>% round(2)
+
+table(DATA$AB6_1, DATA$AB3,
+      dnn = c("elementary",
+              "witnessed a student having an epileptic seizure")) %>%
+  prop.table(1) %>% round(2)
+
+table(DATA$AB6_1, DATA$AB4,
+      dnn = c("elementary",
+              "witnessed a person having an epileptic seizure")) %>%
+  prop.table(1) %>% round(2)
+
+table(DATA$AB6_1, DATA$AB5,
+      dnn = c("elementary",
+              "have or have had regular contact with people with epilepsy")) %>%
+  prop.table(1) %>% round(2)
+```
+
+
+# R session info
+
+```{r collapse=TRUE}
+session_info()
+```
+
+# References

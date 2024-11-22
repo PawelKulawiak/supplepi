@@ -1,0 +1,235 @@
+---
+title: "Supplement TK: Teachers’ knowledge about epilepsy"
+date: today
+published-title: "last modified"
+author:
+    name: Pawel R. Kulawiak
+    orcid: 0000-0001-5939-4380
+    email: kulawiak@uni-potsdam.de
+format:
+  html:
+    title-block-banner: true
+    number-sections: true
+    embed-resources: true
+    page-layout: full
+    toc: true
+    toc-location: body
+    code-fold: true
+    html-table-processing: none
+execute: 
+  warning: false
+  message: false
+bibliography: packages.bib
+appendix-style: none
+notice: |
+  @R-base, @R-tidyverse, @R-gt, @R-gtExtras, @R-readxl, @R-devtools, @R-knitr
+---
+
+# R packages
+
+```{r}
+library(tidyverse)
+library(gt)
+library(gtExtras)
+library(readxl)
+library(devtools)
+library(knitr)
+write_bib(file = "packages.bib")
+```
+
+# Data import and manipulation
+
+```{r}
+DATA <- read_xlsx("SURVEY_DATA.xlsx")
+
+DATA <-
+  DATA %>%
+  select(-where( ~ all(is.na(.)))) %>%
+  filter(`teilnahme[teilnahme]` == "Y")
+
+DATA <-
+  DATA[9:81] %>%
+  mutate(NA_CHECK = rowSums(!is.na(.))) %>%
+  filter(NA_CHECK > 0) %>%
+  filter(AB7 == 0) # exclude special education schools
+```
+
+# Custom functions
+
+```{r}
+overview_item <- function(item) {
+  
+  TAB <-
+    DATA %>%
+    select({{item}}) %>%
+    table()
+  
+  t1 <-
+    TAB %>% 
+    tibble(1:length(.),.) %>%
+    rename("answer" = 1, "n" = 2) %>% 
+    mutate(var = if_else(answer == max(answer), "correct",
+                         c("wrong1", "wrong2", "wrong3")[1:length(TAB)])) %>%
+    t() %>% 
+    as.data.frame()  %>%
+    set_names(slice(., n())) %>% 
+    slice_tail(n = -1) %>% 
+    slice_head(n = -1) %>%
+    mutate_all(as.numeric) %>%
+    mutate(total = rowSums(select(., where(is.numeric))), .before = 1) %>%
+    mutate(list_plot = (correct / total * 100) %>% round(1)) %>%
+    mutate(across(!c(list_plot), ~
+                    paste0(., "<br>(", (. / total * 100) %>% round(1), "%)"), .names = "{.col}"))
+  
+  t1 
+}
+```
+
+
+# Table: Teachers’ knowledge about epilepsy
+
+```{r}
+
+knowledge <-
+  rbind(
+    c("Epilepsy is ... intellectual impairment",
+      "...a form of...", NA, "...not a form of..."),
+    c(
+      "Giftedness is ... in students like Student E (compared to students without epilepsy)",
+      "...particularly rare...", "...particularly common...",
+      "...neither particularly rare nor particularly common..."),
+    c(
+      "Learning disabilities are ... in students like Student E (compared to students without epilepsy)",
+      "...particularly rare...", "...particularly common...",
+      "...neither particularly rare nor particularly common..."
+    ),
+    c(
+      "In general, students like Student E have ... potential of aggression
+      (compared to students without epilepsy)",
+      "...a higher...", "...a lower...", "...neither a higher nor a lower..."
+    ),
+    c(
+      "In general, students like Student E have ... level of social skills
+      (compared to students without epilepsy)",
+      "...a higher...", "...a lower...", "...neither a higher nor a lower..."
+    ),
+    c(
+      "Physical activity and physical exertion (e.g., sport and exercise) are ... major
+      triggers for epileptic seizures in students with epilepsy",
+      "...considered to be...", NA, "...not considered to be..."
+    ),
+    c(
+      "In most ball sports (e.g., soccer, basketball, or volleyball), the risk of
+      injury for students with epilepsy is ... (compared to non-sport activities)",
+      "...significantly higher...", NA, "...not significantly higher..."
+    ),
+    c(
+      "Emergency medical treatment is ... if a student has a seizure",
+      "...always necessary...", NA, "...not always necessary..."
+    ),
+    c(
+      "During a seizure of a student, an object should ... be placed
+      between the teeth of the affected student (e.g., rubber bite block)",
+      "...in any case...", NA, "...under no circumstances..."
+    ), 
+    c(
+      "If a student has difficulty breathing during a seizure,
+      the mouth should ... be opened with physical force during the seizure",
+      "...in any case...", NA, "...not..."
+    ),
+    c(
+      "During a seizure with twitching of the limbs, the affected
+      student should ... be held down (e.g., by the arms and legs)",
+      "...in any case...", NA, "...not..."
+    ),
+    c(
+      "A seizure in a student can ... be stopped by speaking loudly and shaking the student awake",
+      "...very often...", NA, "...not..."
+    ),
+    c(
+      "A seizure in a student can ... be stopped by splashing the student with cool water",
+      "...very often...", NA,  "...not..."
+    ),
+    c(
+      "In the event of a seizure, teachers may ... administer the relevant emergency medication
+      (liquid to be dripped into the mouth) to a student on their own",
+      "...under no circumstances...", NA, "...in accordance with the emergency plan..."
+      )
+  ) %>%
+  as.data.frame() %>%
+  setNames(c("item", "W1", "W2", "C"))
+```
+
+
+```{r}
+bind_rows(
+  overview_item(WA8),
+  overview_item(WA9),
+  overview_item(WA10) %>% rename(wrong2 = wrong1),
+  overview_item(WA11),
+  overview_item(WA12),
+  overview_item(WA13),
+  overview_item(WA14),
+  overview_item(WA1),
+  overview_item(WA2),
+  overview_item(WA3),
+  overview_item(WA4),
+  overview_item(WA5),
+  overview_item(WA6),
+  overview_item(WA7)
+) %>%
+  relocate(total, wrong1, wrong2, correct, list_plot) %>%
+  cbind(knowledge, .) %>% 
+  gt() %>%
+  cols_align("left") %>%
+  cols_label(
+    wrong1 = html("<center>(1)</center>wrong"),
+    wrong2 = html("<center>(2)</center>wrong"),
+    correct = html("<center>(3)</center>correct"),
+    W1 = html("(1)<br>wrong"),
+    W2 = html("(2)<br>wrong"),
+    C = html("(3)<br>correct"),
+    list_plot = html("bar plot correct")
+  ) %>%
+  tab_spanner(label = md("*answers*"), columns = c(wrong1, wrong2, correct)) %>%
+  tab_spanner(label = md("*answer options*"), columns = c(W1, W2, C)) %>%
+  gt_plt_bar_pct(
+    column = list_plot,
+    scaled = T,
+    labels = TRUE,
+    fill = "black",
+    width = 100,
+    height = 30,
+    font_size = "12px"
+  ) %>%
+  fmt_markdown(columns = -last_col()) %>% 
+  tab_style(style = cell_text(weight = "bold", style = "italic"),
+            locations = cells_column_labels()) %>%
+  tab_style(style = cell_text(style = "italic"),
+            locations = cells_footnotes())  %>%
+  tab_footnote(
+    footnote = "Student E = Student with epilepsy"
+  ) %>%
+  tab_row_group(label = md("*seizure first aid (specifically addressing tonic-clonic seizures)*"), rows = 8:14) %>%
+  tab_row_group(label = md("*physical activity*"), rows = 6:7) %>%
+  tab_row_group(label = md("*social integration/behavior*"), rows = 4:5) %>%
+  tab_row_group(label = md("*learning/instruction*"), rows = 1:3) %>%
+  tab_options(column_labels.background.color = "gray95",
+              footnotes.background.color = "gray95") %>%
+  tab_style(style = cell_fill(color = "gray95"), locations = cells_row_groups(groups = everything())) %>%
+  tab_options(table.align = "left") %>%
+  sub_missing(missing_text = "") %>%
+  cols_width(C ~ pct(14)) %>%
+  cols_width(W1 ~ pct(14)) %>%
+  cols_width(W2 ~ pct(14)) %>%
+  cols_align(align = "center", columns = c("C", "W1", "W2", "list_plot"))
+```
+
+
+# R session info
+
+```{r collapse=TRUE}
+session_info()
+```
+
+# References

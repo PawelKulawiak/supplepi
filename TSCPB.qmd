@@ -1,0 +1,467 @@
+---
+title: "Supplement TSCPB: Teachers’ sociodemographic characteristics and professional background"
+date: today
+published-title: "last modified"
+author:
+    name: Pawel R. Kulawiak
+    orcid: 0000-0001-5939-4380
+    email: kulawiak@uni-potsdam.de
+format:
+  html:
+    title-block-banner: true
+    number-sections: true
+    embed-resources: true
+    page-layout: full
+    toc: true
+    toc-location: body
+    code-fold: true
+    html-table-processing: none
+execute: 
+  warning: false
+  message: false
+bibliography: packages.bib
+appendix-style: none
+notice: |
+  @R-base, @R-tidyverse, @R-gt, @R-readxl, @R-gtExtras, @R-devtools, @R-knitr
+---
+
+# R packages
+
+```{r}
+library(tidyverse)
+library(gt)
+library(readxl)
+library(gtExtras)
+library(devtools)
+library(knitr)
+write_bib(file = "packages.bib")
+```
+
+# Data import and manipulation
+
+```{r}
+DATA <- read_xlsx("SURVEY_DATA.xlsx")
+
+DATA <-
+  DATA %>%
+  select(-where( ~ all(is.na(.)))) %>%
+  filter(`teilnahme[teilnahme]` == "Y")
+
+DATA <-
+  DATA[9:81] %>%
+  mutate(NA_CHECK = rowSums(!is.na(.))) %>%
+  filter(NA_CHECK > 0) %>%
+  filter(AB7 == 0) %>% # exclude special education schools
+  mutate(SED_INC = case_when(AB10 == 0 & AB11 == 0 ~ 0,
+                             AB10 == 1 & AB11 == 0 ~ 1,
+                             AB10 == 0 & AB11 == 1 ~ 2,
+                             AB10 == 1 & is.na(AB11) ~ 1,
+                             is.na(AB10) & AB11 == 1 ~ 2,
+                             AB10 == 1 & AB11 == 1 ~ 3,
+                             is.na(AB10) & is.na(AB11) ~ NA,
+                             AB10 == 0 & is.na(AB11) ~ NA,
+                             is.na(AB10) & AB11 == 0 ~ NA)) %>%
+  rename_with(~ stringr::str_replace_all(., "\\[", "_") %>%
+                 stringr::str_replace_all(., "\\]", ""))
+```
+
+# Custom functions
+
+```{r}
+describe <-
+  function(var) {
+    DATA %>%
+      group_by({{var}}) %>%
+      reframe(n = n()) %>%
+      rename(V1 = names(.)[1]) %>% 
+      mutate(percent = (n / sum(n))) %>%
+      mutate(INDEX = n) %>%
+      mutate(percent = (percent*100) %>% round(1)) %>%
+      relocate(percent, .after = last_col()) %>%
+      mutate(n = NULL)
+  }
+
+school_subject <-
+  function(var) {
+    DATA %>%
+      group_by({{var}}) %>%
+      reframe(n = n()) %>%
+      rename(V1 = names(.)[1]) %>% 
+      mutate(percent = (n / sum(n))) %>%
+      mutate(INDEX = n) %>%
+      mutate(percent = (percent*100) %>% round(1)) %>%
+      relocate(percent, .after = last_col()) %>%
+      mutate(n = NULL) %>%
+      na.omit()
+  }
+
+```
+
+# Official school statistics (German Federal Statistical Office)
+
+::: {.callout-note}
+## Statistisches Bundesamt: Statistischer Bericht (Allgemeinbildende Schulen)													
+
+- Schuljahr 2022/2023													
+- EVAS-Nummer 21111													
+- Ergänzung zur Datenbank GENESIS-Online
+- Erschienen am 29. September 2023
+- korrigiert am 04. Dezember 2023 (Tab. 21111-16 und csv-21111-16 für Bremen und Deutschland)
+- Data file:
+- <https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bildung-Forschung-Kultur/Schulen/Publikationen/Downloads-Schulen/statistischer-bericht-allgemeinbildende-schulen-2110100237005.xlsx?__blob=publicationFile>
+- <https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bildung-Forschung-Kultur/Schulen/Publikationen/_publikationen-innen-schulen-allgemeinbildende.html>
+:::
+
+
+```{r}
+OSS <- # official school statistics
+  read_xlsx("statistischer-bericht-allgemeinbildende-schulen-2110100237005.xlsx", sheet = "csv-21111-21")
+```
+
+```{r}
+SEX_OSS <-
+  OSS %>%
+  filter(Bundesland == "Niedersachsen") %>% 
+  filter(Altersgruppe == "Insgesamt") %>%
+  filter(Beschaeftigungsumfang == "Voll- und Teilzeitbeschäftigte") %>%
+  filter(Schulart == "Grundschulen" |
+           Schulart == "Hauptschulen" |
+           Schulart == "Schularten mit mehreren Bildungsgängen" |
+           Schulart == "Realschulen" |
+           Schulart == "Gymnasien" |
+           Schulart == "Integrierte Gesamtschulen") %>%
+  filter(Geschlecht != "Insgesamt") %>%
+  group_by(Geschlecht) %>%
+  reframe(n_sex = sum(Lehrkraefte_Anzahl)) %>%
+  mutate(n_percent = (n_sex / sum(n_sex)) * 100)
+```
+
+```{r}
+AGE_OSS <-
+  OSS %>%
+  filter(Bundesland == "Niedersachsen") %>% 
+  filter(Altersgruppe != "Insgesamt") %>%
+  filter(Beschaeftigungsumfang == "Voll- und Teilzeitbeschäftigte") %>%
+  filter(Schulart == "Grundschulen" |
+           Schulart == "Hauptschulen" |
+           Schulart == "Schularten mit mehreren Bildungsgängen" |
+           Schulart == "Realschulen" |
+           Schulart == "Gymnasien" |
+           Schulart == "Integrierte Gesamtschulen") %>%
+  filter(Geschlecht == "Insgesamt") %>%
+  mutate(Altersgruppe = case_when(
+    Altersgruppe %in% c("unter 30", "30-35") ~ "<34",
+    Altersgruppe %in% c("35-40", "40-45") ~ "35-44",
+    Altersgruppe %in% c("45-50", "50-55") ~ "45-54",
+    Altersgruppe %in% c("55-60", "60-65", "65 und älter") ~ ">54") %>% as_factor()) %>%
+  group_by(Altersgruppe) %>%
+  reframe(n_age = sum(Lehrkraefte_Anzahl)) %>%
+  mutate(n_percent = (n_age / sum(n_age)) * 100)
+```
+
+# Table: Teachers' sociodemographic characteristics
+
+```{r}
+NAMES_1 <-
+  c("26-35", "36-45", "46-55", ">55",
+    "male", "female", "prefer not to say", "missing value")
+
+INDEX_2 <-
+  c(AGE_OSS$n_age, SEX_OSS$n_sex, 0, 0)
+
+percent_2 <-
+  c(AGE_OSS$n_percent, SEX_OSS$n_percent, 0, 0)
+
+rbind(
+  describe(AB14), # age
+  describe(AB15)  # sex
+  ) %>%
+  mutate(V1 = NAMES_1) %>% 
+  mutate(INDEX_2 = INDEX_2) %>%
+  mutate(percent_2 = percent_2) %>%
+  gt() %>%
+  gt_plt_bar_pct(column = percent,
+                 scaled = T,
+                 labels = TRUE,
+                 fill = "black",
+                 width = 100,
+                 height = 20,
+                 label_cutoff = 0.5,
+                 font_size = "12px") %>%
+  gt_plt_bar_pct(column = percent_2,
+                 scaled = T,
+                 labels = TRUE,
+                 fill = "black",
+                 width = 100,
+                 height = 20,
+                 label_cutoff = 0.5,
+                 font_size = "12px") %>% 
+  cols_align("left") %>%
+  cols_label(V1 = "",
+             INDEX = md("***N***"),
+             percent = md("***%***"),
+             INDEX_2 = md("***N***"),
+             percent_2 = md("***%***")) %>%
+  tab_row_group(label = md("*sex*"), rows = 5:8) %>%
+  tab_row_group(label = md("*age in years^2^*"), rows = 1:4) %>%
+  tab_style(style = list(cell_text(indent = pct(10))), locations = cells_body(columns = V1)) %>% 
+  tab_options(column_labels.background.color = "gray95",
+              footnotes.background.color = "gray95") %>%
+  tab_style(style = cell_fill(color = "gray95"), locations = cells_row_groups(groups = everything())) %>%
+  tab_spanner(label = md("*teacher<br>survey*"), columns = c(INDEX, percent)) %>%
+  tab_spanner(label = md("*official<br>school statistics^1^*"), columns = c(INDEX_2, percent_2)) %>%
+  tab_footnote(md("^1^*German Federal Statistical Office (EVAS-Number 21111):<br>
+                  Official school statistics for Lower Saxony (school year 2022/2023)<br>
+                  ^2^Age brackets used in this table are based on the teacher survey<br>
+                  and differ slightly from those used in official school statistics:<br>
+                  <34, 35-44, 45-54, >54*")) %>%
+  cols_align(align = "center", columns = starts_with("per")) %>%
+  cols_align(align = "right", columns = starts_with("IND")) %>%
+  cols_width(starts_with("V1") ~ pct(33)) %>%
+  tab_options(table.align = "left")
+```
+
+# Table: Teachers' professional background
+
+```{r}
+NAMES <-
+  c("1-4 elementary education", "5-10 lower secondary education", "11-13 upper secondary education",
+    "no", "special education", "inclusive education", "special and inclusive", "missing value",
+    "<1", "1-2", "3-5", "6-10", "11-20", "21-30", "31-40",
+    "German", "math", "natural science", "physical education", "other subjects",
+    paste0(5:1, c(" very positive", "", "", "", " very negative")), "missing value")
+
+rbind(
+  school_subject(AB6_1), # grade 1-4
+  school_subject(AB6_2), # grade 5-10
+  school_subject(AB6_3), # grade 11-13
+  describe(SED_INC), # teacher training
+  describe(AB13), # Work experience as a teacher
+  school_subject(AB9_1), # German
+  school_subject(AB9_2), # math
+  school_subject(AB9_3), # natural science
+  school_subject(AB9_4), # physical education
+  school_subject(AB9_5), # other subjects
+  describe((AB12 - 6) %>% abs()) # attitude towards inclusive education
+) %>%
+  mutate(V1 = NAMES) %>% 
+  gt() %>%
+  gt_plt_bar_pct(column = percent,
+                 scaled = T,
+                 labels = TRUE,
+                 fill = "black",
+                 width = 100,
+                 height = 20,
+                 label_cutoff = 0.5,
+                 font_size = "12px") %>% 
+  cols_align("left") %>%
+  cols_label(V1 = "",
+             INDEX = md("***N***"),
+             percent = md("***%***")) %>%
+  tab_row_group(label = md("*attitude towards inclusive education^1^*"), rows = 21:26) %>%
+  tab_row_group(label = md("*teaching... (multiple answers possible)*"), rows = 16:20) %>%
+  tab_row_group(label = md("*work experience as a teacher in years*"), rows = 9:15) %>%
+  tab_row_group(label = md("*teacher training in special or inclusive education*"), rows = 4:8) %>%
+  tab_row_group(label = md("*teaching in grades... (multiple answers possible)*"), rows = 1:3) %>%
+  tab_style(style = list(cell_text(indent = pct(5))), locations = cells_body(columns = V1)) %>% 
+  tab_options(column_labels.background.color = "gray95",
+  footnotes.background.color = "gray95") %>%
+  tab_style(style = cell_fill(color = "gray95"), locations = cells_row_groups(groups = everything())) %>%
+  cols_align(align = "center", columns = starts_with("percent")) %>%
+  cols_align(align = "right", columns = starts_with("INDEX")) %>%
+  cols_width(starts_with("V1") ~ pct(66)) %>%
+  tab_options(table.align = "left") %>%
+  tab_options(table.align = "left") %>%
+  tab_footnote(md('^1^*The scoring of the rating scale has been reversed.
+                   Scoring used<br>in the teacher survey:
+                   1 = "very positive" and 5 = "very negative"*'))
+```
+
+## Elementary school teachers in Lower Saxony (official school statistics)
+
+```{r}
+OSS %>%
+  filter(Bundesland == "Niedersachsen") %>% 
+  filter(Altersgruppe == "Insgesamt") %>%
+  filter(Beschaeftigungsumfang == "Voll- und Teilzeitbeschäftigte") %>%
+  filter(Schulart == "Grundschulen" |
+           Schulart == "Hauptschulen" |
+           Schulart == "Schularten mit mehreren Bildungsgängen" |
+           Schulart == "Realschulen" |
+           Schulart == "Gymnasien" |
+           Schulart == "Integrierte Gesamtschulen") %>%
+  filter(Geschlecht == "Insgesamt") %>%
+  group_by(Schulart) %>%
+  reframe(n = sum(Lehrkraefte_Anzahl)) %>%
+  mutate(percent = ((n / sum(n)) * 100) %>% round(1)) %>%
+  gt() %>% 
+  tab_footnote("Grundschulen = Elementary schools") %>%
+  tab_options(table.align = "left")
+```
+
+## Sex (elementary education vs. secondary education)
+
+```{r}
+DATA %>%
+  filter(AB6_1 == "Y") %>% 
+  group_by(AB15) %>%
+  reframe(n = n()) %>%
+  mutate(percent = ((n / sum(n)) * 100) %>% round(1)) %>%
+  mutate(AB15 = case_when(AB15 == 1 ~ "male", AB15 == 2 ~ "female", AB15 == 4 ~  "prefer not to say")) %>%  
+  gt() %>%
+  tab_header("elementary education (teacher survey)") %>%
+  tab_options(table.align = "left")
+
+DATA %>%
+  filter(AB6_2 == "Y" | AB6_3 == "Y") %>% 
+  group_by(AB15) %>%
+  reframe(n = n()) %>%
+  mutate(percent = ((n / sum(n)) * 100) %>% round(1)) %>%
+  mutate(AB15 = case_when(AB15 == 1 ~ "male", AB15 == 2 ~ "female", AB15 == 4 ~  "prefer not to say")) %>%  
+  gt() %>%
+  tab_header("secondary education (teacher survey)") %>%
+  tab_options(table.align = "left")
+```
+
+```{r}
+OSS %>%
+  filter(Bundesland == "Niedersachsen") %>% 
+  filter(Altersgruppe == "Insgesamt") %>%
+  filter(Beschaeftigungsumfang == "Voll- und Teilzeitbeschäftigte") %>%
+  filter(Schulart == "Grundschulen") %>%
+  filter(Geschlecht != "Insgesamt") %>%
+  group_by(Geschlecht) %>%
+  reframe(n = sum(Lehrkraefte_Anzahl)) %>%
+  mutate(percent = ((n / sum(n)) * 100) %>% round(1)) %>%
+  gt() %>%
+  tab_header("elementary education (official school statistics)") %>% 
+  tab_footnote(md("männlich = male<br>weiblich = female")) %>%
+  tab_options(table.align = "left")
+
+OSS %>%
+  filter(Bundesland == "Niedersachsen") %>% 
+  filter(Altersgruppe == "Insgesamt") %>%
+  filter(Beschaeftigungsumfang == "Voll- und Teilzeitbeschäftigte") %>%
+  filter(Schulart == "Hauptschulen" |
+           Schulart == "Schularten mit mehreren Bildungsgängen" |
+           Schulart == "Realschulen" |
+           Schulart == "Gymnasien" |
+           Schulart == "Integrierte Gesamtschulen") %>%
+  filter(Geschlecht != "Insgesamt") %>% 
+  group_by(Schulart) %>%
+  mutate(total_within_schulart = sum(Lehrkraefte_Anzahl)) %>% 
+  ungroup() %>% 
+  group_by(Schulart, Geschlecht) %>%
+  reframe(n = sum(Lehrkraefte_Anzahl),
+          total = total_within_schulart) %>%
+  mutate(percent = ((n / total) * 100) %>% round(1)) %>%
+  gt() %>%
+  tab_header("secondary education (official school statistics)") %>% 
+  tab_footnote(md("männlich = male<br>weiblich = female")) %>%
+  tab_options(table.align = "left")
+
+OSS %>%
+  filter(Bundesland == "Niedersachsen") %>% 
+  filter(Altersgruppe == "Insgesamt") %>%
+  filter(Beschaeftigungsumfang == "Voll- und Teilzeitbeschäftigte") %>%
+  filter(Schulart == "Hauptschulen" |
+           Schulart == "Schularten mit mehreren Bildungsgängen" |
+           Schulart == "Realschulen" |
+           Schulart == "Gymnasien" |
+           Schulart == "Integrierte Gesamtschulen") %>%
+  filter(Geschlecht != "Insgesamt") %>% 
+  mutate(Schulart = fct_collapse(Schulart, secondary =
+                                   c("Hauptschulen",
+                                     "Schularten mit mehreren Bildungsgängen",
+                                     "Realschulen",
+                                     "Gymnasien",
+                                     "Integrierte Gesamtschulen"))) %>%
+  group_by(Schulart, Geschlecht) %>%
+  reframe(n = sum(Lehrkraefte_Anzahl)) %>%
+  mutate(percent = ((n / sum(n)) * 100) %>% round(1)) %>%
+  gt() %>%
+  tab_header("secondary education (official school statistics)") %>% 
+  tab_footnote(md("männlich = male<br>weiblich = female")) %>%
+  tab_options(table.align = "left")
+```
+
+## Age (elementary education vs. secondary education)
+
+```{r}
+DATA %>%
+  filter(AB6_1 == "Y") %>% 
+  group_by(AB14) %>%
+  reframe(n = n()) %>%
+  mutate(percent = ((n / sum(n)) * 100) %>% round(1)) %>%
+  mutate(AB14 = c("26-35", "36-45", "46-55", ">55")) %>% 
+  gt() %>%
+  tab_header("elementary education (teacher survey)") %>%
+  tab_options(table.align = "left")
+
+DATA %>%
+  filter(AB6_2 == "Y" | AB6_3 == "Y") %>% 
+  group_by(AB14) %>%
+  reframe(n = n()) %>%
+  mutate(percent = ((n / sum(n)) * 100) %>% round(1)) %>%
+  mutate(AB14 = c("26-35", "36-45", "46-55", ">55")) %>% 
+  gt() %>%
+  tab_header("secondary education (teacher survey)") %>%
+  tab_options(table.align = "left")
+```
+
+```{r}
+OSS %>%
+  filter(Bundesland == "Niedersachsen") %>% 
+  filter(Altersgruppe != "Insgesamt") %>%
+  filter(Beschaeftigungsumfang == "Voll- und Teilzeitbeschäftigte") %>%
+  filter(Schulart == "Grundschulen") %>%
+  filter(Geschlecht == "Insgesamt") %>%
+  mutate(Altersgruppe = case_when(
+    Altersgruppe %in% c("unter 30", "30-35") ~ "<34",
+    Altersgruppe %in% c("35-40", "40-45") ~ "35-44",
+    Altersgruppe %in% c("45-50", "50-55") ~ "45-54",
+    Altersgruppe %in% c("55-60", "60-65", "65 und älter") ~ ">54") %>% as_factor()) %>%
+  group_by(Altersgruppe) %>%
+  reframe(n = sum(Lehrkraefte_Anzahl)) %>%
+  mutate(percent = ((n / sum(n)) * 100) %>% round(1)) %>%
+  gt() %>%
+  tab_header("elementary education (official school statistics)") %>%
+  tab_options(table.align = "left")
+
+OSS %>%
+  filter(Bundesland == "Niedersachsen") %>% 
+  filter(Altersgruppe != "Insgesamt") %>%
+  filter(Beschaeftigungsumfang == "Voll- und Teilzeitbeschäftigte") %>%
+  filter(Schulart == "Hauptschulen" |
+           Schulart == "Schularten mit mehreren Bildungsgängen" |
+           Schulart == "Realschulen" |
+           Schulart == "Gymnasien" |
+           Schulart == "Integrierte Gesamtschulen") %>%
+  filter(Geschlecht != "Insgesamt") %>% 
+  mutate(Schulart = fct_collapse(Schulart, secondary =
+                                   c("Hauptschulen",
+                                     "Schularten mit mehreren Bildungsgängen",
+                                     "Realschulen",
+                                     "Gymnasien",
+                                     "Integrierte Gesamtschulen"))) %>%
+  
+  mutate(Altersgruppe = case_when(
+    Altersgruppe %in% c("unter 30", "30-35") ~ "<34",
+    Altersgruppe %in% c("35-40", "40-45") ~ "35-44",
+    Altersgruppe %in% c("45-50", "50-55") ~ "45-54",
+    Altersgruppe %in% c("55-60", "60-65", "65 und älter") ~ ">54") %>% as_factor()) %>%
+  group_by(Schulart, Altersgruppe) %>%
+  reframe(n = sum(Lehrkraefte_Anzahl)) %>%
+  mutate(percent = ((n / sum(n)) * 100) %>% round(1)) %>%
+  gt() %>%
+  tab_header("secondary education (official school statistics)") %>%
+  tab_options(table.align = "left")
+```
+
+# R session info
+
+```{r collapse=TRUE}
+session_info()
+```
+
+# References 

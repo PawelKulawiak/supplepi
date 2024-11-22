@@ -1,0 +1,86 @@
+---
+title: "Supplement MISS: Missing values"
+date: today
+published-title: "last modified"
+author:
+    name: Pawel R. Kulawiak
+    orcid: 0000-0001-5939-4380
+    email: kulawiak@uni-potsdam.de
+format:
+  html:
+    title-block-banner: true
+    number-sections: true
+    embed-resources: true
+    page-layout: full
+    toc: true
+    toc-location: body
+    code-fold: true
+    html-table-processing: none
+execute: 
+  warning: false
+  message: false
+bibliography: packages.bib
+appendix-style: none
+notice: |
+  @R-base, @R-tidyverse, @R-readxl, @R-devtools, @R-knitr, @R-naniar
+---
+
+# R packages
+
+```{r}
+library(tidyverse)
+library(naniar)
+library(readxl)
+library(devtools)
+library(knitr)
+write_bib(file = "packages.bib")
+```
+
+# Data import and manipulation
+
+```{r}
+DATA <- read_xlsx("SURVEY_DATA.xlsx")
+
+DATA <-
+  DATA %>%
+  select(-where( ~ all(is.na(.)))) %>%
+  filter(`teilnahme[teilnahme]` == "Y")
+
+DATA <-
+  DATA[9:81] %>%
+  mutate(NA_CHECK = rowSums(!is.na(.))) %>%
+  filter(NA_CHECK > 0) %>%
+  filter(AB7 == 0) %>% # exclude special education schools
+  mutate(AB12 = (AB12 - 6) %>% abs()) %>%
+  rename_with(~ stringr::str_replace_all(., "\\[", "_") %>%
+                 stringr::str_replace_all(., "\\]", "")) %>%
+  mutate(across(
+    c("AB6_1", "AB6_2", "AB6_3", "AB7", "AB8_1",
+      "AB8_3", "AB8_4", "AB8_5", "AB8_6", "AB8_7",
+      "AB8_8", "AB8_9", "AB9_1", "AB9_2", "AB9_3",
+      "AB9_4", "AB9_5"),
+    ~ ifelse(. == "Y", 1, 0))) %>%
+  mutate(across(
+    c("AB6_1", "AB6_2", "AB6_3", "AB7", "AB8_1",
+      "AB8_3", "AB8_4", "AB8_5", "AB8_6", "AB8_7",
+      "AB8_8", "AB8_9", "AB9_1", "AB9_2", "AB9_3",
+      "AB9_4", "AB9_5"),
+    ~ ifelse(is.na(.), 0, .))) %>%
+  select(!starts_with("AB8")) %>%
+  select(!starts_with("NA"))
+```
+
+# Plot missing values
+
+```{r fig.width=12}
+DATA %>%
+  vis_miss()
+```
+
+# R session info
+
+```{r collapse=TRUE}
+session_info()
+```
+
+# References

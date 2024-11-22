@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Pawel R. Kulawiak">
-<meta name="dcterms.date" content="2024-10-19">
+<meta name="dcterms.date" content="2024-11-21">
 
 <title>Supplement TK: Teachers’ knowledge about epilepsy</title>
 <style>
@@ -3120,7 +3120,7 @@ vertical-align: -.125em;
       <div>
       <div class="quarto-title-meta-heading">last modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 19, 2024</p>
+        <p class="date">November 21, 2024</p>
       </div>
     </div>
     
@@ -3168,7 +3168,7 @@ vertical-align: -.125em;
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>DATA <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;results-survey532267 (32).xlsx&quot;</span>)</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>DATA <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;SURVEY_DATA.xlsx&quot;</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>DATA <span class="ot">&lt;-</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  DATA <span class="sc">%&gt;%</span></span>
@@ -3179,7 +3179,7 @@ vertical-align: -.125em;
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  DATA[<span class="dv">9</span><span class="sc">:</span><span class="dv">81</span>] <span class="sc">%&gt;%</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NA_CHECK =</span> <span class="fu">rowSums</span>(<span class="sc">!</span><span class="fu">is.na</span>(.))) <span class="sc">%&gt;%</span></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NA_CHECK <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(AB7 <span class="sc">==</span> <span class="dv">0</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(AB7 <span class="sc">==</span> <span class="dv">0</span>) <span class="co"># exclude special education schools</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -3358,20 +3358,20 @@ vertical-align: -.125em;
 <span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">&quot;center&quot;</span>, <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">&quot;C&quot;</span>, <span class="st">&quot;W1&quot;</span>, <span class="st">&quot;W2&quot;</span>, <span class="st">&quot;list_plot&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="jfmkvptfjr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jfmkvptfjr table {
+<div id="flpykgagrs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#flpykgagrs table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#jfmkvptfjr thead, #jfmkvptfjr tbody, #jfmkvptfjr tfoot, #jfmkvptfjr tr, #jfmkvptfjr td, #jfmkvptfjr th {
+#flpykgagrs thead, #flpykgagrs tbody, #flpykgagrs tfoot, #flpykgagrs tr, #flpykgagrs td, #flpykgagrs th {
 border-style: none;
 }
-#jfmkvptfjr p {
+#flpykgagrs p {
 margin: 0;
 padding: 0;
 }
-#jfmkvptfjr .gt_table {
+#flpykgagrs .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -3396,11 +3396,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#jfmkvptfjr .gt_caption {
+#flpykgagrs .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#jfmkvptfjr .gt_title {
+#flpykgagrs .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -3411,7 +3411,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#jfmkvptfjr .gt_subtitle {
+#flpykgagrs .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -3422,7 +3422,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#jfmkvptfjr .gt_heading {
+#flpykgagrs .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -3433,12 +3433,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#jfmkvptfjr .gt_bottom_border {
+#flpykgagrs .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#jfmkvptfjr .gt_col_headings {
+#flpykgagrs .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -3452,7 +3452,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#jfmkvptfjr .gt_col_heading {
+#flpykgagrs .gt_col_heading {
 color: #333333;
 background-color: #F2F2F2;
 font-size: 100%;
@@ -3471,7 +3471,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#jfmkvptfjr .gt_column_spanner_outer {
+#flpykgagrs .gt_column_spanner_outer {
 color: #333333;
 background-color: #F2F2F2;
 font-size: 100%;
@@ -3482,13 +3482,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#jfmkvptfjr .gt_column_spanner_outer:first-child {
+#flpykgagrs .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#jfmkvptfjr .gt_column_spanner_outer:last-child {
+#flpykgagrs .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#jfmkvptfjr .gt_column_spanner {
+#flpykgagrs .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -3499,10 +3499,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#jfmkvptfjr .gt_spanner_row {
+#flpykgagrs .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#jfmkvptfjr .gt_group_heading {
+#flpykgagrs .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3527,7 +3527,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#jfmkvptfjr .gt_empty_group_heading {
+#flpykgagrs .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -3541,13 +3541,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#jfmkvptfjr .gt_from_md > :first-child {
+#flpykgagrs .gt_from_md > :first-child {
 margin-top: 0;
 }
-#jfmkvptfjr .gt_from_md > :last-child {
+#flpykgagrs .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#jfmkvptfjr .gt_row {
+#flpykgagrs .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3565,7 +3565,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#jfmkvptfjr .gt_stub {
+#flpykgagrs .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3577,7 +3577,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#jfmkvptfjr .gt_stub_row_group {
+#flpykgagrs .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3590,13 +3590,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#jfmkvptfjr .gt_row_group_first td {
+#flpykgagrs .gt_row_group_first td {
 border-top-width: 2px;
 }
-#jfmkvptfjr .gt_row_group_first th {
+#flpykgagrs .gt_row_group_first th {
 border-top-width: 2px;
 }
-#jfmkvptfjr .gt_summary_row {
+#flpykgagrs .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -3605,14 +3605,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#jfmkvptfjr .gt_first_summary_row {
+#flpykgagrs .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#jfmkvptfjr .gt_first_summary_row.thick {
+#flpykgagrs .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#jfmkvptfjr .gt_last_summary_row {
+#flpykgagrs .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3621,7 +3621,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#jfmkvptfjr .gt_grand_summary_row {
+#flpykgagrs .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -3630,7 +3630,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#jfmkvptfjr .gt_first_grand_summary_row {
+#flpykgagrs .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3639,7 +3639,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#jfmkvptfjr .gt_last_grand_summary_row_top {
+#flpykgagrs .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3648,10 +3648,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#jfmkvptfjr .gt_striped {
+#flpykgagrs .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#jfmkvptfjr .gt_table_body {
+#flpykgagrs .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -3659,7 +3659,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#jfmkvptfjr .gt_footnotes {
+#flpykgagrs .gt_footnotes {
 color: #333333;
 background-color: #F2F2F2;
 border-bottom-style: none;
@@ -3672,7 +3672,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#jfmkvptfjr .gt_footnote {
+#flpykgagrs .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -3680,7 +3680,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#jfmkvptfjr .gt_sourcenotes {
+#flpykgagrs .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -3693,61 +3693,68 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#jfmkvptfjr .gt_sourcenote {
+#flpykgagrs .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#jfmkvptfjr .gt_left {
+#flpykgagrs .gt_left {
 text-align: left;
 }
-#jfmkvptfjr .gt_center {
+#flpykgagrs .gt_center {
 text-align: center;
 }
-#jfmkvptfjr .gt_right {
+#flpykgagrs .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#jfmkvptfjr .gt_font_normal {
+#flpykgagrs .gt_font_normal {
 font-weight: normal;
 }
-#jfmkvptfjr .gt_font_bold {
+#flpykgagrs .gt_font_bold {
 font-weight: bold;
 }
-#jfmkvptfjr .gt_font_italic {
+#flpykgagrs .gt_font_italic {
 font-style: italic;
 }
-#jfmkvptfjr .gt_super {
+#flpykgagrs .gt_super {
 font-size: 65%;
 }
-#jfmkvptfjr .gt_footnote_marks {
+#flpykgagrs .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#jfmkvptfjr .gt_asterisk {
+#flpykgagrs .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#jfmkvptfjr .gt_indent_1 {
+#flpykgagrs .gt_indent_1 {
 text-indent: 5px;
 }
-#jfmkvptfjr .gt_indent_2 {
+#flpykgagrs .gt_indent_2 {
 text-indent: 10px;
 }
-#jfmkvptfjr .gt_indent_3 {
+#flpykgagrs .gt_indent_3 {
 text-indent: 15px;
 }
-#jfmkvptfjr .gt_indent_4 {
+#flpykgagrs .gt_indent_4 {
 text-indent: 20px;
 }
-#jfmkvptfjr .gt_indent_5 {
+#flpykgagrs .gt_indent_5 {
 text-indent: 25px;
 }
+#flpykgagrs .katex-display {
+display: inline-flex !important;
+margin-bottom: 0.75em !important;
+}
+#flpykgagrs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+height: 0px !important;
+}
 </style>
-<table class="gt_table" style="table-layout: fixed;" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table" style="table-layout:fixed;" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
   <colgroup>
     <col>
     <col style="width:14%;">
@@ -3762,269 +3769,170 @@ text-indent: 25px;
   <thead>
     <tr class="gt_col_headings gt_spanner_row">
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="item">item</th>
-      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup" id="&lt;em&gt;answer options&lt;/em&gt;">
-        <span class="gt_column_spanner"><em>answer options</em></span>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup" id="*answer options*">
+        <div class="gt_column_spanner"><span data-qmd-base64="PGVtPmFuc3dlciBvcHRpb25zPC9lbT4="><span class="gt_from_md"><em>answer options</em></span></span></div>
       </th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="total">total</th>
-      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup" id="&lt;em&gt;answers&lt;/em&gt;">
-        <span class="gt_column_spanner"><em>answers</em></span>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup" id="*answers*">
+        <div class="gt_column_spanner"><span data-qmd-base64="PGVtPmFuc3dlcnM8L2VtPg=="><span class="gt_from_md"><em>answers</em></span></span></div>
       </th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="2" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="bar plot correct">bar plot correct</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="2" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="list_plot">bar plot correct</th>
     </tr>
     <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="(1)&lt;br&gt;wrong">(1)<br>wrong</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="(2)&lt;br&gt;wrong">(2)<br>wrong</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="(3)&lt;br&gt;correct">(3)<br>correct</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="&lt;center&gt;(1)&lt;/center&gt;wrong"><center>(1)</center>wrong</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="&lt;center&gt;(2)&lt;/center&gt;wrong"><center>(2)</center>wrong</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="&lt;center&gt;(3)&lt;/center&gt;correct"><center>(3)</center>correct</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="W1">(1)<br>wrong</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="W2">(2)<br>wrong</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="C">(3)<br>correct</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="wrong1"><center>(1)</center>wrong</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="wrong2"><center>(2)</center>wrong</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-style: italic; font-weight: bold;" scope="col" id="correct"><center>(3)</center>correct</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
     <tr class="gt_group_heading_row">
-      <th colspan="9" class="gt_group_heading" style="background-color: #F2F2F2;" scope="colgroup" id="&lt;em&gt;learning/instruction&lt;/em&gt;"><em>learning/instruction</em></th>
+      <th colspan="9" class="gt_group_heading" style="background-color: #F2F2F2;" scope="colgroup" id="&lt;span data-qmd-base64=&quot;PGVtPmxlYXJuaW5nL2luc3RydWN0aW9uPC9lbT4=&quot;&gt;&lt;span class=&#39;gt_from_md&#39;&gt;&lt;em&gt;learning/instruction&lt;/em&gt;&lt;/span&gt;&lt;/span&gt;"><span data-qmd-base64="PGVtPmxlYXJuaW5nL2luc3RydWN0aW9uPC9lbT4="><span class="gt_from_md"><em>learning/instruction</em></span></span></th>
     </tr>
-    <tr class="gt_row_group_first"><td headers="*learning/instruction*  item" class="gt_row gt_left"><div data-qmd="Epilepsy is ... intellectual impairment"><div class="gt_from_md"><p>Epilepsy is … intellectual impairment</p>
-</div></div></td>
-<td headers="*learning/instruction*  W1" class="gt_row gt_center"><div data-qmd="...a form of..."><div class="gt_from_md"><p>…a form of…</p>
-</div></div></td>
+    <tr class="gt_row_group_first"><td headers="*learning/instruction*  item" class="gt_row gt_left"><span data-qmd-base64="RXBpbGVwc3kgaXMg4oCmIGludGVsbGVjdHVhbCBpbXBhaXJtZW50"><span class="gt_from_md">Epilepsy is … intellectual impairment</span></span></td>
+<td headers="*learning/instruction*  W1" class="gt_row gt_center"><span data-qmd-base64="4oCmYSBmb3JtIG9m4oCm"><span class="gt_from_md">…a form of…</span></span></td>
 <td headers="*learning/instruction*  W2" class="gt_row gt_center"><br></td>
-<td headers="*learning/instruction*  C" class="gt_row gt_center"><div data-qmd="...not a form of..."><div class="gt_from_md"><p>…not a form of…</p>
-</div></div></td>
-<td headers="*learning/instruction*  total" class="gt_row gt_left"><div data-qmd="209&lt;br&gt;(100%)"><div class="gt_from_md"><p>209<br>(100%)</p>
-</div></div></td>
-<td headers="*learning/instruction*  wrong1" class="gt_row gt_left"><div data-qmd="4&lt;br&gt;(1.9%)"><div class="gt_from_md"><p>4<br>(1.9%)</p>
-</div></div></td>
+<td headers="*learning/instruction*  C" class="gt_row gt_center"><span data-qmd-base64="4oCmbm90IGEgZm9ybSBvZuKApg=="><span class="gt_from_md">…not a form of…</span></span></td>
+<td headers="*learning/instruction*  total" class="gt_row gt_left"><span data-qmd-base64="MjA5PGJyPigxMDAlKQ=="><span class="gt_from_md">209<br>(100%)</span></span></td>
+<td headers="*learning/instruction*  wrong1" class="gt_row gt_left"><span data-qmd-base64="NDxicj4oMS45JSk="><span class="gt_from_md">4<br>(1.9%)</span></span></td>
 <td headers="*learning/instruction*  wrong2" class="gt_row gt_left"><br></td>
-<td headers="*learning/instruction*  correct" class="gt_row gt_left"><div data-qmd="205&lt;br&gt;(98.1%)"><div class="gt_from_md"><p>205<br>(98.1%)</p>
-</div></div></td>
+<td headers="*learning/instruction*  correct" class="gt_row gt_left"><span data-qmd-base64="MjA1PGJyPig5OC4xJSk="><span class="gt_from_md">205<br>(98.1%)</span></span></td>
 <td headers="*learning/instruction*  list_plot" class="gt_row gt_center"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:98.1%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">98.1%</span></div></div></td></tr>
-    <tr><td headers="*learning/instruction*  item" class="gt_row gt_left"><div data-qmd="Giftedness is ... in students like Student E (compared to students without epilepsy)"><div class="gt_from_md"><p>Giftedness is … in students like Student E (compared to students without epilepsy)</p>
-</div></div></td>
-<td headers="*learning/instruction*  W1" class="gt_row gt_center"><div data-qmd="...particularly rare..."><div class="gt_from_md"><p>…particularly rare…</p>
-</div></div></td>
-<td headers="*learning/instruction*  W2" class="gt_row gt_center"><div data-qmd="...particularly common..."><div class="gt_from_md"><p>…particularly common…</p>
-</div></div></td>
-<td headers="*learning/instruction*  C" class="gt_row gt_center"><div data-qmd="...neither particularly rare nor particularly common..."><div class="gt_from_md"><p>…neither particularly rare nor particularly common…</p>
-</div></div></td>
-<td headers="*learning/instruction*  total" class="gt_row gt_left"><div data-qmd="208&lt;br&gt;(100%)"><div class="gt_from_md"><p>208<br>(100%)</p>
-</div></div></td>
-<td headers="*learning/instruction*  wrong1" class="gt_row gt_left"><div data-qmd="1&lt;br&gt;(0.5%)"><div class="gt_from_md"><p>1<br>(0.5%)</p>
-</div></div></td>
-<td headers="*learning/instruction*  wrong2" class="gt_row gt_left"><div data-qmd="3&lt;br&gt;(1.4%)"><div class="gt_from_md"><p>3<br>(1.4%)</p>
-</div></div></td>
-<td headers="*learning/instruction*  correct" class="gt_row gt_left"><div data-qmd="204&lt;br&gt;(98.1%)"><div class="gt_from_md"><p>204<br>(98.1%)</p>
-</div></div></td>
+    <tr><td headers="*learning/instruction*  item" class="gt_row gt_left"><span data-qmd-base64="R2lmdGVkbmVzcyBpcyDigKYgaW4gc3R1ZGVudHMgbGlrZSBTdHVkZW50IEUgKGNvbXBhcmVkIHRvIHN0dWRlbnRzIHdpdGhvdXQgZXBpbGVwc3kp"><span class="gt_from_md">Giftedness is … in students like Student E (compared to students without epilepsy)</span></span></td>
+<td headers="*learning/instruction*  W1" class="gt_row gt_center"><span data-qmd-base64="4oCmcGFydGljdWxhcmx5IHJhcmXigKY="><span class="gt_from_md">…particularly rare…</span></span></td>
+<td headers="*learning/instruction*  W2" class="gt_row gt_center"><span data-qmd-base64="4oCmcGFydGljdWxhcmx5IGNvbW1vbuKApg=="><span class="gt_from_md">…particularly common…</span></span></td>
+<td headers="*learning/instruction*  C" class="gt_row gt_center"><span data-qmd-base64="4oCmbmVpdGhlciBwYXJ0aWN1bGFybHkgcmFyZSBub3IgcGFydGljdWxhcmx5IGNvbW1vbuKApg=="><span class="gt_from_md">…neither particularly rare nor particularly common…</span></span></td>
+<td headers="*learning/instruction*  total" class="gt_row gt_left"><span data-qmd-base64="MjA4PGJyPigxMDAlKQ=="><span class="gt_from_md">208<br>(100%)</span></span></td>
+<td headers="*learning/instruction*  wrong1" class="gt_row gt_left"><span data-qmd-base64="MTxicj4oMC41JSk="><span class="gt_from_md">1<br>(0.5%)</span></span></td>
+<td headers="*learning/instruction*  wrong2" class="gt_row gt_left"><span data-qmd-base64="Mzxicj4oMS40JSk="><span class="gt_from_md">3<br>(1.4%)</span></span></td>
+<td headers="*learning/instruction*  correct" class="gt_row gt_left"><span data-qmd-base64="MjA0PGJyPig5OC4xJSk="><span class="gt_from_md">204<br>(98.1%)</span></span></td>
 <td headers="*learning/instruction*  list_plot" class="gt_row gt_center"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:98.1%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">98.1%</span></div></div></td></tr>
-    <tr><td headers="*learning/instruction*  item" class="gt_row gt_left"><div data-qmd="Learning disabilities are ... in students like Student E (compared to students without epilepsy)"><div class="gt_from_md"><p>Learning disabilities are … in students like Student E (compared to students without epilepsy)</p>
-</div></div></td>
-<td headers="*learning/instruction*  W1" class="gt_row gt_center"><div data-qmd="...particularly rare..."><div class="gt_from_md"><p>…particularly rare…</p>
-</div></div></td>
-<td headers="*learning/instruction*  W2" class="gt_row gt_center"><div data-qmd="...particularly common..."><div class="gt_from_md"><p>…particularly common…</p>
-</div></div></td>
-<td headers="*learning/instruction*  C" class="gt_row gt_center"><div data-qmd="...neither particularly rare nor particularly common..."><div class="gt_from_md"><p>…neither particularly rare nor particularly common…</p>
-</div></div></td>
-<td headers="*learning/instruction*  total" class="gt_row gt_left"><div data-qmd="206&lt;br&gt;(100%)"><div class="gt_from_md"><p>206<br>(100%)</p>
-</div></div></td>
+    <tr><td headers="*learning/instruction*  item" class="gt_row gt_left"><span data-qmd-base64="TGVhcm5pbmcgZGlzYWJpbGl0aWVzIGFyZSDigKYgaW4gc3R1ZGVudHMgbGlrZSBTdHVkZW50IEUgKGNvbXBhcmVkIHRvIHN0dWRlbnRzIHdpdGhvdXQgZXBpbGVwc3kp"><span class="gt_from_md">Learning disabilities are … in students like Student E (compared to students without epilepsy)</span></span></td>
+<td headers="*learning/instruction*  W1" class="gt_row gt_center"><span data-qmd-base64="4oCmcGFydGljdWxhcmx5IHJhcmXigKY="><span class="gt_from_md">…particularly rare…</span></span></td>
+<td headers="*learning/instruction*  W2" class="gt_row gt_center"><span data-qmd-base64="4oCmcGFydGljdWxhcmx5IGNvbW1vbuKApg=="><span class="gt_from_md">…particularly common…</span></span></td>
+<td headers="*learning/instruction*  C" class="gt_row gt_center"><span data-qmd-base64="4oCmbmVpdGhlciBwYXJ0aWN1bGFybHkgcmFyZSBub3IgcGFydGljdWxhcmx5IGNvbW1vbuKApg=="><span class="gt_from_md">…neither particularly rare nor particularly common…</span></span></td>
+<td headers="*learning/instruction*  total" class="gt_row gt_left"><span data-qmd-base64="MjA2PGJyPigxMDAlKQ=="><span class="gt_from_md">206<br>(100%)</span></span></td>
 <td headers="*learning/instruction*  wrong1" class="gt_row gt_left"><br></td>
-<td headers="*learning/instruction*  wrong2" class="gt_row gt_left"><div data-qmd="7&lt;br&gt;(3.4%)"><div class="gt_from_md"><p>7<br>(3.4%)</p>
-</div></div></td>
-<td headers="*learning/instruction*  correct" class="gt_row gt_left"><div data-qmd="199&lt;br&gt;(96.6%)"><div class="gt_from_md"><p>199<br>(96.6%)</p>
-</div></div></td>
+<td headers="*learning/instruction*  wrong2" class="gt_row gt_left"><span data-qmd-base64="Nzxicj4oMy40JSk="><span class="gt_from_md">7<br>(3.4%)</span></span></td>
+<td headers="*learning/instruction*  correct" class="gt_row gt_left"><span data-qmd-base64="MTk5PGJyPig5Ni42JSk="><span class="gt_from_md">199<br>(96.6%)</span></span></td>
 <td headers="*learning/instruction*  list_plot" class="gt_row gt_center"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:96.6%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">96.6%</span></div></div></td></tr>
     <tr class="gt_group_heading_row">
-      <th colspan="9" class="gt_group_heading" style="background-color: #F2F2F2;" scope="colgroup" id="&lt;em&gt;social integration/behavior&lt;/em&gt;"><em>social integration/behavior</em></th>
+      <th colspan="9" class="gt_group_heading" style="background-color: #F2F2F2;" scope="colgroup" id="&lt;span data-qmd-base64=&quot;PGVtPnNvY2lhbCBpbnRlZ3JhdGlvbi9iZWhhdmlvcjwvZW0+&quot;&gt;&lt;span class=&#39;gt_from_md&#39;&gt;&lt;em&gt;social integration/behavior&lt;/em&gt;&lt;/span&gt;&lt;/span&gt;"><span data-qmd-base64="PGVtPnNvY2lhbCBpbnRlZ3JhdGlvbi9iZWhhdmlvcjwvZW0+"><span class="gt_from_md"><em>social integration/behavior</em></span></span></th>
     </tr>
-    <tr class="gt_row_group_first"><td headers="*social integration/behavior*  item" class="gt_row gt_left"><div data-qmd="In general, students like Student E have ... potential of aggression
-      (compared to students without epilepsy)"><div class="gt_from_md"><p>In general, students like Student E have … potential of aggression
-(compared to students without epilepsy)</p>
-</div></div></td>
-<td headers="*social integration/behavior*  W1" class="gt_row gt_center"><div data-qmd="...a higher..."><div class="gt_from_md"><p>…a higher…</p>
-</div></div></td>
-<td headers="*social integration/behavior*  W2" class="gt_row gt_center"><div data-qmd="...a lower..."><div class="gt_from_md"><p>…a lower…</p>
-</div></div></td>
-<td headers="*social integration/behavior*  C" class="gt_row gt_center"><div data-qmd="...neither a higher nor a lower..."><div class="gt_from_md"><p>…neither a higher nor a lower…</p>
-</div></div></td>
-<td headers="*social integration/behavior*  total" class="gt_row gt_left"><div data-qmd="207&lt;br&gt;(100%)"><div class="gt_from_md"><p>207<br>(100%)</p>
-</div></div></td>
-<td headers="*social integration/behavior*  wrong1" class="gt_row gt_left"><div data-qmd="3&lt;br&gt;(1.4%)"><div class="gt_from_md"><p>3<br>(1.4%)</p>
-</div></div></td>
-<td headers="*social integration/behavior*  wrong2" class="gt_row gt_left"><div data-qmd="1&lt;br&gt;(0.5%)"><div class="gt_from_md"><p>1<br>(0.5%)</p>
-</div></div></td>
-<td headers="*social integration/behavior*  correct" class="gt_row gt_left"><div data-qmd="203&lt;br&gt;(98.1%)"><div class="gt_from_md"><p>203<br>(98.1%)</p>
-</div></div></td>
+    <tr class="gt_row_group_first"><td headers="*social integration/behavior*  item" class="gt_row gt_left"><span data-qmd-base64="SW4gZ2VuZXJhbCwgc3R1ZGVudHMgbGlrZSBTdHVkZW50IEUgaGF2ZSDigKYgcG90ZW50aWFsIG9mIGFnZ3Jlc3Npb24KKGNvbXBhcmVkIHRvIHN0dWRlbnRzIHdpdGhvdXQgZXBpbGVwc3kp"><span class="gt_from_md">In general, students like Student E have … potential of aggression
+(compared to students without epilepsy)</span></span></td>
+<td headers="*social integration/behavior*  W1" class="gt_row gt_center"><span data-qmd-base64="4oCmYSBoaWdoZXLigKY="><span class="gt_from_md">…a higher…</span></span></td>
+<td headers="*social integration/behavior*  W2" class="gt_row gt_center"><span data-qmd-base64="4oCmYSBsb3dlcuKApg=="><span class="gt_from_md">…a lower…</span></span></td>
+<td headers="*social integration/behavior*  C" class="gt_row gt_center"><span data-qmd-base64="4oCmbmVpdGhlciBhIGhpZ2hlciBub3IgYSBsb3dlcuKApg=="><span class="gt_from_md">…neither a higher nor a lower…</span></span></td>
+<td headers="*social integration/behavior*  total" class="gt_row gt_left"><span data-qmd-base64="MjA3PGJyPigxMDAlKQ=="><span class="gt_from_md">207<br>(100%)</span></span></td>
+<td headers="*social integration/behavior*  wrong1" class="gt_row gt_left"><span data-qmd-base64="Mzxicj4oMS40JSk="><span class="gt_from_md">3<br>(1.4%)</span></span></td>
+<td headers="*social integration/behavior*  wrong2" class="gt_row gt_left"><span data-qmd-base64="MTxicj4oMC41JSk="><span class="gt_from_md">1<br>(0.5%)</span></span></td>
+<td headers="*social integration/behavior*  correct" class="gt_row gt_left"><span data-qmd-base64="MjAzPGJyPig5OC4xJSk="><span class="gt_from_md">203<br>(98.1%)</span></span></td>
 <td headers="*social integration/behavior*  list_plot" class="gt_row gt_center"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:98.1%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">98.1%</span></div></div></td></tr>
-    <tr><td headers="*social integration/behavior*  item" class="gt_row gt_left"><div data-qmd="In general, students like Student E have ... level of social skills
-      (compared to students without epilepsy)"><div class="gt_from_md"><p>In general, students like Student E have … level of social skills
-(compared to students without epilepsy)</p>
-</div></div></td>
-<td headers="*social integration/behavior*  W1" class="gt_row gt_center"><div data-qmd="...a higher..."><div class="gt_from_md"><p>…a higher…</p>
-</div></div></td>
-<td headers="*social integration/behavior*  W2" class="gt_row gt_center"><div data-qmd="...a lower..."><div class="gt_from_md"><p>…a lower…</p>
-</div></div></td>
-<td headers="*social integration/behavior*  C" class="gt_row gt_center"><div data-qmd="...neither a higher nor a lower..."><div class="gt_from_md"><p>…neither a higher nor a lower…</p>
-</div></div></td>
-<td headers="*social integration/behavior*  total" class="gt_row gt_left"><div data-qmd="205&lt;br&gt;(100%)"><div class="gt_from_md"><p>205<br>(100%)</p>
-</div></div></td>
-<td headers="*social integration/behavior*  wrong1" class="gt_row gt_left"><div data-qmd="7&lt;br&gt;(3.4%)"><div class="gt_from_md"><p>7<br>(3.4%)</p>
-</div></div></td>
-<td headers="*social integration/behavior*  wrong2" class="gt_row gt_left"><div data-qmd="1&lt;br&gt;(0.5%)"><div class="gt_from_md"><p>1<br>(0.5%)</p>
-</div></div></td>
-<td headers="*social integration/behavior*  correct" class="gt_row gt_left"><div data-qmd="197&lt;br&gt;(96.1%)"><div class="gt_from_md"><p>197<br>(96.1%)</p>
-</div></div></td>
+    <tr><td headers="*social integration/behavior*  item" class="gt_row gt_left"><span data-qmd-base64="SW4gZ2VuZXJhbCwgc3R1ZGVudHMgbGlrZSBTdHVkZW50IEUgaGF2ZSDigKYgbGV2ZWwgb2Ygc29jaWFsIHNraWxscwooY29tcGFyZWQgdG8gc3R1ZGVudHMgd2l0aG91dCBlcGlsZXBzeSk="><span class="gt_from_md">In general, students like Student E have … level of social skills
+(compared to students without epilepsy)</span></span></td>
+<td headers="*social integration/behavior*  W1" class="gt_row gt_center"><span data-qmd-base64="4oCmYSBoaWdoZXLigKY="><span class="gt_from_md">…a higher…</span></span></td>
+<td headers="*social integration/behavior*  W2" class="gt_row gt_center"><span data-qmd-base64="4oCmYSBsb3dlcuKApg=="><span class="gt_from_md">…a lower…</span></span></td>
+<td headers="*social integration/behavior*  C" class="gt_row gt_center"><span data-qmd-base64="4oCmbmVpdGhlciBhIGhpZ2hlciBub3IgYSBsb3dlcuKApg=="><span class="gt_from_md">…neither a higher nor a lower…</span></span></td>
+<td headers="*social integration/behavior*  total" class="gt_row gt_left"><span data-qmd-base64="MjA1PGJyPigxMDAlKQ=="><span class="gt_from_md">205<br>(100%)</span></span></td>
+<td headers="*social integration/behavior*  wrong1" class="gt_row gt_left"><span data-qmd-base64="Nzxicj4oMy40JSk="><span class="gt_from_md">7<br>(3.4%)</span></span></td>
+<td headers="*social integration/behavior*  wrong2" class="gt_row gt_left"><span data-qmd-base64="MTxicj4oMC41JSk="><span class="gt_from_md">1<br>(0.5%)</span></span></td>
+<td headers="*social integration/behavior*  correct" class="gt_row gt_left"><span data-qmd-base64="MTk3PGJyPig5Ni4xJSk="><span class="gt_from_md">197<br>(96.1%)</span></span></td>
 <td headers="*social integration/behavior*  list_plot" class="gt_row gt_center"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:96.1%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">96.1%</span></div></div></td></tr>
     <tr class="gt_group_heading_row">
-      <th colspan="9" class="gt_group_heading" style="background-color: #F2F2F2;" scope="colgroup" id="&lt;em&gt;physical activity&lt;/em&gt;"><em>physical activity</em></th>
+      <th colspan="9" class="gt_group_heading" style="background-color: #F2F2F2;" scope="colgroup" id="&lt;span data-qmd-base64=&quot;PGVtPnBoeXNpY2FsIGFjdGl2aXR5PC9lbT4=&quot;&gt;&lt;span class=&#39;gt_from_md&#39;&gt;&lt;em&gt;physical activity&lt;/em&gt;&lt;/span&gt;&lt;/span&gt;"><span data-qmd-base64="PGVtPnBoeXNpY2FsIGFjdGl2aXR5PC9lbT4="><span class="gt_from_md"><em>physical activity</em></span></span></th>
     </tr>
-    <tr class="gt_row_group_first"><td headers="*physical activity*  item" class="gt_row gt_left"><div data-qmd="Physical activity and physical exertion (e.g., sport and exercise) are ... major
-      triggers for epileptic seizures in students with epilepsy"><div class="gt_from_md"><p>Physical activity and physical exertion (e.g., sport and exercise) are … major
-triggers for epileptic seizures in students with epilepsy</p>
-</div></div></td>
-<td headers="*physical activity*  W1" class="gt_row gt_center"><div data-qmd="...considered to be..."><div class="gt_from_md"><p>…considered to be…</p>
-</div></div></td>
+    <tr class="gt_row_group_first"><td headers="*physical activity*  item" class="gt_row gt_left"><span data-qmd-base64="UGh5c2ljYWwgYWN0aXZpdHkgYW5kIHBoeXNpY2FsIGV4ZXJ0aW9uIChlLmcuLCBzcG9ydCBhbmQgZXhlcmNpc2UpIGFyZSDigKYgbWFqb3IKdHJpZ2dlcnMgZm9yIGVwaWxlcHRpYyBzZWl6dXJlcyBpbiBzdHVkZW50cyB3aXRoIGVwaWxlcHN5"><span class="gt_from_md">Physical activity and physical exertion (e.g., sport and exercise) are … major
+triggers for epileptic seizures in students with epilepsy</span></span></td>
+<td headers="*physical activity*  W1" class="gt_row gt_center"><span data-qmd-base64="4oCmY29uc2lkZXJlZCB0byBiZeKApg=="><span class="gt_from_md">…considered to be…</span></span></td>
 <td headers="*physical activity*  W2" class="gt_row gt_center"><br></td>
-<td headers="*physical activity*  C" class="gt_row gt_center"><div data-qmd="...not considered to be..."><div class="gt_from_md"><p>…not considered to be…</p>
-</div></div></td>
-<td headers="*physical activity*  total" class="gt_row gt_left"><div data-qmd="205&lt;br&gt;(100%)"><div class="gt_from_md"><p>205<br>(100%)</p>
-</div></div></td>
-<td headers="*physical activity*  wrong1" class="gt_row gt_left"><div data-qmd="13&lt;br&gt;(6.3%)"><div class="gt_from_md"><p>13<br>(6.3%)</p>
-</div></div></td>
+<td headers="*physical activity*  C" class="gt_row gt_center"><span data-qmd-base64="4oCmbm90IGNvbnNpZGVyZWQgdG8gYmXigKY="><span class="gt_from_md">…not considered to be…</span></span></td>
+<td headers="*physical activity*  total" class="gt_row gt_left"><span data-qmd-base64="MjA1PGJyPigxMDAlKQ=="><span class="gt_from_md">205<br>(100%)</span></span></td>
+<td headers="*physical activity*  wrong1" class="gt_row gt_left"><span data-qmd-base64="MTM8YnI+KDYuMyUp"><span class="gt_from_md">13<br>(6.3%)</span></span></td>
 <td headers="*physical activity*  wrong2" class="gt_row gt_left"><br></td>
-<td headers="*physical activity*  correct" class="gt_row gt_left"><div data-qmd="192&lt;br&gt;(93.7%)"><div class="gt_from_md"><p>192<br>(93.7%)</p>
-</div></div></td>
+<td headers="*physical activity*  correct" class="gt_row gt_left"><span data-qmd-base64="MTkyPGJyPig5My43JSk="><span class="gt_from_md">192<br>(93.7%)</span></span></td>
 <td headers="*physical activity*  list_plot" class="gt_row gt_center"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:93.7%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">93.7%</span></div></div></td></tr>
-    <tr><td headers="*physical activity*  item" class="gt_row gt_left"><div data-qmd="In most ball sports (e.g., soccer, basketball, or volleyball), the risk of
-      injury for students with epilepsy is ... (compared to non-sport activities)"><div class="gt_from_md"><p>In most ball sports (e.g., soccer, basketball, or volleyball), the risk of
-injury for students with epilepsy is … (compared to non-sport activities)</p>
-</div></div></td>
-<td headers="*physical activity*  W1" class="gt_row gt_center"><div data-qmd="...significantly higher..."><div class="gt_from_md"><p>…significantly higher…</p>
-</div></div></td>
+    <tr><td headers="*physical activity*  item" class="gt_row gt_left"><span data-qmd-base64="SW4gbW9zdCBiYWxsIHNwb3J0cyAoZS5nLiwgc29jY2VyLCBiYXNrZXRiYWxsLCBvciB2b2xsZXliYWxsKSwgdGhlIHJpc2sgb2YKaW5qdXJ5IGZvciBzdHVkZW50cyB3aXRoIGVwaWxlcHN5IGlzIOKApiAoY29tcGFyZWQgdG8gbm9uLXNwb3J0IGFjdGl2aXRpZXMp"><span class="gt_from_md">In most ball sports (e.g., soccer, basketball, or volleyball), the risk of
+injury for students with epilepsy is … (compared to non-sport activities)</span></span></td>
+<td headers="*physical activity*  W1" class="gt_row gt_center"><span data-qmd-base64="4oCmc2lnbmlmaWNhbnRseSBoaWdoZXLigKY="><span class="gt_from_md">…significantly higher…</span></span></td>
 <td headers="*physical activity*  W2" class="gt_row gt_center"><br></td>
-<td headers="*physical activity*  C" class="gt_row gt_center"><div data-qmd="...not significantly higher..."><div class="gt_from_md"><p>…not significantly higher…</p>
-</div></div></td>
-<td headers="*physical activity*  total" class="gt_row gt_left"><div data-qmd="208&lt;br&gt;(100%)"><div class="gt_from_md"><p>208<br>(100%)</p>
-</div></div></td>
-<td headers="*physical activity*  wrong1" class="gt_row gt_left"><div data-qmd="22&lt;br&gt;(10.6%)"><div class="gt_from_md"><p>22<br>(10.6%)</p>
-</div></div></td>
+<td headers="*physical activity*  C" class="gt_row gt_center"><span data-qmd-base64="4oCmbm90IHNpZ25pZmljYW50bHkgaGlnaGVy4oCm"><span class="gt_from_md">…not significantly higher…</span></span></td>
+<td headers="*physical activity*  total" class="gt_row gt_left"><span data-qmd-base64="MjA4PGJyPigxMDAlKQ=="><span class="gt_from_md">208<br>(100%)</span></span></td>
+<td headers="*physical activity*  wrong1" class="gt_row gt_left"><span data-qmd-base64="MjI8YnI+KDEwLjYlKQ=="><span class="gt_from_md">22<br>(10.6%)</span></span></td>
 <td headers="*physical activity*  wrong2" class="gt_row gt_left"><br></td>
-<td headers="*physical activity*  correct" class="gt_row gt_left"><div data-qmd="186&lt;br&gt;(89.4%)"><div class="gt_from_md"><p>186<br>(89.4%)</p>
-</div></div></td>
+<td headers="*physical activity*  correct" class="gt_row gt_left"><span data-qmd-base64="MTg2PGJyPig4OS40JSk="><span class="gt_from_md">186<br>(89.4%)</span></span></td>
 <td headers="*physical activity*  list_plot" class="gt_row gt_center"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:89.4%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">89.4%</span></div></div></td></tr>
     <tr class="gt_group_heading_row">
-      <th colspan="9" class="gt_group_heading" style="background-color: #F2F2F2;" scope="colgroup" id="&lt;em&gt;seizure first aid (specifically addressing tonic-clonic seizures)&lt;/em&gt;"><em>seizure first aid (specifically addressing tonic-clonic seizures)</em></th>
+      <th colspan="9" class="gt_group_heading" style="background-color: #F2F2F2;" scope="colgroup" id="&lt;span data-qmd-base64=&quot;PGVtPnNlaXp1cmUgZmlyc3QgYWlkIChzcGVjaWZpY2FsbHkgYWRkcmVzc2luZyB0b25pYy1jbG9uaWMgc2VpenVyZXMpPC9lbT4=&quot;&gt;&lt;span class=&#39;gt_from_md&#39;&gt;&lt;em&gt;seizure first aid (specifically addressing tonic-clonic seizures)&lt;/em&gt;&lt;/span&gt;&lt;/span&gt;"><span data-qmd-base64="PGVtPnNlaXp1cmUgZmlyc3QgYWlkIChzcGVjaWZpY2FsbHkgYWRkcmVzc2luZyB0b25pYy1jbG9uaWMgc2VpenVyZXMpPC9lbT4="><span class="gt_from_md"><em>seizure first aid (specifically addressing tonic-clonic seizures)</em></span></span></th>
     </tr>
-    <tr class="gt_row_group_first"><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><div data-qmd="Emergency medical treatment is ... if a student has a seizure"><div class="gt_from_md"><p>Emergency medical treatment is … if a student has a seizure</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W1" class="gt_row gt_center"><div data-qmd="...always necessary..."><div class="gt_from_md"><p>…always necessary…</p>
-</div></div></td>
+    <tr class="gt_row_group_first"><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><span data-qmd-base64="RW1lcmdlbmN5IG1lZGljYWwgdHJlYXRtZW50IGlzIOKApiBpZiBhIHN0dWRlbnQgaGFzIGEgc2VpenVyZQ=="><span class="gt_from_md">Emergency medical treatment is … if a student has a seizure</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W1" class="gt_row gt_center"><span data-qmd-base64="4oCmYWx3YXlzIG5lY2Vzc2FyeeKApg=="><span class="gt_from_md">…always necessary…</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W2" class="gt_row gt_center"><br></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  C" class="gt_row gt_center"><div data-qmd="...not always necessary..."><div class="gt_from_md"><p>…not always necessary…</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  total" class="gt_row gt_left"><div data-qmd="209&lt;br&gt;(100%)"><div class="gt_from_md"><p>209<br>(100%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong1" class="gt_row gt_left"><div data-qmd="114&lt;br&gt;(54.5%)"><div class="gt_from_md"><p>114<br>(54.5%)</p>
-</div></div></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  C" class="gt_row gt_center"><span data-qmd-base64="4oCmbm90IGFsd2F5cyBuZWNlc3NhcnnigKY="><span class="gt_from_md">…not always necessary…</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  total" class="gt_row gt_left"><span data-qmd-base64="MjA5PGJyPigxMDAlKQ=="><span class="gt_from_md">209<br>(100%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong1" class="gt_row gt_left"><span data-qmd-base64="MTE0PGJyPig1NC41JSk="><span class="gt_from_md">114<br>(54.5%)</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong2" class="gt_row gt_left"><br></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  correct" class="gt_row gt_left"><div data-qmd="95&lt;br&gt;(45.5%)"><div class="gt_from_md"><p>95<br>(45.5%)</p>
-</div></div></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  correct" class="gt_row gt_left"><span data-qmd-base64="OTU8YnI+KDQ1LjUlKQ=="><span class="gt_from_md">95<br>(45.5%)</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  list_plot" class="gt_row gt_center"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:45.5%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">45.5%</span></div></div></td></tr>
-    <tr><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><div data-qmd="During a seizure of a student, an object should ... be placed
-      between the teeth of the affected student (e.g., rubber bite block)"><div class="gt_from_md"><p>During a seizure of a student, an object should … be placed
-between the teeth of the affected student (e.g., rubber bite block)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W1" class="gt_row gt_center"><div data-qmd="...in any case..."><div class="gt_from_md"><p>…in any case…</p>
-</div></div></td>
+    <tr><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><span data-qmd-base64="RHVyaW5nIGEgc2VpenVyZSBvZiBhIHN0dWRlbnQsIGFuIG9iamVjdCBzaG91bGQg4oCmIGJlIHBsYWNlZApiZXR3ZWVuIHRoZSB0ZWV0aCBvZiB0aGUgYWZmZWN0ZWQgc3R1ZGVudCAoZS5nLiwgcnViYmVyIGJpdGUgYmxvY2sp"><span class="gt_from_md">During a seizure of a student, an object should … be placed
+between the teeth of the affected student (e.g., rubber bite block)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W1" class="gt_row gt_center"><span data-qmd-base64="4oCmaW4gYW55IGNhc2XigKY="><span class="gt_from_md">…in any case…</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W2" class="gt_row gt_center"><br></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  C" class="gt_row gt_center"><div data-qmd="...under no circumstances..."><div class="gt_from_md"><p>…under no circumstances…</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  total" class="gt_row gt_left"><div data-qmd="206&lt;br&gt;(100%)"><div class="gt_from_md"><p>206<br>(100%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong1" class="gt_row gt_left"><div data-qmd="68&lt;br&gt;(33%)"><div class="gt_from_md"><p>68<br>(33%)</p>
-</div></div></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  C" class="gt_row gt_center"><span data-qmd-base64="4oCmdW5kZXIgbm8gY2lyY3Vtc3RhbmNlc+KApg=="><span class="gt_from_md">…under no circumstances…</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  total" class="gt_row gt_left"><span data-qmd-base64="MjA2PGJyPigxMDAlKQ=="><span class="gt_from_md">206<br>(100%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong1" class="gt_row gt_left"><span data-qmd-base64="Njg8YnI+KDMzJSk="><span class="gt_from_md">68<br>(33%)</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong2" class="gt_row gt_left"><br></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  correct" class="gt_row gt_left"><div data-qmd="138&lt;br&gt;(67%)"><div class="gt_from_md"><p>138<br>(67%)</p>
-</div></div></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  correct" class="gt_row gt_left"><span data-qmd-base64="MTM4PGJyPig2NyUp"><span class="gt_from_md">138<br>(67%)</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  list_plot" class="gt_row gt_center"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:67%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">67%</span></div></div></td></tr>
-    <tr><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><div data-qmd="If a student has difficulty breathing during a seizure,
-      the mouth should ... be opened with physical force during the seizure"><div class="gt_from_md"><p>If a student has difficulty breathing during a seizure,
-the mouth should … be opened with physical force during the seizure</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W1" class="gt_row gt_center"><div data-qmd="...in any case..."><div class="gt_from_md"><p>…in any case…</p>
-</div></div></td>
+    <tr><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><span data-qmd-base64="SWYgYSBzdHVkZW50IGhhcyBkaWZmaWN1bHR5IGJyZWF0aGluZyBkdXJpbmcgYSBzZWl6dXJlLAp0aGUgbW91dGggc2hvdWxkIOKApiBiZSBvcGVuZWQgd2l0aCBwaHlzaWNhbCBmb3JjZSBkdXJpbmcgdGhlIHNlaXp1cmU="><span class="gt_from_md">If a student has difficulty breathing during a seizure,
+the mouth should … be opened with physical force during the seizure</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W1" class="gt_row gt_center"><span data-qmd-base64="4oCmaW4gYW55IGNhc2XigKY="><span class="gt_from_md">…in any case…</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W2" class="gt_row gt_center"><br></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  C" class="gt_row gt_center"><div data-qmd="...not..."><div class="gt_from_md"><p>…not…</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  total" class="gt_row gt_left"><div data-qmd="206&lt;br&gt;(100%)"><div class="gt_from_md"><p>206<br>(100%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong1" class="gt_row gt_left"><div data-qmd="19&lt;br&gt;(9.2%)"><div class="gt_from_md"><p>19<br>(9.2%)</p>
-</div></div></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  C" class="gt_row gt_center"><span data-qmd-base64="4oCmbm904oCm"><span class="gt_from_md">…not…</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  total" class="gt_row gt_left"><span data-qmd-base64="MjA2PGJyPigxMDAlKQ=="><span class="gt_from_md">206<br>(100%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong1" class="gt_row gt_left"><span data-qmd-base64="MTk8YnI+KDkuMiUp"><span class="gt_from_md">19<br>(9.2%)</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong2" class="gt_row gt_left"><br></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  correct" class="gt_row gt_left"><div data-qmd="187&lt;br&gt;(90.8%)"><div class="gt_from_md"><p>187<br>(90.8%)</p>
-</div></div></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  correct" class="gt_row gt_left"><span data-qmd-base64="MTg3PGJyPig5MC44JSk="><span class="gt_from_md">187<br>(90.8%)</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  list_plot" class="gt_row gt_center"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:90.8%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">90.8%</span></div></div></td></tr>
-    <tr><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><div data-qmd="During a seizure with twitching of the limbs, the affected
-      student should ... be held down (e.g., by the arms and legs)"><div class="gt_from_md"><p>During a seizure with twitching of the limbs, the affected
-student should … be held down (e.g., by the arms and legs)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W1" class="gt_row gt_center"><div data-qmd="...in any case..."><div class="gt_from_md"><p>…in any case…</p>
-</div></div></td>
+    <tr><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><span data-qmd-base64="RHVyaW5nIGEgc2VpenVyZSB3aXRoIHR3aXRjaGluZyBvZiB0aGUgbGltYnMsIHRoZSBhZmZlY3RlZApzdHVkZW50IHNob3VsZCDigKYgYmUgaGVsZCBkb3duIChlLmcuLCBieSB0aGUgYXJtcyBhbmQgbGVncyk="><span class="gt_from_md">During a seizure with twitching of the limbs, the affected
+student should … be held down (e.g., by the arms and legs)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W1" class="gt_row gt_center"><span data-qmd-base64="4oCmaW4gYW55IGNhc2XigKY="><span class="gt_from_md">…in any case…</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W2" class="gt_row gt_center"><br></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  C" class="gt_row gt_center"><div data-qmd="...not..."><div class="gt_from_md"><p>…not…</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  total" class="gt_row gt_left"><div data-qmd="208&lt;br&gt;(100%)"><div class="gt_from_md"><p>208<br>(100%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong1" class="gt_row gt_left"><div data-qmd="18&lt;br&gt;(8.7%)"><div class="gt_from_md"><p>18<br>(8.7%)</p>
-</div></div></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  C" class="gt_row gt_center"><span data-qmd-base64="4oCmbm904oCm"><span class="gt_from_md">…not…</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  total" class="gt_row gt_left"><span data-qmd-base64="MjA4PGJyPigxMDAlKQ=="><span class="gt_from_md">208<br>(100%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong1" class="gt_row gt_left"><span data-qmd-base64="MTg8YnI+KDguNyUp"><span class="gt_from_md">18<br>(8.7%)</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong2" class="gt_row gt_left"><br></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  correct" class="gt_row gt_left"><div data-qmd="190&lt;br&gt;(91.3%)"><div class="gt_from_md"><p>190<br>(91.3%)</p>
-</div></div></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  correct" class="gt_row gt_left"><span data-qmd-base64="MTkwPGJyPig5MS4zJSk="><span class="gt_from_md">190<br>(91.3%)</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  list_plot" class="gt_row gt_center"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:91.3%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">91.3%</span></div></div></td></tr>
-    <tr><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><div data-qmd="A seizure in a student can ... be stopped by speaking loudly and shaking the student awake"><div class="gt_from_md"><p>A seizure in a student can … be stopped by speaking loudly and shaking the student awake</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W1" class="gt_row gt_center"><div data-qmd="...very often..."><div class="gt_from_md"><p>…very often…</p>
-</div></div></td>
+    <tr><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><span data-qmd-base64="QSBzZWl6dXJlIGluIGEgc3R1ZGVudCBjYW4g4oCmIGJlIHN0b3BwZWQgYnkgc3BlYWtpbmcgbG91ZGx5IGFuZCBzaGFraW5nIHRoZSBzdHVkZW50IGF3YWtl"><span class="gt_from_md">A seizure in a student can … be stopped by speaking loudly and shaking the student awake</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W1" class="gt_row gt_center"><span data-qmd-base64="4oCmdmVyeSBvZnRlbuKApg=="><span class="gt_from_md">…very often…</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W2" class="gt_row gt_center"><br></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  C" class="gt_row gt_center"><div data-qmd="...not..."><div class="gt_from_md"><p>…not…</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  total" class="gt_row gt_left"><div data-qmd="207&lt;br&gt;(100%)"><div class="gt_from_md"><p>207<br>(100%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong1" class="gt_row gt_left"><div data-qmd="4&lt;br&gt;(1.9%)"><div class="gt_from_md"><p>4<br>(1.9%)</p>
-</div></div></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  C" class="gt_row gt_center"><span data-qmd-base64="4oCmbm904oCm"><span class="gt_from_md">…not…</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  total" class="gt_row gt_left"><span data-qmd-base64="MjA3PGJyPigxMDAlKQ=="><span class="gt_from_md">207<br>(100%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong1" class="gt_row gt_left"><span data-qmd-base64="NDxicj4oMS45JSk="><span class="gt_from_md">4<br>(1.9%)</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong2" class="gt_row gt_left"><br></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  correct" class="gt_row gt_left"><div data-qmd="203&lt;br&gt;(98.1%)"><div class="gt_from_md"><p>203<br>(98.1%)</p>
-</div></div></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  correct" class="gt_row gt_left"><span data-qmd-base64="MjAzPGJyPig5OC4xJSk="><span class="gt_from_md">203<br>(98.1%)</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  list_plot" class="gt_row gt_center"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:98.1%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">98.1%</span></div></div></td></tr>
-    <tr><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><div data-qmd="A seizure in a student can ... be stopped by splashing the student with cool water"><div class="gt_from_md"><p>A seizure in a student can … be stopped by splashing the student with cool water</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W1" class="gt_row gt_center"><div data-qmd="...very often..."><div class="gt_from_md"><p>…very often…</p>
-</div></div></td>
+    <tr><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><span data-qmd-base64="QSBzZWl6dXJlIGluIGEgc3R1ZGVudCBjYW4g4oCmIGJlIHN0b3BwZWQgYnkgc3BsYXNoaW5nIHRoZSBzdHVkZW50IHdpdGggY29vbCB3YXRlcg=="><span class="gt_from_md">A seizure in a student can … be stopped by splashing the student with cool water</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W1" class="gt_row gt_center"><span data-qmd-base64="4oCmdmVyeSBvZnRlbuKApg=="><span class="gt_from_md">…very often…</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W2" class="gt_row gt_center"><br></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  C" class="gt_row gt_center"><div data-qmd="...not..."><div class="gt_from_md"><p>…not…</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  total" class="gt_row gt_left"><div data-qmd="207&lt;br&gt;(100%)"><div class="gt_from_md"><p>207<br>(100%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong1" class="gt_row gt_left"><div data-qmd="10&lt;br&gt;(4.8%)"><div class="gt_from_md"><p>10<br>(4.8%)</p>
-</div></div></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  C" class="gt_row gt_center"><span data-qmd-base64="4oCmbm904oCm"><span class="gt_from_md">…not…</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  total" class="gt_row gt_left"><span data-qmd-base64="MjA3PGJyPigxMDAlKQ=="><span class="gt_from_md">207<br>(100%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong1" class="gt_row gt_left"><span data-qmd-base64="MTA8YnI+KDQuOCUp"><span class="gt_from_md">10<br>(4.8%)</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong2" class="gt_row gt_left"><br></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  correct" class="gt_row gt_left"><div data-qmd="197&lt;br&gt;(95.2%)"><div class="gt_from_md"><p>197<br>(95.2%)</p>
-</div></div></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  correct" class="gt_row gt_left"><span data-qmd-base64="MTk3PGJyPig5NS4yJSk="><span class="gt_from_md">197<br>(95.2%)</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  list_plot" class="gt_row gt_center"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:95.2%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">95.2%</span></div></div></td></tr>
-    <tr><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><div data-qmd="In the event of a seizure, teachers may ... administer the relevant emergency medication
-      (liquid to be dripped into the mouth) to a student on their own"><div class="gt_from_md"><p>In the event of a seizure, teachers may … administer the relevant emergency medication
-(liquid to be dripped into the mouth) to a student on their own</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W1" class="gt_row gt_center"><div data-qmd="...under no circumstances..."><div class="gt_from_md"><p>…under no circumstances…</p>
-</div></div></td>
+    <tr><td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  item" class="gt_row gt_left"><span data-qmd-base64="SW4gdGhlIGV2ZW50IG9mIGEgc2VpenVyZSwgdGVhY2hlcnMgbWF5IOKApiBhZG1pbmlzdGVyIHRoZSByZWxldmFudCBlbWVyZ2VuY3kgbWVkaWNhdGlvbgoobGlxdWlkIHRvIGJlIGRyaXBwZWQgaW50byB0aGUgbW91dGgpIHRvIGEgc3R1ZGVudCBvbiB0aGVpciBvd24="><span class="gt_from_md">In the event of a seizure, teachers may … administer the relevant emergency medication
+(liquid to be dripped into the mouth) to a student on their own</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W1" class="gt_row gt_center"><span data-qmd-base64="4oCmdW5kZXIgbm8gY2lyY3Vtc3RhbmNlc+KApg=="><span class="gt_from_md">…under no circumstances…</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  W2" class="gt_row gt_center"><br></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  C" class="gt_row gt_center"><div data-qmd="...in accordance with the emergency plan..."><div class="gt_from_md"><p>…in accordance with the emergency plan…</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  total" class="gt_row gt_left"><div data-qmd="209&lt;br&gt;(100%)"><div class="gt_from_md"><p>209<br>(100%)</p>
-</div></div></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong1" class="gt_row gt_left"><div data-qmd="14&lt;br&gt;(6.7%)"><div class="gt_from_md"><p>14<br>(6.7%)</p>
-</div></div></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  C" class="gt_row gt_center"><span data-qmd-base64="4oCmaW4gYWNjb3JkYW5jZSB3aXRoIHRoZSBlbWVyZ2VuY3kgcGxhbuKApg=="><span class="gt_from_md">…in accordance with the emergency plan…</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  total" class="gt_row gt_left"><span data-qmd-base64="MjA5PGJyPigxMDAlKQ=="><span class="gt_from_md">209<br>(100%)</span></span></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong1" class="gt_row gt_left"><span data-qmd-base64="MTQ8YnI+KDYuNyUp"><span class="gt_from_md">14<br>(6.7%)</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  wrong2" class="gt_row gt_left"><br></td>
-<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  correct" class="gt_row gt_left"><div data-qmd="195&lt;br&gt;(93.3%)"><div class="gt_from_md"><p>195<br>(93.3%)</p>
-</div></div></td>
+<td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  correct" class="gt_row gt_left"><span data-qmd-base64="MTk1PGJyPig5My4zJSk="><span class="gt_from_md">195<br>(93.3%)</span></span></td>
 <td headers="*seizure first aid (specifically addressing tonic-clonic seizures)*  list_plot" class="gt_row gt_center"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:black;width:93.3%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:12px;">93.3%</span></div></div></td></tr>
   </tbody>
   
@@ -4046,7 +3954,7 @@ student should … be held down (e.g., by the arms and legs)</p>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">session_info</span>()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="do">## ─ Session info ───────────────────────────────────────────────────────────────</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  setting  value</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  version  R version 4.4.1 (2024-06-14 ucrt)</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  version  R version 4.4.2 (2024-10-31 ucrt)</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  os       Windows 11 x64 (build 22631)</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  system   x86_64, mingw32</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  ui       RTerm</span></span>
@@ -4054,89 +3962,90 @@ student should … be held down (e.g., by the arms and legs)</p>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  collate  German_Germany.utf8</span></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  ctype    German_Germany.utf8</span></span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  tz       Europe/Berlin</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  date     2024-10-19</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  date     2024-11-21</span></span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  pandoc   3.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)</span></span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="do">## ─ Packages ───────────────────────────────────────────────────────────────────</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  package     * version date (UTC) lib source</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  cachem        1.1.0   2024-05-16 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  cellranger    1.1.0   2016-07-27 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  cli           3.6.3   2024-06-21 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  colorspace    2.1-0   2023-01-23 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  commonmark    1.9.1   2024-01-30 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  devtools    * 2.4.5   2022-10-11 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  digest        0.6.36  2024-06-23 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="do">##  dplyr       * 1.1.4   2023-11-17 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="do">##  ellipsis      0.3.2   2021-04-29 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="do">##  evaluate      0.24.0  2024-06-10 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="do">##  fansi         1.0.6   2023-12-08 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="do">##  fastmap       1.2.0   2024-05-15 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="do">##  fontawesome   0.5.2   2023-08-19 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="do">##  forcats     * 1.0.0   2023-01-29 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="do">##  fs            1.6.4   2024-04-25 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="do">##  generics      0.1.3   2022-07-05 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="do">##  ggplot2     * 3.5.1   2024-04-23 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="do">##  glue          1.7.0   2024-01-09 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="do">##  gt          * 0.10.1  2024-01-17 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="do">##  gtable        0.3.5   2024-04-22 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="do">##  gtExtras    * 0.5.0   2023-09-15 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="do">##  hms           1.1.3   2023-03-21 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="do">##  htmltools     0.5.8.1 2024-04-04 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="do">##  htmlwidgets   1.6.4   2023-12-06 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="do">##  httpuv        1.6.15  2024-03-26 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="do">##  jsonlite      1.8.8   2023-12-04 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="do">##  knitr       * 1.47    2024-05-29 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="do">##  later         1.3.2   2023-12-06 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="do">##  lifecycle     1.0.4   2023-11-07 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="do">##  lubridate   * 1.9.3   2023-09-27 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="do">##  magrittr      2.0.3   2022-03-30 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="do">##  markdown      1.13    2024-06-04 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="do">##  memoise       2.0.1   2021-11-26 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="do">##  mime          0.12    2021-09-28 [1] CRAN (R 4.4.0)</span></span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="do">##  miniUI        0.1.1.1 2018-05-18 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="do">##  munsell       0.5.1   2024-04-01 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="do">##  paletteer     1.6.0   2024-01-21 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="do">##  pillar        1.9.0   2023-03-22 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="do">##  pkgbuild      1.4.4   2024-03-17 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a><span class="do">##  pkgconfig     2.0.3   2019-09-22 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a><span class="do">##  pkgload       1.4.0   2024-06-28 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a><span class="do">##  profvis       0.3.8   2023-05-02 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a><span class="do">##  promises      1.3.0   2024-04-05 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a><span class="do">##  purrr       * 1.0.2   2023-08-10 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="do">##  R6            2.5.1   2021-08-19 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a><span class="do">##  Rcpp          1.0.12  2024-01-09 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a><span class="do">##  readr       * 2.1.5   2024-01-10 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a><span class="do">##  readxl      * 1.4.3   2023-07-06 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a><span class="do">##  rematch2      2.1.2   2020-05-01 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a><span class="do">##  remotes       2.5.0   2024-03-17 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="do">##  rlang         1.1.4   2024-06-04 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a><span class="do">##  rmarkdown     2.27    2024-05-17 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a><span class="do">##  rstudioapi    0.16.0  2024-03-24 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a><span class="do">##  sass          0.4.9   2024-03-15 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a><span class="do">##  scales        1.3.0   2023-11-28 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a><span class="do">##  sessioninfo   1.2.2   2021-12-06 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a><span class="do">##  shiny         1.8.1.1 2024-04-02 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a><span class="do">##  stringi       1.8.4   2024-05-06 [1] CRAN (R 4.4.0)</span></span>
-<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a><span class="do">##  stringr     * 1.5.1   2023-11-14 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a><span class="do">##  tibble      * 3.2.1   2023-03-20 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a><span class="do">##  tidyr       * 1.3.1   2024-01-24 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a><span class="do">##  tidyselect    1.2.1   2024-03-11 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a><span class="do">##  tidyverse   * 2.0.0   2023-02-22 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a><span class="do">##  timechange    0.3.0   2024-01-18 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a><span class="do">##  tzdb          0.4.0   2023-05-12 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a><span class="do">##  urlchecker    1.0.1   2021-11-30 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a><span class="do">##  usethis     * 2.2.3   2024-02-19 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a><span class="do">##  utf8          1.2.4   2023-10-22 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a><span class="do">##  vctrs         0.6.5   2023-12-01 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a><span class="do">##  withr         3.0.0   2024-01-16 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a><span class="do">##  xfun          0.45    2024-06-16 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a><span class="do">##  xml2          1.3.6   2023-12-04 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a><span class="do">##  xtable        1.8-4   2019-04-21 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a><span class="do">##  yaml          2.3.9   2024-07-05 [1] CRAN (R 4.4.1)</span></span>
-<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] C:/Users/Pawel Kulawiak/AppData/Local/Programs/R/R-4.4.1/library</span></span>
-<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a><span class="do">## ──────────────────────────────────────────────────────────────────────────────</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  package     * version  date (UTC) lib source</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  base64enc     0.1-3    2015-07-28 [1] CRAN (R 4.4.0)</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  cachem        1.1.0    2024-05-16 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  cellranger    1.1.0    2016-07-27 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  cli           3.6.3    2024-06-21 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  colorspace    2.1-1    2024-07-26 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  commonmark    1.9.2    2024-10-04 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  devtools    * 2.4.5    2022-10-11 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="do">##  digest        0.6.37   2024-08-19 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="do">##  dplyr       * 1.1.4    2023-11-17 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="do">##  ellipsis      0.3.2    2021-04-29 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="do">##  evaluate      1.0.1    2024-10-10 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="do">##  fansi         1.0.6    2023-12-08 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="do">##  fastmap       1.2.0    2024-05-15 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="do">##  fontawesome   0.5.3    2024-11-16 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="do">##  forcats     * 1.0.0    2023-01-29 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="do">##  fs            1.6.5    2024-10-30 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="do">##  generics      0.1.3    2022-07-05 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="do">##  ggplot2     * 3.5.1    2024-04-23 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="do">##  glue          1.8.0    2024-09-30 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="do">##  gt          * 0.11.1   2024-10-04 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="do">##  gtable        0.3.6    2024-10-25 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="do">##  gtExtras    * 0.5.0    2023-09-15 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="do">##  hms           1.1.3    2023-03-21 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="do">##  htmltools     0.5.8.1  2024-04-04 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="do">##  htmlwidgets   1.6.4    2023-12-06 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="do">##  httpuv        1.6.15   2024-03-26 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="do">##  jsonlite      1.8.9    2024-09-20 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="do">##  knitr       * 1.49     2024-11-08 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="do">##  later         1.3.2    2023-12-06 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="do">##  lifecycle     1.0.4    2023-11-07 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="do">##  lubridate   * 1.9.3    2023-09-27 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="do">##  magrittr      2.0.3    2022-03-30 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="do">##  markdown      1.13     2024-06-04 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="do">##  memoise       2.0.1    2021-11-26 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="do">##  mime          0.12     2021-09-28 [1] CRAN (R 4.4.0)</span></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="do">##  miniUI        0.1.1.1  2018-05-18 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="do">##  munsell       0.5.1    2024-04-01 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="do">##  paletteer     1.6.0    2024-01-21 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="do">##  pillar        1.9.0    2023-03-22 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a><span class="do">##  pkgbuild      1.4.5    2024-10-28 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a><span class="do">##  pkgconfig     2.0.3    2019-09-22 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a><span class="do">##  pkgload       1.4.0    2024-06-28 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a><span class="do">##  profvis       0.4.0    2024-09-20 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a><span class="do">##  promises      1.3.0    2024-04-05 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="do">##  purrr       * 1.0.2    2023-08-10 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a><span class="do">##  R6            2.5.1    2021-08-19 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a><span class="do">##  Rcpp          1.0.13-1 2024-11-02 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a><span class="do">##  readr       * 2.1.5    2024-01-10 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a><span class="do">##  readxl      * 1.4.3    2023-07-06 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a><span class="do">##  rematch2      2.1.2    2020-05-01 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="do">##  remotes       2.5.0    2024-03-17 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a><span class="do">##  rlang         1.1.4    2024-06-04 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a><span class="do">##  rmarkdown     2.29     2024-11-04 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a><span class="do">##  rstudioapi    0.17.1   2024-10-22 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a><span class="do">##  sass          0.4.9    2024-03-15 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a><span class="do">##  scales        1.3.0    2023-11-28 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a><span class="do">##  sessioninfo   1.2.2    2021-12-06 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a><span class="do">##  shiny         1.9.1    2024-08-01 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a><span class="do">##  stringi       1.8.4    2024-05-06 [1] CRAN (R 4.4.0)</span></span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a><span class="do">##  stringr     * 1.5.1    2023-11-14 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a><span class="do">##  tibble      * 3.2.1    2023-03-20 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a><span class="do">##  tidyr       * 1.3.1    2024-01-24 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a><span class="do">##  tidyselect    1.2.1    2024-03-11 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a><span class="do">##  tidyverse   * 2.0.0    2023-02-22 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a><span class="do">##  timechange    0.3.0    2024-01-18 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a><span class="do">##  tzdb          0.4.0    2023-05-12 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a><span class="do">##  urlchecker    1.0.1    2021-11-30 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a><span class="do">##  usethis     * 3.0.0    2024-07-29 [1] CRAN (R 4.4.1)</span></span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a><span class="do">##  utf8          1.2.4    2023-10-22 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a><span class="do">##  vctrs         0.6.5    2023-12-01 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a><span class="do">##  withr         3.0.2    2024-10-28 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a><span class="do">##  xfun          0.49     2024-10-31 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a><span class="do">##  xml2          1.3.6    2023-12-04 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a><span class="do">##  xtable        1.8-4    2019-04-21 [1] CRAN (R 4.4.2)</span></span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a><span class="do">##  yaml          2.3.10   2024-07-26 [1] CRAN (R 4.4.1)</span></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] C:/Users/Pawel Kulawiak/AppData/Local/Programs/R/R-4.4.2/library</span></span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a><span class="do">## ──────────────────────────────────────────────────────────────────────────────</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -4144,7 +4053,7 @@ student should … be held down (e.g., by the arms and legs)</p>
 <h1 class="unnumbered" data-number="6"><span class="header-section-number">6</span> References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-R-gt" class="csl-entry" role="listitem">
-Iannone, Richard, Joe Cheng, Barret Schloerke, Ellis Hughes, Alexandra Lauer, and JooYoung Seo. 2024. <em>Gt: Easily Create Presentation-Ready Display Tables</em>. <a href="https://gt.rstudio.com">https://gt.rstudio.com</a>.
+Iannone, Richard, Joe Cheng, Barret Schloerke, Ellis Hughes, Alexandra Lauer, JooYoung Seo, Ken Brevoort, and Olivier Roy. 2024. <em>Gt: Easily Create Presentation-Ready Display Tables</em>. <a href="https://gt.rstudio.com">https://gt.rstudio.com</a>.
 </div>
 <div id="ref-R-gtExtras" class="csl-entry" role="listitem">
 Mock, Thomas. 2023. <em>gtExtras: Extending Gt for Beautiful HTML Tables</em>. <a href="https://github.com/jthomasmock/gtExtras">https://github.com/jthomasmock/gtExtras</a>.

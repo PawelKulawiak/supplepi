@@ -1,0 +1,56 @@
+---
+title: "Supplemental material: Understanding teachers' perspectives on students with epilepsy in Germany"
+date: today
+published-title: "last modified"
+author:
+    name: Pawel R. Kulawiak
+    orcid: 0000-0001-5939-4380
+    email: kulawiak@uni-potsdam.de
+format:
+  html:
+    title-block-banner: true
+    number-sections: true
+    embed-resources: true
+    page-layout: full
+    toc: true
+    toc-location: body
+    code-fold: true
+    html-table-processing: none
+execute: 
+  warning: false
+  message: false
+bibliography: packages.bib
+appendix-style: none
+---
+
+::: {.callout-note}
+# **Teacher survey conducted in Germany, federal state of Lower Saxony**
+
+Data collection: January to June 2023.
+
+For more details, see the paper published in the journal *Epilepsy & Behavior*:
+
+**Understanding teachers' perspectives on students with epilepsy in Germany:
+A survey examining knowledge, experience, and affective, cognitive, and behavioral attitudes
+to inform teacher training**
+:::
+
+[Supplement DATA (Survey data)](https://github.com/PawelKulawiak/supplepi/blob/main/SURVEY_DATA.xlsx) 
+
+[Supplement DATA DOC (Data documentation)](https://github.com/PawelKulawiak/supplepi/blob/main/DATA_DOCUMENTATION.xlsx) 
+
+[Supplement TS (Survey English)](https://github.com/PawelKulawiak/supplepi/blob/main/surveyenglish.pdf) 
+
+[Supplement TSCPB (Teachers’ sociodemographic characteristics and professional background)](./TSCPB.html)
+
+[Supplement TE (Teachers’ experience with epilepsy)](./TE.html)
+ 
+[Supplement TK (Teachers’ knowledge about epilepsy)](./TK.html)
+ 
+[Supplement TA (Teachers’ attitudes towards epilepsy)](./TA.html)
+
+[Supplement EFA (Exploratory factor analysis)](./EFA.html)
+
+[Supplement COR (Correlations)](./COR.html)
+
+[Supplement MISS (Missing values)](./MISS.html)

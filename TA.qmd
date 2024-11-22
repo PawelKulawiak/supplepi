@@ -1,0 +1,306 @@
+---
+title: "Supplement TA: Teachers’ attitudes towards epilepsy"
+date: today
+published-title: "last modified"
+author:
+    name: Pawel R. Kulawiak
+    orcid: 0000-0001-5939-4380
+    email: kulawiak@uni-potsdam.de
+format:
+  html:
+    title-block-banner: true
+    number-sections: true
+    embed-resources: true
+    page-layout: full
+    toc: true
+    toc-location: body
+    code-fold: true
+    html-table-processing: none
+execute: 
+  warning: false
+  message: false
+bibliography: packages.bib
+appendix-style: none
+notice: |
+  @R-base, @R-tidyverse, @R-gt, @R-readxl, @R-gtExtras, @R-devtools, @R-knitr
+---
+
+# R packages
+
+```{r}
+library(tidyverse)
+library(gt)
+library(readxl)
+library(gtExtras)
+library(devtools)
+library(knitr)
+write_bib(file = "packages.bib")
+```
+
+# Data import and manipulation
+
+```{r}
+DATA <- read_xlsx("SURVEY_DATA.xlsx")
+
+DATA <-
+  DATA %>%
+  select(-where( ~ all(is.na(.)))) %>%
+  filter(`teilnahme[teilnahme]` == "Y")
+
+DATA <-
+  DATA[9:81] %>%
+  mutate(NA_CHECK = rowSums(!is.na(.))) %>%
+  filter(NA_CHECK > 0) %>%
+  filter(AB7 == 0) %>% # exclude special education schools
+  mutate_all(as.factor) %>%
+  mutate_at(vars(names(DATA[paste0("SE", 1:20)])), ~ factor(., levels = 1:4))
+
+```
+
+# Custom functions
+
+```{r}
+overview_item <- function(item) {
+  
+  t1 <-
+    DATA %>%
+    group_by({{item}}, .drop = F) %>%
+    summarise(n = n()) %>%
+    drop_na() %>%
+    mutate_all(as.numeric) %>%
+    mutate(percent = ((n / sum(n)) * 100)) %>%
+    rbind(colSums(.), .) %>%
+    mutate(param = paste0(n, "<br>(", percent |> round(1), "%)")) %>%
+    t() %>%
+    as.data.frame() %>%
+    slice(4)
+  
+  t2 <-
+    DATA %>%
+    group_by({{item}}, .drop = F) %>%
+    summarise(n = n()) %>%
+    drop_na() %>%
+    mutate_all(as.numeric) %>%
+    t() %>%
+    as.data.frame() %>%
+    slice(2) %>%
+    rev() %>%
+    mutate(sum = sum(.)) %>%
+    mutate(Y = V3 + V4) %>%
+    mutate(N = V1 + V2) %>%
+    mutate(pY = (Y / sum * 100) |> round(1)) %>%
+    mutate(pN = (N / sum * 100) |> round(1)) %>%
+    mutate(n = paste0(N, "<br>(", pN, "%)")) %>%
+    mutate(y = paste0(Y, "<br>(", pY, "%)")) %>%
+    select(n, y)
+  
+  lp <-
+    DATA %>%
+    group_by({{item}}, .drop = F) %>%
+    summarise(n = n()) %>%
+    drop_na() %>%
+    mutate_all(as.numeric) %>%
+    t() %>%
+    as.data.frame() %>%
+    slice(2) %>%
+    rev() %>%
+    mutate(sum = sum(.)) %>%
+    mutate(Y = V3 + V4) %>%
+    mutate(N = V1 + V2) %>%
+    mutate(list_plot = (Y / sum * 100) |> round(1)) %>%
+    slice(1) %>%
+    select(list_plot)
+  
+  cbind(t1, t2, lp)
+  
+}
+```
+
+# Table: Teachers’ attitudes (part 1)
+
+```{r}
+item_ID <-
+  c(1:30) |> as.character()
+
+item_wording <- c(
+  "I feel uneasy at the thought of having to supervise Student E on a trip to the museum",
+  "I feel uneasy at the thought of having to supervise Student E on a school trip lasting several days",
+  "I am confident that I can adequately supervise Student E during a trip to the museum",
+  "I am confident that I can adequately supervise Student E during a school trip lasting several days",
+  "For safety reasons, I would recommend that Student E does not take part in trips to the museum",
+  "For safety reasons, I would recommend that Student E does not take part in school trips lasting several days",
+  "I am confident that I can create an appropriate learning environment for Student E",
+  "I am confident that I can successfully promote Student E's academic performance",
+  "I think Student E will perform less well in my lessons (compared to students without epilepsy)",
+  "I think additional educational staff is necessary for lessons with Student E",
+  "I would recommend additional educational staff for lessons with Student E",
+  "I think a special education school is a better learning and development environment for Student E than a regular school",
+  "I would recommend that Student E attend a special education school",
+  "I am confident that I can successfully promote the social integration of Student E",
+  "I think Student E will show more problems in social behavior (compared to students without epilepsy)",
+  "I am uncomfortable with the idea of supervising Student E during physical activities (e.g., play, exercise, and sport)",
+  "I am confident that I can adequately supervise Student E during physical activities (e.g., play, exercise, and sport)",
+  "I am confident that I can create a safe play and exercise environment for Student E",
+  "For safety reasons, I would make sure that student E reduces physical activities and physical exertion (e.g., sports and exercise)",
+  "For safety reasons, I would recommend that Student E does not participate in ball sports (e.g., soccer, basketball, or volleyball)",
+  "I am confident that I can identify an epileptic seizure in student E",
+  "I am confident that I can administer adequate first aid in the event of an epileptic seizure in Student E",
+  "I am confident that I can maintain the necessary calm and composure in the event of an epileptic seizure in Student E",
+  "I am confident that I can administer the emergency medication (liquid to drip into the mouth) according to the emergency plan in the event of an epileptic seizure in Student E",
+  "I am confident that I can adequately supervise the other classmates in the event of an epileptic seizure in Student E",
+  "During an epileptic seizure in Student E, I would send the other classmates out of the classroom",
+  "I am confident that I can adequately continue the school day and lessons with the class after an epileptic seizure in Student E",
+  "I am confident that I can adequately respond to the questions, fears and concerns of the other classmates after an epileptic seizure in Student E",
+  "I am confident that I can respond adequately to the emotional needs of Student E after an epileptic seizure",
+  "I am confident that I can provide adequate care for Student E after the end of an epileptic seizure"
+)
+
+```
+
+```{r}
+TEST <-
+  rbind(
+    overview_item(SE1),
+    overview_item(SE2),
+    overview_item(SE3),
+    overview_item(SE4),
+    overview_item(SE5),
+    overview_item(SE6),
+    overview_item(SE7),
+    overview_item(SE8),
+    overview_item(SE14),
+    overview_item(SE9),
+    overview_item(SE15),
+    overview_item(SE12),
+    overview_item(SE13),
+    overview_item(SE10),
+    overview_item(SE11)
+  )
+
+`no.` <- item_ID[1:15]
+item <- item_wording[1:15]
+
+cbind(`no.`, item, TEST) %>%
+  gt() %>%
+  cols_align("left") %>%
+  cols_label(
+    V1 = "total",
+    V5 = html("strongly<br>agree"),
+    V4 = html("somewhat<br>agree"),
+    V3 = html("somewhat<br>disagree"),
+    V2 = html("strongly<br>disagree"),
+    n = html("sum<br>disagree"),
+    y = html("sum<br>agree"),
+    list_plot = html("bar plot<br>sum agree")
+  ) %>%
+  tab_spanner(label = md("*answers*"), columns = c(V2, V3, V4, V5)) %>%
+  tab_spanner(label = md("*aggregated*"), columns = c(n, y)) %>%
+  gt_plt_bar_pct(
+    column = list_plot,
+    scaled = T,
+    labels = TRUE,
+    fill = "black",
+    width = 100,
+    height = 30,
+    font_size = "12px"
+  ) %>%
+  fmt_markdown(columns = -last_col()) %>% 
+  tab_style(style = cell_text(weight = "bold", style = "italic"),
+            locations = cells_column_labels()) %>%
+  tab_style(style = cell_text(style = "italic"),
+            locations = cells_footnotes()) %>%
+  tab_footnote(
+    footnote = "Student E = Student with epilepsy;
+    sum agree = strongly agree + somewhat agree;
+    sum disagree = strongly disagree + somewhat disagree"
+  ) %>%
+  tab_row_group(label = md("*learning/instruction and social integration/behavior*"), rows = 7:15) %>%
+  tab_row_group(label = md("*school trips*"), rows = 1:6) %>%
+  tab_options(column_labels.background.color = "gray95",
+              footnotes.background.color = "gray95") %>%
+  tab_style(style = cell_fill(color = "gray95"), locations = cells_row_groups(groups = everything())) %>%
+  cols_width(item ~ pct(31)) %>%
+  cols_width(no. ~ pct(3)) %>%
+  tab_options(table.align = "left") %>%
+  tab_options(table.width = pct(90))
+```
+
+# Table: Teachers’ attitudes (part 2)
+
+```{r}
+TEST <-
+  rbind(
+    overview_item(SE16),
+    overview_item(SE17),
+    overview_item(SE18),
+    overview_item(SE19),
+    overview_item(SE20),
+    overview_item(VA1),
+    overview_item(VA2),
+    overview_item(VA3),
+    overview_item(VA4),
+    overview_item(VA5),
+    overview_item(VA10),
+    overview_item(VA6),
+    overview_item(VA7),
+    overview_item(VA8),
+    overview_item(VA9)
+  )
+
+`no.` <- item_ID[16:30]
+item <- item_wording[16:30]
+
+cbind(`no.`, item, TEST) %>%
+  gt() %>%
+  cols_align("left") %>%
+  cols_label(
+    V1 = "total",
+    V5 = html("strongly<br>agree"),
+    V4 = html("somewhat<br>agree"),
+    V3 = html("somewhat<br>disagree"),
+    V2 = html("strongly<br>disagree"),
+    n = html("sum<br>disagree"),
+    y = html("sum<br>agree"),
+    list_plot = html("bar plot<br>sum agree")
+  ) %>%
+  tab_spanner(label = md("*answers*"), columns = c(V2, V3, V4, V5)) %>%
+  tab_spanner(label = md("*aggregated*"), columns = c(n, y)) %>%
+  gt_plt_bar_pct(
+    column = list_plot,
+    scaled = T,
+    labels = TRUE,
+    fill = "black",
+    width = 100,
+    height = 30,
+    font_size = "12px"
+  ) %>%
+  fmt_markdown(columns = -last_col()) %>% 
+  tab_style(style = cell_text(weight = "bold", style = "italic"),
+            locations = cells_column_labels()) %>%
+  tab_style(style = cell_text(style = "italic"),
+            locations = cells_footnotes()) %>%
+  tab_footnote(
+    footnote = "Student E = Student with epilepsy;
+    sum agree = strongly agree + somewhat agree;
+    sum disagree = strongly disagree + somewhat disagree"
+  ) %>%
+  tab_row_group(label = md("*classroom management and emotional support during and after a seizure (specifically addressing tonic-clonic seizures)*"), rows = 10:15) %>%
+  tab_row_group(label = md("*seizure first aid (specifically addressing tonic-clonic seizures)*"), rows = 6:9) %>%
+  tab_row_group(label = md("*physical activity*"), rows = 1:5) %>%
+  tab_options(column_labels.background.color = "gray95",
+              footnotes.background.color = "gray95") %>%
+  tab_style(style = cell_fill(color = "gray95"), locations = cells_row_groups(groups = everything())) %>%
+  cols_width(item ~ pct(31)) %>%
+  cols_width(no. ~ pct(3)) %>%
+  tab_options(table.align = "left") %>%
+  tab_options(table.width = pct(90))
+```
+
+
+# R session info
+
+```{r collapse=TRUE}
+session_info()
+```
+
+# References
