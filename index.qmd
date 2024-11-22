@@ -33,6 +33,10 @@ For more details, see the paper published in the journal *Epilepsy & Behavior*:
 **Understanding teachers' perspectives on students with epilepsy in Germany:
 A survey examining knowledge, experience, and affective, cognitive, and behavioral attitudes
 to inform teacher training**
+
+Link to GitHub Repo: <https://github.com/PawelKulawiak/supplepi>
+
+Link to GitHub Pages: <https://pawelkulawiak.github.io/supplepi/>
 :::
 
 [Supplement DATA (Survey data)](https://github.com/PawelKulawiak/supplepi/blob/main/SURVEY_DATA.xlsx) 
