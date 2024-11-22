@@ -39,7 +39,9 @@ to inform teacher training**
 
 [Supplement DATA DOC (Data documentation)](https://github.com/PawelKulawiak/supplepi/blob/main/DATA_DOCUMENTATION.xlsx) 
 
-[Supplement TS (Survey English)](https://github.com/PawelKulawiak/supplepi/blob/main/surveyenglish.pdf) 
+[Supplement TS (Survey German)](https://github.com/PawelKulawiak/supplepi/blob/main/surveygerman.pdf) 
+
+[Supplement TS (Survey English)](https://github.com/PawelKulawiak/supplepi/blob/main/surveyenglish.pdf)
 
 [Supplement TSCPB (Teachers’ sociodemographic characteristics and professional background)](./TSCPB.html)
 
