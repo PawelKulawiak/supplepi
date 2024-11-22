@@ -2,7 +2,7 @@
 
 Supplemental material: Understanding teachers’ perspectives on students with epilepsy in Germany
 
-<pawelkulawiak.github.io/supplepi/>
+[pawelkulawiak.github.io/supplepi/](https://pawelkulawiak.github.io/supplepi/)
 
 - Teacher survey conducted in Germany, federal state of Lower Saxony
 
