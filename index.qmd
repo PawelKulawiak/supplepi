@@ -23,6 +23,8 @@ bibliography: packages.bib
 appendix-style: none
 ---
 
+[![](https://zenodo.org/badge/DOI/10.5281/zenodo.14210541.svg)](https://doi.org/10.5281/zenodo.14210541)
+
 ::: {.callout-note}
 # **Teacher survey conducted in Germany, federal state of Lower Saxony**
 
